@@ -1,0 +1,14 @@
+{
+  "name": "@envioya/shared",
+  "version": "1.0.0",
+  "description": "Contratos, tipos DTO y constantes compartidas de EnvíoYa",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}

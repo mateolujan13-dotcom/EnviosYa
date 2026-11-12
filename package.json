@@ -1,0 +1,23 @@
+{
+  "name": "envioya-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Monorepo de EnvíoYa App - Sistema integral de logística y paquetería",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build:shared": "npm run build --workspace=@envioya/shared",
+    "build:backend": "npm run build --workspace=@envioya/backend",
+    "build:frontend": "npm run build --workspace=@envioya/frontend",
+    "build": "npm run build:shared && npm run build:backend && npm run build:frontend",
+    "dev:backend": "npm run start:dev --workspace=@envioya/backend",
+    "dev:frontend": "npm run dev --workspace=@envioya/frontend",
+    "lint": "npm run lint --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
