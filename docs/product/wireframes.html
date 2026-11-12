@@ -1,0 +1,1117 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EnvíoYa — Wireframes low-fi v0.1</title>
+<style>
+  :root {
+    --wf-ink: #111827;
+    --wf-text: #374151;
+    --wf-muted: #9ca3af;
+    --wf-line: #d1d5db;
+    --wf-soft: #f9fafb;
+    --wf-panel: #ffffff;
+    --wf-accent: #e8430b;
+    --wf-dark: #0b1220;
+    --wf-blue: #dbeafe;
+    --wf-mint: #ecfccb;
+    --wf-danger: #fee2e2;
+    --wf-paper: #f6f2e9;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: #e5e7eb;
+    color: var(--wf-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1680px; margin: 0 auto; padding: 32px; }
+  .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 10px;
+  }
+  .page-head h1 { margin: 0; font-size: 28px; letter-spacing: -.03em; }
+  .page-head p { margin: 6px 0 0; color: #4b5563; font-size: 14px; max-width: 780px; line-height: 1.5; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: #fff; border: 1px solid #d1d5db; border-radius: 999px;
+    padding: 7px 12px; font-size: 12px; font-weight: 700; color: #374151; white-space: nowrap;
+  }
+  .badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--wf-accent); }
+  .legend {
+    display: flex; flex-wrap: wrap; gap: 18px;
+    background: #fff; border: 1px solid #d1d5db; border-radius: 12px;
+    padding: 14px 18px; margin: 18px 0 26px; font-size: 12px; color: #4b5563;
+  }
+  .legend b { color: #111827; }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 12px; height: 12px; border-radius: 3px; border: 1px solid #d1d5db; }
+  .board { display: grid; grid-template-columns: repeat(auto-fit, minmax(720px, 1fr)); gap: 30px; }
+  .frame {
+    background: #fff; border: 1px solid #d1d5db; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  .frame-head {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 12px 16px; border-bottom: 1px solid #e5e7eb; background: #fff;
+  }
+  .frame-title { font-size: 13px; font-weight: 800; letter-spacing: -.01em; }
+  .frame-meta { font-size: 11px; color: #6b7280; margin-top: 2px; }
+  .tag {
+    font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .06em;
+    color: #6b7280; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 999px;
+    padding: 4px 8px; white-space: nowrap;
+  }
+  .screen {
+    width: 100%; height: 460px; background: var(--wf-paper);
+    position: relative; overflow: hidden; font-size: 9px; line-height: 1.35;
+  }
+  .screen.gray { background: #f9fafb; }
+  .screen.dark { background: var(--wf-dark); }
+
+  /* Utilidades */
+  .flex { display: flex; }
+  .col { display: flex; flex-direction: column; }
+  .between { justify-content: space-between; }
+  .center { align-items: center; }
+  .end { align-items: flex-end; }
+  .grow { flex: 1; min-width: 0; }
+  .gap4 { gap: 4px; } .gap6 { gap: 6px; } .gap8 { gap: 8px; } .gap10 { gap: 10px; } .gap12 { gap: 12px; } .gap16 { gap: 16px; }
+  .mt4 { margin-top: 4px; } .mt6 { margin-top: 6px; } .mt8 { margin-top: 8px; } .mt10 { margin-top: 10px; } .mt12 { margin-top: 12px; } .mt14 { margin-top: 14px; } .mt18 { margin-top: 18px; }
+  .p6 { padding: 6px; } .p8 { padding: 8px; } .p10 { padding: 10px; } .p12 { padding: 12px; } .p14 { padding: 14px; } .p16 { padding: 16px; }
+  .t { font-size: 7px; color: #6b7280; }
+  .t.dark { color: #111827; font-weight: 700; }
+  .t.title { font-size: 14px; font-weight: 800; color: #111827; letter-spacing: -.02em; line-height: 1.1; }
+  .t.h2 { font-size: 11px; font-weight: 800; color: #111827; }
+  .t.label { font-size: 6px; text-transform: uppercase; letter-spacing: .08em; color: #9ca3af; font-weight: 700; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .02em; }
+  .ln { height: 5px; background: #e5e7eb; border-radius: 3px; }
+  .ln.dark { background: #9ca3af; }
+  .ln.w20 { width: 20%; } .ln.w30 { width: 30%; } .ln.w40 { width: 40%; } .ln.w50 { width: 50%; } .ln.w60 { width: 60%; } .ln.w70 { width: 70%; } .ln.w80 { width: 80%; } .ln.w90 { width: 90%; } .ln.w100 { width: 100%; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 22px; padding: 0 9px; border: 1px solid #d1d5db; border-radius: 4px;
+    background: #fff; font-size: 7px; font-weight: 700; color: #111827; white-space: nowrap;
+  }
+  .btn.primary { background: var(--wf-accent); border-color: var(--wf-accent); color: #fff; }
+  .btn.dark { background: var(--wf-dark); border-color: var(--wf-dark); color: #fff; }
+  .btn.ghost { border-color: transparent; background: transparent; }
+  .btn.block { width: 100%; }
+  .input {
+    height: 24px; border: 1px solid #d1d5db; border-radius: 4px; background: #fff;
+    display: flex; align-items: center; padding: 0 7px; font-size: 7px; color: #9ca3af;
+  }
+  .input.filled { color: #111827; }
+  .input.error { border-color: #b42318; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 3px; height: 16px; padding: 0 6px;
+    border-radius: 999px; background: #f3f4f6; font-size: 6px; font-weight: 700;
+    color: #374151; white-space: nowrap;
+  }
+  .chip .dot { width: 4px; height: 4px; border-radius: 50%; background: currentColor; }
+  .chip.orange { background: #ffedd5; color: #c2410c; }
+  .chip.blue { background: var(--wf-blue); color: #1d4ed8; }
+  .chip.green { background: var(--wf-mint); color: #4d7c0f; }
+  .chip.red { background: var(--wf-danger); color: #b91c1c; }
+  .chip.gray { background: #f3f4f6; color: #6b7280; }
+  .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px; }
+  .card.flat { border: 0; padding: 0; }
+  .map {
+    position: relative; background: #eef2f0;
+    background-image: linear-gradient(#dbe3df 1px, transparent 1px), linear-gradient(90deg, #dbe3df 1px, transparent 1px);
+    background-size: 24px 24px; border: 1px solid #d1d5db; border-radius: 6px; overflow: hidden;
+  }
+  .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .map .pin { position: absolute; width: 8px; height: 8px; border-radius: 50%; background: var(--wf-accent); border: 1.5px solid #fff; }
+  .logo { font-size: 11px; font-weight: 800; letter-spacing: -.02em; }
+  .avatar { width: 18px; height: 18px; border-radius: 50%; background: #d1d5db; }
+  .nav {
+    height: 34px; display: flex; align-items: center; justify-content: space-between;
+    padding: 0 28px; background: transparent; border-bottom: 1px solid #e5e7eb;
+  }
+  .nav .links { display: flex; gap: 10px; align-items: center; font-size: 6px; color: #6b7280; }
+  .app { display: flex; height: 100%; }
+  .sidebar {
+    width: 140px; background: var(--wf-dark); padding: 10px 8px;
+    display: flex; flex-direction: column; gap: 4px; flex-shrink: 0;
+  }
+  .sidebar.light { background: #fff; border-right: 1px solid #e5e7eb; }
+  .sidebar .brand { font-size: 10px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .sidebar.light .brand { color: #111827; }
+  .sitem { height: 18px; border-radius: 3px; padding: 0 6px; display: flex; align-items: center; font-size: 6px; color: #94a3b8; }
+  .sitem.active { background: var(--wf-accent); color: #fff; font-weight: 700; }
+  .sidebar.light .sitem { color: #6b7280; }
+  .sidebar.light .sitem.active { background: #fee2e2; color: #b91c1c; }
+  .app-main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .topbar {
+    height: 30px; background: #fff; border-bottom: 1px solid #e5e7eb;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 10px; flex-shrink: 0;
+  }
+  .content { padding: 10px 12px; overflow: hidden; flex: 1; }
+  .table { background: #fff; border: 1px solid #e5e7eb; border-radius: 5px; overflow: hidden; }
+  .tr {
+    display: grid; align-items: center; gap: 6px; padding: 5px 7px;
+    border-bottom: 1px solid #f3f4f6; font-size: 6.5px; color: #374151;
+  }
+  .tr:last-child { border-bottom: 0; }
+  .tr.head { background: #f9fafb; font-size: 5.5px; text-transform: uppercase; letter-spacing: .06em; color: #9ca3af; font-weight: 700; }
+  .timeline { position: relative; padding-left: 16px; }
+  .timeline:before { content: ""; position: absolute; left: 4px; top: 2px; bottom: 2px; width: 1.5px; background: #e5e7eb; }
+  .titem { position: relative; padding-bottom: 9px; }
+  .titem:before {
+    content: ""; position: absolute; left: -15px; top: 1px; width: 8px; height: 8px;
+    border-radius: 50%; background: #fff; border: 1.5px solid #9ca3af;
+  }
+  .titem.done:before { background: var(--wf-dark); border-color: var(--wf-dark); }
+  .titem.current:before { background: var(--wf-accent); border-color: var(--wf-accent); box-shadow: 0 0 0 2px #fee2e2; }
+  .titem .tt { font-size: 7px; font-weight: 700; color: #111827; }
+  .titem .ts { font-size: 6px; color: #9ca3af; }
+  .stepper { display: flex; align-items: center; gap: 5px; }
+  .step { display: flex; align-items: center; gap: 3px; font-size: 6px; color: #9ca3af; }
+  .step .num {
+    width: 14px; height: 14px; border-radius: 50%; border: 1px solid #d1d5db;
+    display: flex; align-items: center; justify-content: center; font-size: 6px; background: #fff;
+  }
+  .step.active .num { background: var(--wf-accent); border-color: var(--wf-accent); color: #fff; }
+  .step.done .num { background: var(--wf-dark); border-color: var(--wf-dark); color: #fff; }
+  .step.active { color: #111827; font-weight: 700; }
+  .stepline { width: 18px; height: 1px; background: #d1d5db; }
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .kpis.four { grid-template-columns: repeat(4, 1fr); }
+  .kpi { background: #fff; border: 1px solid #e5e7eb; border-radius: 5px; padding: 7px; }
+  .kpi .k { font-size: 5.5px; text-transform: uppercase; letter-spacing: .07em; color: #9ca3af; }
+  .kpi .v { font-size: 15px; font-weight: 800; color: #111827; line-height: 1.1; margin-top: 2px; }
+  .kpi .d { font-size: 5.5px; color: #4d7c0f; }
+  .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 16px; padding: 20px 28px 12px; }
+  .hero h1 { font-size: 22px; line-height: 1.02; letter-spacing: -.03em; margin: 0 0 7px; max-width: 300px; }
+  .hero p { font-size: 8px; color: #6b7280; line-height: 1.45; max-width: 280px; margin: 0; }
+  .track { display: flex; gap: 4px; margin-top: 10px; max-width: 300px; }
+  .trust { display: flex; gap: 20px; padding: 0 28px 12px; }
+  .metric strong { display: block; font-size: 11px; color: #111827; }
+  .metric span { font-size: 6px; color: #9ca3af; }
+  .services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 0 28px; }
+  .svc { background: #fff; border: 1px solid #e5e7eb; border-radius: 6px; padding: 9px; }
+  .svc .ic { width: 18px; height: 18px; border-radius: 4px; background: #fee2e2; margin-bottom: 6px; }
+  .auth { display: grid; grid-template-columns: 45% 55%; height: 100%; }
+  .auth-left { padding: 28px; background: var(--wf-paper); }
+  .auth-right { background: var(--wf-dark); padding: 20px; display: flex; flex-direction: column; justify-content: flex-end; position: relative; }
+  .auth-right .map { height: 190px; border: 0; }
+  .wizard { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; }
+  .detail-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; }
+  .ops-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 8px; }
+  .mobile-wrap { display: flex; justify-content: center; padding-top: 14px; }
+  .mobile {
+    width: 220px; height: 430px; border: 6px solid #111827; border-radius: 22px;
+    background: var(--wf-paper); overflow: hidden; position: relative;
+  }
+  .mobile .notch { width: 70px; height: 12px; background: #111827; border-radius: 0 0 8px 8px; margin: 0 auto; }
+  .mobile .mcontent { padding: 10px 12px; }
+  .bars { display: flex; align-items: flex-end; gap: 8px; height: 90px; padding: 8px 4px 0; border-bottom: 1px solid #e5e7eb; }
+  .bar { flex: 1; background: #e5e7eb; border-radius: 2px 2px 0 0; }
+  .bar.a { background: var(--wf-accent); }
+  .bar.b { background: #1d4ed8; }
+  .bar.c { background: #b9f27c; }
+  .donut { width: 76px; height: 76px; border-radius: 50%; background: conic-gradient(#1d4ed8 0 45%, #e8430b 45% 65%, #b9f27c 65% 85%, #e5e7eb 85% 100%); margin: 8px auto; position: relative; }
+  .donut:after { content: ""; position: absolute; inset: 16px; border-radius: 50%; background: #fff; }
+  .spark { display: flex; gap: 2px; align-items: flex-end; height: 14px; margin-top: 4px; }
+  .spark i { display: block; width: 4px; background: #e8430b; border-radius: 1px; }
+  .note { font-size: 10px; color: #4b5563; background: #fff; border: 1px solid #d1d5db; border-radius: 10px; padding: 12px 14px; margin-top: 28px; line-height: 1.5; }
+  .note b { color: #111827; }
+  .footer { margin-top: 28px; padding-top: 18px; border-top: 1px solid #d1d5db; font-size: 12px; color: #6b7280; display: flex; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+  @media (max-width: 760px) {
+    .page { padding: 16px; }
+    .board { grid-template-columns: 1fr; }
+    .page-head { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <header class="page-head">
+    <div>
+      <h1>EnvíoYa — Wireframes low-fi</h1>
+      <p>Primera validación de layout, jerarquía y flujos. No es el diseño visual final: la identidad se genera con Google Stitch a partir del PRD y del DESIGN.md. Grayscale + un acento naranja para señalar acciones principales.</p>
+    </div>
+    <div class="badge"><span class="dot"></span>v0.1 · 2026-11-12</div>
+  </header>
+
+  <div class="legend">
+    <span><b>Board:</b> 14 pantallas clave</span>
+    <span><span class="swatch" style="background:#0b1220"></span> Ink / ops</span>
+    <span><span class="swatch" style="background:#f6f2e9"></span> Paper</span>
+    <span><span class="swatch" style="background:#e8430b"></span> Acción / ruta activa</span>
+    <span><span class="swatch" style="background:#dbeafe"></span> En tránsito</span>
+    <span><span class="swatch" style="background:#ecfccb"></span> Entregado</span>
+    <span><b>Fuente:</b> PRD.md · DESIGN.md</span>
+  </div>
+
+  <main class="board">
+
+    <!-- P-01 LANDING -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">P-01 · Landing</div><div class="frame-meta">Visitante · / · P0</div></div>
+        <span class="tag">Público</span>
+      </div>
+      <div class="screen">
+        <div class="nav">
+          <div class="logo">EnvíoYa</div>
+          <div class="links">
+            <span>Servicios</span><span>Seguimiento</span><span>Empresas</span>
+            <span class="btn ghost">Ingresar</span><span class="btn primary">Cotizar envío</span>
+          </div>
+        </div>
+        <div class="hero">
+          <div>
+            <div class="t label">Logística nacional</div>
+            <h1>Tu envío, en el mapa. Sin sorpresas.</h1>
+            <p>Cotizá, despachá y seguí cada paquete desde un solo lugar.</p>
+            <div class="track"><div class="input grow">Ingresá tu código EY-XXXXXX</div><div class="btn dark">Seguir envío</div></div>
+            <div class="mt8"><span class="btn primary">Cotizar envío</span></div>
+          </div>
+          <div class="map" style="height:190px">
+            <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+              <path d="M12 44 C 30 44, 28 16, 48 16 S 70 42, 88 22" fill="none" stroke="#e8430b" stroke-width="1.6" stroke-dasharray="4 3"/>
+              <circle cx="12" cy="44" r="2.4" fill="#0b1220"/>
+              <circle cx="88" cy="22" r="2.4" fill="#e8430b"/>
+            </svg>
+            <div class="card" style="position:absolute; left:10px; bottom:10px; width:150px; padding:6px">
+              <div class="t label">En tránsito</div>
+              <div class="t dark" style="font-size:7px">Córdoba → Rosario</div>
+              <div class="t" style="font-size:6px">Llega mañana 18:00</div>
+            </div>
+          </div>
+        </div>
+        <div class="trust">
+          <div class="metric"><strong>+12.000</strong><span>envíos realizados</span></div>
+          <div class="metric"><strong>98%</strong><span>a tiempo</span></div>
+          <div class="metric"><strong>24</strong><span>sucursales</span></div>
+        </div>
+        <div class="services">
+          <div class="svc"><div class="ic"></div><div class="t dark">Particulares</div><div class="t">Cotizá y enviá en minutos.</div></div>
+          <div class="svc"><div class="ic"></div><div class="t dark">Empresas</div><div class="t">Facturación mensual y volumen.</div></div>
+          <div class="svc"><div class="ic"></div><div class="t dark">Seguimiento</div><div class="t">Tu paquete, siempre visible.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P-02 TRACKING -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">P-02 · Tracking público</div><div class="frame-meta">Visitante · /seguimiento/:codigo · P0</div></div>
+        <span class="tag">Público</span>
+      </div>
+      <div class="screen">
+        <div class="nav"><div class="logo">EnvíoYa</div><div class="links"><span class="btn ghost">Ingresar</span></div></div>
+        <div style="padding:14px 28px">
+          <div class="card" style="display:flex; gap:6px; align-items:center; padding:6px 8px; max-width:420px; margin:0 auto;">
+            <div class="input grow filled mono">EY-4F8A1C</div><div class="btn primary">Buscar</div>
+          </div>
+          <div class="flex between end mt14">
+            <div>
+              <div class="mono t" style="color:#6b7280">EY-4F8A1C</div>
+              <div class="t title" style="margin:2px 0">Tu envío está en camino.</div>
+              <div class="t">Córdoba → Rosario · Llega mañana antes de las 18:00</div>
+            </div>
+            <span class="chip blue"><span class="dot"></span>En tránsito</span>
+          </div>
+          <div class="detail-grid mt12">
+            <div class="card">
+              <div class="t label" style="margin-bottom:6px">Historial</div>
+              <div class="timeline">
+                <div class="titem done"><div class="tt">Despachado desde Sucursal Córdoba</div><div class="ts mono">10/11 18:00</div></div>
+                <div class="titem current"><div class="tt">En tránsito por Ruta 9</div><div class="ts mono">11/11 06:00</div></div>
+                <div class="titem"><div class="tt">Llegó a Sucursal Rosario</div><div class="ts">Estimado 11/11 14:00</div></div>
+                <div class="titem"><div class="tt">En reparto</div><div class="ts">Estimado 12/11 08:00</div></div>
+                <div class="titem"><div class="tt">Entregado</div><div class="ts">Estimado 12/11 18:00</div></div>
+              </div>
+            </div>
+            <div class="col gap8">
+              <div class="map" style="height:150px">
+                <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                  <path d="M10 48 C 28 48, 26 18, 48 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                  <circle cx="10" cy="48" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                </svg>
+              </div>
+              <div class="card">
+                <div class="t label">Resumen</div>
+                <div class="t dark">2 paquetes · 7.3 kg</div>
+                <div class="t">Repartidor: Carlos Díaz</div>
+                <div class="t">Destino: Rosario, Santa Fe</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- P-03/04 AUTH -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">P-03 / P-04 · Login y registro</div><div class="frame-meta">Visitante · /login · /registro · P0</div></div>
+        <span class="tag">Auth</span>
+      </div>
+      <div class="screen">
+        <div class="auth">
+          <div class="auth-left">
+            <div class="logo">EnvíoYa</div>
+            <div class="t title mt18">Ingresá a tu cuenta</div>
+            <div class="t" style="margin:3px 0 14px">Gestioná tus envíos y seguí cada paquete.</div>
+            <div class="t label">Email</div>
+            <div class="input filled" style="margin:3px 0 8px">lucia.ramirez@correo.com</div>
+            <div class="t label">Contraseña</div>
+            <div class="input error" style="margin:3px 0 2px">••••••••</div>
+            <div class="t" style="color:#b42318; font-size:6px">Email o contraseña incorrectos.</div>
+            <div class="flex between center" style="margin:8px 0 10px">
+              <span class="t">☐ Recordarme</span><span class="t" style="color:#1d4ed8">Olvidé mi contraseña</span>
+            </div>
+            <div class="btn primary block">Ingresar</div>
+            <div class="t" style="text-align:center; margin-top:8px">¿No tenés cuenta? <span style="color:#1d4ed8">Crear cuenta</span></div>
+            <div class="note" style="margin-top:16px; font-size:8px; padding:8px">Variante registro: nombre, email, teléfono, contraseña, confirmar, términos. Mismo layout.</div>
+          </div>
+          <div class="auth-right">
+            <div class="map" style="height:200px">
+              <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                <path d="M8 46 C 28 46, 26 14, 50 14 S 72 44, 92 22" fill="none" stroke="#e8430b" stroke-width="1.8"/>
+                <circle cx="8" cy="46" r="2.4" fill="#f6f2e9"/><circle cx="92" cy="22" r="2.4" fill="#e8430b"/>
+              </svg>
+            </div>
+            <div class="card mt10">
+              <div class="t label">Tu envío</div>
+              <div class="mono t dark">EY-4F8A1C</div>
+              <div class="t">En tránsito · Llega mañana 18:00</div>
+            </div>
+            <div class="t" style="color:#fff; margin-top:10px; font-weight:700">Todos tus envíos, en un solo lugar.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-01 DASHBOARD CLIENTE -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-01 · Dashboard cliente</div><div class="frame-meta">Cliente · /app · P0</div></div>
+        <span class="tag">Portal cliente</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem active">Inicio</div>
+            <div class="sitem">Mis envíos</div>
+            <div class="sitem">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+            <div class="sitem" style="margin-top:auto">Lucía Ramírez</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar">
+              <div class="input" style="width:180px">Buscar tracking...</div>
+              <div class="flex center gap6"><span class="t">🔔</span><div class="avatar"></div></div>
+            </div>
+            <div class="content">
+              <div class="flex between end">
+                <div>
+                  <div class="t title">Hola, Lucía</div>
+                  <div class="t">Esto es lo que está pasando con tus envíos.</div>
+                </div>
+                <div class="flex gap6"><span class="btn primary">Cotizar envío</span><span class="btn">Seguir un envío</span></div>
+              </div>
+              <div class="kpis mt10">
+                <div class="kpi"><div class="k">Envíos activos</div><div class="v">2</div><div class="d">+1 esta semana</div></div>
+                <div class="kpi"><div class="k">Entregados este mes</div><div class="v">14</div><div class="d">98% a tiempo</div></div>
+                <div class="kpi"><div class="k">Gasto del mes</div><div class="v">$124.500</div><div class="d">ARS</div></div>
+              </div>
+              <div style="display:grid; grid-template-columns:1.6fr 1fr; gap:8px; margin-top:10px">
+                <div class="card">
+                  <div class="flex between"><div class="t dark">Envíos recientes</div><span class="t" style="color:#1d4ed8">Ver todos</span></div>
+                  <div class="table mt6" style="border:0">
+                    <div class="tr head" style="grid-template-columns:1.2fr 1.2fr 1fr .8fr">
+                      <span>Código</span><span>Destino</span><span>Estado</span><span>Total</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1fr .8fr">
+                      <span class="mono">EY-4F8A1C</span><span>Rosario</span><span class="chip blue"><span class="dot"></span>En tránsito</span><span>$81.700</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1fr .8fr">
+                      <span class="mono">EY-9X8Y7Z</span><span>Mendoza</span><span class="chip green"><span class="dot"></span>Entregado</span><span>$42.300</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.2fr 1.2fr 1fr .8fr">
+                      <span class="mono">EY-1B3C5D</span><span>La Plata</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span>$17.000</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="t dark">Tu envío activo</div>
+                  <div class="map mt6" style="height:110px">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                      <path d="M12 46 C 30 46, 28 18, 50 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                      <circle cx="12" cy="46" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                    </svg>
+                  </div>
+                  <div class="t mt4">Córdoba → Rosario · Llega mañana 18:00</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-02 WIZARD PASO 1 -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-02 · Nuevo envío — Paso 1</div><div class="frame-meta">Cliente · /app/envios/nuevo · P0</div></div>
+        <span class="tag">Wizard</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Inicio</div>
+            <div class="sitem">Mis envíos</div>
+            <div class="sitem active">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t">← Volver a Mis envíos</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content">
+              <div class="flex between end">
+                <div><div class="t title">Nuevo envío</div><div class="t">Paso 1 de 3 · Origen y destino</div></div>
+                <div class="stepper">
+                  <div class="step active"><span class="num">1</span>Origen y destino</div>
+                  <div class="stepline"></div>
+                  <div class="step"><span class="num">2</span>Paquetes</div>
+                  <div class="stepline"></div>
+                  <div class="step"><span class="num">3</span>Cotización</div>
+                </div>
+              </div>
+              <div class="wizard mt10">
+                <div class="card">
+                  <div class="t label">Origen</div>
+                  <div class="card mt4" style="background:#f9fafb">
+                    <div class="t dark">Lucía Ramírez</div>
+                    <div class="t">Av. Rivadavia 4321, CABA</div>
+                    <div class="t">+54 11 5555-2345</div>
+                  </div>
+                  <div class="t label mt10">Destino</div>
+                  <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-top:4px">
+                    <div><div class="t label">Nombre</div><div class="input filled">Ferretería Norte</div></div>
+                    <div><div class="t label">Teléfono</div><div class="input filled">+54 351 555-7788</div></div>
+                    <div><div class="t label">Calle</div><div class="input filled">Av. Colón</div></div>
+                    <div><div class="t label">Número</div><div class="input error">Ingresá el número</div></div>
+                    <div><div class="t label">Ciudad</div><div class="input filled">Córdoba</div></div>
+                    <div><div class="t label">Provincia</div><div class="input filled">Córdoba</div></div>
+                  </div>
+                  <div class="t" style="color:#b42318; margin-top:4px; font-size:6px">No encontramos esta dirección. Revisá calle, número y ciudad.</div>
+                  <div class="flex between mt10"><span class="btn ghost">Volver</span><span class="btn primary">Calcular ruta</span></div>
+                </div>
+                <div class="col gap8">
+                  <div class="map" style="height:150px">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                      <path d="M14 44 C 32 44, 30 18, 50 18 S 70 42, 86 26" fill="none" stroke="#e8430b" stroke-width="1.5" stroke-dasharray="4 3"/>
+                      <circle cx="14" cy="44" r="2.2" fill="#0b1220"/><circle cx="86" cy="26" r="2.2" fill="#e8430b"/>
+                    </svg>
+                  </div>
+                  <div class="card"><div class="t label">Ruta estimada</div><div class="t dark">401 km · 4 h 35 min</div><div class="t">OpenStreetMap</div></div>
+                  <div class="card" style="background:#fffbeb"><div class="t" style="font-size:6px">Tip: el mapa se actualiza al completar la dirección.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-03 WIZARD PASO 2 -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-03 · Nuevo envío — Paso 2</div><div class="frame-meta">Cliente · /app/envios/nuevo · P0</div></div>
+        <span class="tag">Wizard</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Inicio</div>
+            <div class="sitem">Mis envíos</div>
+            <div class="sitem active">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t">← Volver a Mis envíos</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content">
+              <div class="flex between end">
+                <div><div class="t title">Nuevo envío</div><div class="t">Paso 2 de 3 · Paquetes</div></div>
+                <div class="stepper">
+                  <div class="step done"><span class="num">✓</span>Origen y destino</div>
+                  <div class="stepline"></div>
+                  <div class="step active"><span class="num">2</span>Paquetes</div>
+                  <div class="stepline"></div>
+                  <div class="step"><span class="num">3</span>Cotización</div>
+                </div>
+              </div>
+              <div class="wizard mt10">
+                <div class="col gap8">
+                  <div class="card">
+                    <div class="flex between center"><div class="t dark">Paquete 1</div><span class="t" style="color:#b42318">Eliminar</span></div>
+                    <div style="display:grid; grid-template-columns:1.5fr .7fr 1fr; gap:6px; margin-top:6px">
+                      <div><div class="t label">Descripción</div><div class="input filled">Caja de repuestos</div></div>
+                      <div><div class="t label">Peso (kg)</div><div class="input filled">4.5</div></div>
+                      <div><div class="t label">Dimensiones (cm)</div><div class="input filled">30 × 40 × 25</div></div>
+                    </div>
+                    <div class="flex between center mt6">
+                      <span class="chip orange">Frágil</span>
+                      <span class="t">Valor declarado: $120.000</span>
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="flex between center"><div class="t dark">Paquete 2</div><span class="t" style="color:#b42318">Eliminar</span></div>
+                    <div style="display:grid; grid-template-columns:1.5fr .7fr 1fr; gap:6px; margin-top:6px">
+                      <div><div class="t label">Descripción</div><div class="input filled">Caja de herramientas</div></div>
+                      <div><div class="t label">Peso (kg)</div><div class="input error">0</div></div>
+                      <div><div class="t label">Dimensiones (cm)</div><div class="input filled">20 × 30 × 20</div></div>
+                    </div>
+                    <div class="t" style="color:#b42318; font-size:6px; margin-top:3px">El peso debe ser mayor a 0.</div>
+                  </div>
+                  <div class="btn ghost" style="border:1px dashed #d1d5db; height:26px">+ Agregar paquete</div>
+                </div>
+                <div class="col gap8">
+                  <div class="card">
+                    <div class="t dark">Resumen</div>
+                    <div class="flex between mt6"><span class="t">Paquetes</span><span class="t dark">2</span></div>
+                    <div class="flex between"><span class="t">Peso total</span><span class="t dark">7.3 kg</span></div>
+                    <div class="flex between"><span class="t">Frágiles</span><span class="t dark">1</span></div>
+                    <div class="flex between"><span class="t">Valor declarado</span><span class="t dark">$165.000</span></div>
+                    <div class="btn primary block mt10">Continuar</div>
+                    <div class="btn ghost block mt4">Volver</div>
+                    <div class="t mt6" style="font-size:6px">El peso y la fragilidad afectan el costo.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-04 WIZARD PASO 3 -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-04 · Nuevo envío — Paso 3</div><div class="frame-meta">Cliente · /app/envios/nuevo · P0</div></div>
+        <span class="tag">Wizard</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Inicio</div>
+            <div class="sitem">Mis envíos</div>
+            <div class="sitem active">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t">← Volver a Mis envíos</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content">
+              <div class="flex between end">
+                <div><div class="t title">Nuevo envío</div><div class="t">Paso 3 de 3 · Cotización</div></div>
+                <div class="stepper">
+                  <div class="step done"><span class="num">✓</span>Origen y destino</div>
+                  <div class="stepline"></div>
+                  <div class="step done"><span class="num">✓</span>Paquetes</div>
+                  <div class="stepline"></div>
+                  <div class="step active"><span class="num">3</span>Cotización</div>
+                </div>
+              </div>
+              <div class="wizard mt10">
+                <div class="col gap8">
+                  <div class="card">
+                    <div class="t dark">Todo listo para confirmar</div>
+                    <div class="map mt6" style="height:100px">
+                      <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                        <path d="M12 46 C 30 46, 28 18, 50 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                        <circle cx="12" cy="46" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                      </svg>
+                    </div>
+                    <div class="flex between mt4"><span class="t dark">Córdoba → Rosario</span><span class="t">401 km · 4 h 35 min</span></div>
+                  </div>
+                  <div class="card">
+                    <div class="t dark">Desglose</div>
+                    <div class="flex between mt6"><span class="t">Flete base</span><span class="t dark">$3.500</span></div>
+                    <div class="flex between"><span class="t">Distancia (401 km)</span><span class="t dark">$72.180</span></div>
+                    <div class="flex between"><span class="t">Peso (7.3 kg)</span><span class="t dark">$1.825</span></div>
+                    <div class="flex between"><span class="t">Frágil</span><span class="t dark">$800</span></div>
+                    <div class="flex between"><span class="t">Seguro</span><span class="t dark">$3.300</span></div>
+                    <div style="border-top:1px solid #e5e7eb; margin:6px 0"></div>
+                    <div class="flex between center"><span class="t dark">Total</span><span class="t title" style="font-size:16px">$81.700</span></div>
+                  </div>
+                </div>
+                <div class="col gap8">
+                  <div class="card">
+                    <div class="t label">Destino</div>
+                    <div class="t dark">Ferretería Norte</div>
+                    <div class="t">Av. Colón 850, Córdoba</div>
+                    <div class="t">+54 351 555-7788</div>
+                    <div class="t label mt10">Paquetes</div>
+                    <div class="t">2 · 7.3 kg · 1 frágil</div>
+                    <div class="btn primary block mt10">Confirmar envío</div>
+                    <div class="btn ghost block mt4">Volver a editar</div>
+                    <div class="t mt6" style="font-size:6px">Cotización válida por 30 minutos.</div>
+                  </div>
+                  <div class="card" style="background:#fffbeb"><div class="t" style="font-size:6px">Pago por envío · Cliente particular</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-05 MIS ENVIOS -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-05 · Mis envíos</div><div class="frame-meta">Cliente · /app/envios · P0</div></div>
+        <span class="tag">Portal cliente</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Inicio</div>
+            <div class="sitem active">Mis envíos</div>
+            <div class="sitem">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="input" style="width:180px">Buscar tracking...</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content">
+              <div class="flex between end">
+                <div><div class="t title">Mis envíos</div><div class="t">3 envíos · 2 activos</div></div>
+                <span class="btn primary">Nuevo envío</span>
+              </div>
+              <div class="flex gap6 mt10">
+                <div class="input grow">Buscar por código o destino</div>
+                <div class="btn">Todos</div><div class="btn">Pendiente</div><div class="btn">En tránsito</div><div class="btn">Entregado</div><div class="btn">Cancelado</div>
+              </div>
+              <div class="table mt8">
+                <div class="tr head" style="grid-template-columns:1.1fr 1.1fr 1fr .9fr 1fr .9fr .5fr">
+                  <span>Código</span><span>Destino</span><span>Estado</span><span>Creado</span><span>ETA</span><span>Total</span><span></span>
+                </div>
+                <div class="tr" style="grid-template-columns:1.1fr 1.1fr 1fr .9fr 1fr .9fr .5fr">
+                  <span class="mono">EY-4F8A1C</span><span>Rosario</span><span class="chip blue"><span class="dot"></span>En tránsito</span><span>10/11</span><span>12/11 18:00</span><span>$81.700</span><span>⋯</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1.1fr 1.1fr 1fr .9fr 1fr .9fr .5fr">
+                  <span class="mono">EY-9X8Y7Z</span><span>Mendoza</span><span class="chip green"><span class="dot"></span>Entregado</span><span>05/11</span><span>08/11</span><span>$42.300</span><span>⋯</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1.1fr 1.1fr 1fr .9fr 1fr .9fr .5fr">
+                  <span class="mono">EY-1B3C5D</span><span>La Plata</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span>12/11</span><span>13/11</span><span>$17.000</span><span>⋯</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1.1fr 1.1fr 1fr .9fr 1fr .9fr .5fr">
+                  <span class="mono">EY-7K2M4P</span><span>Salta</span><span class="chip red"><span class="dot"></span>Con incidencia</span><span>03/11</span><span>—</span><span>$56.400</span><span>⋯</span>
+                </div>
+              </div>
+              <div class="flex between center mt8"><span class="t">Mostrando 4 de 12</span><div class="flex gap4"><span class="btn">Anterior</span><span class="btn dark">1</span><span class="btn">2</span><span class="btn">Siguiente</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C-06 DETALLE -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">C-06 · Detalle de envío</div><div class="frame-meta">Cliente · /app/envios/:id · P0</div></div>
+        <span class="tag">Portal cliente</span>
+      </div>
+      <div class="screen gray">
+        <div class="app">
+          <div class="sidebar light">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Inicio</div>
+            <div class="sitem active">Mis envíos</div>
+            <div class="sitem">Nuevo envío</div>
+            <div class="sitem">Perfil</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t">← Volver a Mis envíos</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content">
+              <div class="flex between end">
+                <div>
+                  <div class="mono t" style="color:#6b7280">EY-4F8A1C</div>
+                  <div class="t title">Tu envío está en camino.</div>
+                  <div class="t">Córdoba → Rosario · Llega mañana antes de las 18:00</div>
+                </div>
+                <div class="flex center gap6"><span class="chip blue"><span class="dot"></span>En tránsito</span><span class="btn">Copiar código</span><span class="btn ghost" style="opacity:.45">Cancelar envío</span></div>
+              </div>
+              <div class="detail-grid mt10">
+                <div class="card">
+                  <div class="t label" style="margin-bottom:6px">Historial</div>
+                  <div class="timeline">
+                    <div class="titem done"><div class="tt">Despachado desde Sucursal Córdoba</div><div class="ts mono">10/11 18:00</div></div>
+                    <div class="titem current"><div class="tt">En tránsito por Ruta 9</div><div class="ts mono">11/11 06:00</div></div>
+                    <div class="titem"><div class="tt">Llegó a Sucursal Rosario</div><div class="ts">Estimado 11/11 14:00</div></div>
+                    <div class="titem"><div class="tt">En reparto con Carlos Díaz</div><div class="ts">Estimado 12/11 08:00</div></div>
+                    <div class="titem"><div class="tt">Entregado</div><div class="ts">Estimado 12/11 18:00</div></div>
+                  </div>
+                </div>
+                <div class="col gap8">
+                  <div class="map" style="height:130px">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                      <path d="M10 48 C 28 48, 26 18, 48 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                      <circle cx="10" cy="48" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                    </svg>
+                  </div>
+                  <div class="card">
+                    <div class="t label">Repartidor</div>
+                    <div class="t dark">Carlos Díaz</div>
+                    <div class="t">+54 351 555-0101</div>
+                    <div class="t label mt6">Resumen</div>
+                    <div class="t">2 paquetes · 7.3 kg</div>
+                    <div class="t">Total: $81.700</div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mt8">
+                <div class="flex gap12">
+                  <span class="t dark">Paquetes</span><span class="t">Direcciones</span><span class="t">Costo</span>
+                </div>
+                <div class="flex gap6 mt6">
+                  <div class="card flat grow" style="background:#f9fafb; padding:6px"><div class="t dark">Caja de repuestos</div><div class="t">4.5 kg · 30×40×25 · Frágil</div></div>
+                  <div class="card flat grow" style="background:#f9fafb; padding:6px"><div class="t dark">Caja de herramientas</div><div class="t">2.8 kg · 20×30×20</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O-01 OPS DASHBOARD -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">O-01 · Dashboard operativo</div><div class="frame-meta">Operador/Admin · /ops · P0</div></div>
+        <span class="tag">Back-office</span>
+      </div>
+      <div class="screen dark">
+        <div class="app">
+          <div class="sidebar">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem active">Dashboard</div>
+            <div class="sitem">Envíos</div>
+            <div class="sitem">Clientes</div>
+            <div class="sitem">Repartidores</div>
+            <div class="sitem">Reportes</div>
+            <div class="sitem">Usuarios</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar">
+              <div class="flex center gap6"><span class="t dark">Sucursal Córdoba</span><span class="t">▾</span></div>
+              <div class="flex center gap8"><div class="input" style="width:140px">Buscar...</div><span class="t">🔔</span><div class="avatar"></div></div>
+            </div>
+            <div class="content" style="background:#f9fafb">
+              <div class="flex between end">
+                <div><div class="t title">Operación de hoy</div><div class="t">12/11/2026 · Últimas 24 h</div></div>
+                <span class="btn">Actualizar</span>
+              </div>
+              <div class="kpis four mt10">
+                <div class="kpi"><div class="k">Pendientes</div><div class="v">18</div><div class="d">6 sin asignar</div></div>
+                <div class="kpi"><div class="k">En tránsito</div><div class="v">42</div><div class="d">+8 hoy</div></div>
+                <div class="kpi"><div class="k">Con incidencia</div><div class="v" style="color:#b42318">3</div><div class="d" style="color:#b42318">Requieren atención</div></div>
+                <div class="kpi"><div class="k">Entregados hoy</div><div class="v">27</div><div class="d">94% a tiempo</div></div>
+              </div>
+              <div class="ops-grid mt8">
+                <div class="card">
+                  <div class="flex between"><div class="t dark">Cola prioritaria</div><span class="t" style="color:#1d4ed8">Ver bandeja</span></div>
+                  <div class="table mt6" style="border:0">
+                    <div class="tr head" style="grid-template-columns:1.1fr 1.2fr 1fr 1fr .8fr">
+                      <span>Código</span><span>Cliente</span><span>Destino</span><span>Estado</span><span>Acción</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.1fr 1.2fr 1fr 1fr .8fr">
+                      <span class="mono">EY-4F8A1C</span><span>Andes Logística</span><span>Rosario</span><span class="chip blue"><span class="dot"></span>En tránsito</span><span class="t" style="color:#1d4ed8">Ver</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.1fr 1.2fr 1fr 1fr .8fr">
+                      <span class="mono">EY-1B3C5D</span><span>Distribuidora Norte</span><span>La Plata</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span class="btn primary" style="height:16px; font-size:6px">Asignar</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.1fr 1.2fr 1fr 1fr .8fr">
+                      <span class="mono">EY-7K2M4P</span><span>Ferretería Norte</span><span>Salta</span><span class="chip red"><span class="dot"></span>Con incidencia</span><span class="t" style="color:#1d4ed8">Revisar</span>
+                    </div>
+                    <div class="tr" style="grid-template-columns:1.1fr 1.2fr 1fr 1fr .8fr">
+                      <span class="mono">EY-2C6D8E</span><span>Andes Logística</span><span>Mendoza</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span class="btn primary" style="height:16px; font-size:6px">Asignar</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col gap8">
+                  <div class="map" style="height:120px">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                      <path d="M10 46 C 30 46, 28 16, 50 16 S 72 42, 90 22" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                      <path d="M18 50 C 36 50, 36 28, 56 28 S 76 48, 88 34" fill="none" stroke="#1d4ed8" stroke-width="1.2" stroke-dasharray="3 2"/>
+                      <circle cx="10" cy="46" r="2.2" fill="#0b1220"/><circle cx="90" cy="22" r="2.2" fill="#e8430b"/>
+                    </svg>
+                  </div>
+                  <div class="card"><div class="t dark">Repartidores disponibles</div><div class="flex between mt4"><span class="t">Carlos Díaz</span><span class="chip green">Disponible</span></div><div class="flex between"><span class="t">Ana Ruiz</span><span class="chip green">Disponible</span></div><div class="flex between"><span class="t">Diego Paz</span><span class="chip gray">En ruta</span></div></div>
+                  <div class="card" style="background:#fef2f2; border-color:#fecaca"><div class="t dark" style="color:#b42318">2 alertas</div><div class="t" style="font-size:6px">Incidencia en EY-7K2M4P · hace 20 min</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O-03 OPS DETALLE -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">O-03 · Detalle y asignación</div><div class="frame-meta">Operador/Admin · /ops/envios/:id · P0</div></div>
+        <span class="tag">Back-office</span>
+      </div>
+      <div class="screen dark">
+        <div class="app">
+          <div class="sidebar">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Dashboard</div>
+            <div class="sitem active">Envíos</div>
+            <div class="sitem">Clientes</div>
+            <div class="sitem">Repartidores</div>
+            <div class="sitem">Reportes</div>
+            <div class="sitem">Usuarios</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t">← Bandeja de envíos</div><div class="flex center gap6"><div class="avatar"></div></div></div>
+            <div class="content" style="background:#f9fafb">
+              <div class="flex between end">
+                <div>
+                  <div class="mono t">EY-4F8A1C</div>
+                  <div class="t title">Andes Logística S.A.</div>
+                  <div class="t">Córdoba → Rosario · $81.700</div>
+                </div>
+                <div class="flex center gap6"><span class="chip orange"><span class="dot"></span>Pendiente</span><span class="btn primary">Asignar recursos</span><span class="btn">Cambiar estado</span><span class="btn ghost" style="color:#b42318">Cancelar</span></div>
+              </div>
+              <div style="display:grid; grid-template-columns:1.15fr 1fr .9fr; gap:8px; margin-top:10px">
+                <div class="card">
+                  <div class="t label">Historial</div>
+                  <div class="timeline mt6">
+                    <div class="titem current"><div class="tt">Envío creado</div><div class="ts mono">10/11 12:00</div></div>
+                    <div class="titem"><div class="tt">Asignación de recursos</div><div class="ts">Pendiente</div></div>
+                    <div class="titem"><div class="tt">Despacho</div><div class="ts">Pendiente</div></div>
+                  </div>
+                  <div class="t label mt10">Paquetes</div>
+                  <div class="t">2 · 7.3 kg · 1 frágil</div>
+                </div>
+                <div class="col gap8">
+                  <div class="map" style="height:110px">
+                    <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                      <path d="M12 46 C 30 46, 28 18, 50 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6" stroke-dasharray="4 3"/>
+                      <circle cx="12" cy="46" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                    </svg>
+                  </div>
+                  <div class="card">
+                    <div class="t label">Direcciones</div>
+                    <div class="t dark">Origen: Córdoba</div>
+                    <div class="t">Av. Circunvalación 2200</div>
+                    <div class="t dark mt4">Destino: Rosario</div>
+                    <div class="t">Av. Colón 850</div>
+                  </div>
+                </div>
+                <div class="col gap8">
+                  <div class="card">
+                    <div class="t dark">Asignación</div>
+                    <div class="t label mt6">Repartidor</div>
+                    <div class="input filled">Carlos Díaz · disponible</div>
+                    <div class="t label mt4">Vehículo</div>
+                    <div class="input filled">Ford Transit · 1.200 kg</div>
+                    <div class="t label mt4">Sucursal</div>
+                    <div class="input filled">Sucursal Córdoba</div>
+                    <div class="flex between mt6"><span class="t">Capacidad</span><span class="t dark">7.3 / 1.200 kg</span></div>
+                    <div class="btn primary block mt8">Asignar</div>
+                    <div class="btn ghost block mt4">Desasignar</div>
+                  </div>
+                  <div class="card" style="background:#fffbeb"><div class="t" style="font-size:6px">Asignar no cambia el estado. El despacho es una acción separada.</div></div>
+                </div>
+              </div>
+              <div class="card mt8">
+                <div class="flex between center">
+                  <div class="t dark">Transiciones válidas</div>
+                  <div class="flex gap6"><span class="btn dark">Despachar</span><span class="btn">Registrar incidencia</span><span class="btn ghost" style="opacity:.4">Entregado</span></div>
+                </div>
+                <div class="t mt4" style="font-size:6px">Solo se muestran las acciones permitidas para el estado actual.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O-02 OPS BANDEJA -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">O-02 · Bandeja de envíos</div><div class="frame-meta">Operador/Admin · /ops/envios · P0</div></div>
+        <span class="tag">Back-office</span>
+      </div>
+      <div class="screen dark">
+        <div class="app">
+          <div class="sidebar">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Dashboard</div>
+            <div class="sitem active">Envíos</div>
+            <div class="sitem">Clientes</div>
+            <div class="sitem">Repartidores</div>
+            <div class="sitem">Reportes</div>
+            <div class="sitem">Usuarios</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t dark">128 en total</div><div class="flex center gap8"><div class="input" style="width:140px">Buscar...</div><div class="avatar"></div></div></div>
+            <div class="content" style="background:#f9fafb">
+              <div class="flex between end">
+                <div><div class="t title">Envíos</div><div class="t">Gestioná la operación diaria.</div></div>
+                <div class="flex gap6"><span class="btn">Sucursal ▾</span><span class="btn">Fecha ▾</span><span class="btn dark">Exportar</span></div>
+              </div>
+              <div class="flex gap4 mt8">
+                <span class="chip gray" style="height:20px">Todos 128</span>
+                <span class="chip orange" style="height:20px">Pendientes 18</span>
+                <span class="chip blue" style="height:20px">En tránsito 42</span>
+                <span class="chip gray" style="height:20px">En sucursal 12</span>
+                <span class="chip gray" style="height:20px">En reparto 9</span>
+                <span class="chip green" style="height:20px">Entregados 27</span>
+                <span class="chip red" style="height:20px">Incidencias 3</span>
+                <span class="chip gray" style="height:20px">Cancelados 2</span>
+              </div>
+              <div class="table mt8">
+                <div class="tr head" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span>Código</span><span>Cliente</span><span>Destino</span><span>Estado</span><span>Repartidor</span><span>Creado</span><span>Total</span><span>Acción</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span class="mono">EY-4F8A1C</span><span>Andes Logística</span><span>Rosario</span><span class="chip blue"><span class="dot"></span>En tránsito</span><span>Carlos Díaz</span><span>10/11</span><span>$81.700</span><span class="t" style="color:#1d4ed8">Ver</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span class="mono">EY-1B3C5D</span><span>Distribuidora Norte</span><span>La Plata</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span>—</span><span>12/11</span><span>$17.000</span><span class="btn primary" style="height:15px; font-size:6px">Asignar</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span class="mono">EY-7K2M4P</span><span>Ferretería Norte</span><span>Salta</span><span class="chip red"><span class="dot"></span>Con incidencia</span><span>Diego Paz</span><span>03/11</span><span>$56.400</span><span class="t" style="color:#1d4ed8">Revisar</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span class="mono">EY-9X8Y7Z</span><span>Andes Logística</span><span>Mendoza</span><span class="chip green"><span class="dot"></span>Entregado</span><span>Ana Ruiz</span><span>05/11</span><span>$42.300</span><span class="t" style="color:#1d4ed8">Ver</span>
+                </div>
+                <div class="tr" style="grid-template-columns:1fr 1.1fr 1fr .9fr 1fr .8fr .8fr .6fr">
+                  <span class="mono">EY-2C6D8E</span><span>Lucía Ramírez</span><span>Córdoba</span><span class="chip orange"><span class="dot"></span>Pendiente</span><span>—</span><span>12/11</span><span>$12.400</span><span class="btn primary" style="height:15px; font-size:6px">Asignar</span>
+                </div>
+              </div>
+              <div class="flex between center mt8"><span class="t">Mostrando 5 de 128</span><div class="flex gap4"><span class="btn">Anterior</span><span class="btn dark">1</span><span class="btn">2</span><span class="btn">3</span><span class="btn">Siguiente</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O-06 REPORTES -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">O-06 · Reportes</div><div class="frame-meta">Operador/Admin · /ops/reportes · P1</div></div>
+        <span class="tag">Back-office</span>
+      </div>
+      <div class="screen dark">
+        <div class="app">
+          <div class="sidebar">
+            <div class="brand">EnvíoYa</div>
+            <div class="sitem">Dashboard</div>
+            <div class="sitem">Envíos</div>
+            <div class="sitem">Clientes</div>
+            <div class="sitem">Repartidores</div>
+            <div class="sitem active">Reportes</div>
+            <div class="sitem">Usuarios</div>
+          </div>
+          <div class="app-main">
+            <div class="topbar"><div class="t dark">Reportes</div><div class="flex center gap8"><div class="input" style="width:150px">01/11/2026 – 12/11/2026</div><div class="avatar"></div></div></div>
+            <div class="content" style="background:#f9fafb">
+              <div class="flex between end">
+                <div><div class="t title">Reportes</div><div class="t">Rendimiento operativo del período.</div></div>
+                <div class="flex gap6"><span class="btn">Sucursal ▾</span><span class="btn">Exportar CSV</span></div>
+              </div>
+              <div class="kpis four mt10">
+                <div class="kpi"><div class="k">Envíos</div><div class="v">128</div><div class="d">+12% vs. anterior</div></div>
+                <div class="kpi"><div class="k">Tiempo promedio</div><div class="v">2.4 d</div><div class="d">-0.3 d</div></div>
+                <div class="kpi"><div class="k">A tiempo</div><div class="v">94%</div><div class="d">+2 pts</div></div>
+                <div class="kpi"><div class="k">Incidencias</div><div class="v">3</div><div class="d" style="color:#b42318">2 abiertas</div></div>
+              </div>
+              <div style="display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:8px; margin-top:8px">
+                <div class="card">
+                  <div class="t dark">Envíos por sucursal</div>
+                  <div class="bars">
+                    <div class="bar a" style="height:70%"></div><div class="bar b" style="height:55%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:30%"></div><div class="bar" style="height:24%"></div>
+                  </div>
+                  <div class="flex between mt4"><span class="t" style="font-size:5px">Cba</span><span class="t" style="font-size:5px">Ros</span><span class="t" style="font-size:5px">CABA</span><span class="t" style="font-size:5px">Mdz</span><span class="t" style="font-size:5px">Salta</span></div>
+                </div>
+                <div class="card">
+                  <div class="t dark">Distribución por estado</div>
+                  <div class="donut"></div>
+                  <div class="flex between"><span class="t" style="font-size:5px">En tránsito 45%</span><span class="t" style="font-size:5px">Entregado 40%</span></div>
+                </div>
+                <div class="card">
+                  <div class="t dark">Top repartidores</div>
+                  <div class="flex between mt6"><span class="t">Carlos Díaz</span><span class="t dark">38</span></div>
+                  <div class="flex between"><span class="t">Ana Ruiz</span><span class="t dark">31</span></div>
+                  <div class="flex between"><span class="t">Diego Paz</span><span class="t dark">27</span></div>
+                  <div class="flex between"><span class="t">Lucía Gómez</span><span class="t dark">22</span></div>
+                  <div class="card mt8" style="background:#f0fdf4; border-color:#bbf7d0"><div class="t" style="font-size:6px">Córdoba mejoró 12% vs. el período anterior.</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOBILE TRACKING -->
+    <section class="frame">
+      <div class="frame-head">
+        <div><div class="frame-title">P-02m · Tracking móvil</div><div class="frame-meta">Visitante · 390×844 · P0</div></div>
+        <span class="tag">Mobile</span>
+      </div>
+      <div class="screen gray">
+        <div class="mobile-wrap">
+          <div class="mobile">
+            <div class="notch"></div>
+            <div class="mcontent">
+              <div class="flex between center"><div class="logo">EnvíoYa</div><span class="t">☰</span></div>
+              <div class="input mt10 mono">EY-4F8A1C</div>
+              <div class="mt10">
+                <span class="chip blue"><span class="dot"></span>En tránsito</span>
+                <div class="t title" style="font-size:13px; margin-top:5px">Tu envío está en camino.</div>
+                <div class="t">Llega mañana antes de las 18:00</div>
+                <div class="t">Córdoba → Rosario</div>
+              </div>
+              <div class="map mt8" style="height:100px">
+                <svg viewBox="0 0 100 60" preserveAspectRatio="none">
+                  <path d="M10 48 C 28 48, 26 18, 48 18 S 72 44, 90 24" fill="none" stroke="#e8430b" stroke-width="1.6"/>
+                  <circle cx="10" cy="48" r="2.2" fill="#0b1220"/><circle cx="90" cy="24" r="2.2" fill="#e8430b"/>
+                </svg>
+              </div>
+              <div class="timeline mt10">
+                <div class="titem done"><div class="tt">Despachado</div><div class="ts">10/11 18:00</div></div>
+                <div class="titem current"><div class="tt">En tránsito por Ruta 9</div><div class="ts">11/11 06:00</div></div>
+                <div class="titem"><div class="tt">Llegó a Rosario</div><div class="ts">Estimado 11/11 14:00</div></div>
+                <div class="titem"><div class="tt">En reparto</div><div class="ts">Estimado 12/11 08:00</div></div>
+              </div>
+              <div class="flex gap4 mt8"><span class="btn primary grow">Iniciar sesión</span><span class="btn grow">Buscar otro</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="note">
+    <b>Cómo leer estos wireframes:</b> cada frame representa una pantalla con su ruta y prioridad. El objetivo es validar jerarquía, densidad, ubicación de acciones y estados antes de generar los mockups de alta fidelidad. Los datos son de ejemplo y coinciden con el PRD (EY-4F8A1C, Córdoba → Rosario, ARS 81.700). El diseño visual final se define con Google Stitch a partir de <b>DESIGN.md</b> y <b>stitch-prompt.md</b>.
+  </div>
+
+  <footer class="footer">
+    <span>EnvíoYa App · Documentación de producto · v0.1</span>
+    <span>PRD · Flujos · Wireframes · DESIGN.md · Stitch prompts</span>
+  </footer>
+</div>
+</body>
+</html>

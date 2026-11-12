@@ -1,0 +1,631 @@
+﻿<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnvÃ­oYa - Mis envÃ­os</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Archivo, Inter, IBM Plex Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface": "#FFFFFF",
+            "on-secondary-container": "#5c6274",
+            "ink-700": "#1E2A3B",
+            "on-tertiary": "#ffffff",
+            "ink-950": "#08111F",
+            "error-container": "#ffdad6",
+            "secondary-fixed": "#dce2f6",
+            "danger-100": "#FEE4E2",
+            "primary-fixed": "#ffdbd0",
+            "on-surface-variant": "#5b4038",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-fixed": "#151b2a",
+            "on-tertiary-container": "#002174",
+            "on-primary-fixed": "#3a0b00",
+            "on-background": "#1c1c16",
+            "secondary-container": "#d9dff4",
+            "surface-tint": "#ae3200",
+            "surface-bright": "#fdf9f0",
+            "mint-300": "#B9F27C",
+            "route-100": "#DBEAFE",
+            "on-primary-container": "#541400",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "danger-600": "#B42318",
+            "secondary-fixed-dim": "#c0c6da",
+            "on-secondary-fixed-variant": "#404757",
+            "secondary": "#585e6f",
+            "error": "#ba1a1a",
+            "on-secondary": "#ffffff",
+            "surface-container": "#f1eee5",
+            "on-error": "#ffffff",
+            "surface-container-low": "#f7f3ea",
+            "warning-500": "#F59E0B",
+            "on-surface": "#1c1c16",
+            "inverse-primary": "#ffb59e",
+            "sand-300": "#D8D0C0",
+            "outline": "#8f7067",
+            "mint-100": "#ECFCCB",
+            "surface-container-high": "#ece8df",
+            "route-600": "#1D4ED8",
+            "primary": "#ae3200",
+            "primary-container": "#ff5a1f",
+            "surface-variant": "#e6e2d9",
+            "inverse-surface": "#31302b",
+            "tertiary": "#2151da",
+            "paper": "#F6F2E9",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "on-tertiary-fixed": "#001551",
+            "surface-container-highest": "#e6e2d9",
+            "inverse-on-surface": "#f4f0e7",
+            "on-error-container": "#93000a",
+            "ink-900": "#0B1220",
+            "tertiary-fixed": "#dce1ff",
+            "signal-600": "#D93A00",
+            "ink-500": "#4B5563",
+            "on-primary": "#ffffff",
+            "outline-variant": "#e4beb3",
+            "sand-200": "#E7DFD1",
+            "tertiary-container": "#6b8aff",
+            "surface-dim": "#dddad1",
+            "primary-fixed-dim": "#ffb59e",
+            "on-primary-fixed-variant": "#852400",
+            "signal-500": "#FF5A1F",
+            "background": "#fdf9f0"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "space-2xl": "64px",
+            "gutter": "24px",
+            "margin": "40px",
+            "space-xl": "32px",
+            "space-xs": "4px",
+            "space-lg": "24px",
+            "space-md": "16px"
+          },
+          "fontFamily": {
+            "display-lg": ["Archivo", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "heading-md": ["Archivo", "sans-serif"],
+            "display-md": ["Archivo", "sans-serif"],
+            "heading-lg": ["Archivo", "sans-serif"],
+            "display-xl": ["Archivo", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "mono-code": ["IBM Plex Mono", "monospace"]
+          },
+          "fontSize": {
+            "display-lg": ["40px", { "lineHeight": "44px", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "heading-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "display-md": ["32px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "heading-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }],
+            "display-xl": ["56px", { "lineHeight": "60px", "fontWeight": "700" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "mono-code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface h-full flex flex-col font-body-md text-body-md antialiased selection:bg-sand-300">
+<!-- Desktop App Shell Container (1440x900 viewport optimized) -->
+<div class="flex-1 flex overflow-hidden w-full h-full">
+<!-- LEFT SIDEBAR (248px, warm paper background, sand-300 right border) -->
+<aside class="w-[248px] flex-shrink-0 bg-paper border-r border-sand-300 flex flex-col justify-between select-none z-20">
+<!-- Brand & Primary Nav Cluster -->
+<div class="flex flex-col">
+<!-- Brand Header with Logo -->
+<div class="h-16 px-space-md flex items-center border-b border-sand-200">
+<a class="flex items-center gap-space-sm group" href="#">
+<div class="w-8 h-8 rounded-lg bg-signal-600 flex items-center justify-center text-surface text-body-lg font-heading-md">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-display-md text-heading-md text-ink-950 font-bold tracking-tight leading-tight">EnvÃ­oYa</span>
+<span class="font-mono-code text-[10px] text-ink-500 uppercase tracking-widest leading-none">LOGÃSTICA INTEGRAL</span>
+</div>
+</a>
+</div>
+<!-- Navigation items list -->
+<nav class="p-space-sm space-y-1">
+<!-- Inicio -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-ink-700 hover:bg-sand-200 hover:text-ink-950 transition-colors font-body-md text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">grid_view</span>
+<span>Inicio</span>
+</a>
+<!-- Mis envÃ­os (ACTIVE ITEM) -->
+<a class="flex items-center justify-between px-space-sm py-2 rounded-lg bg-sand-200 text-ink-950 font-heading-md text-body-sm font-semibold transition-colors border-l-2 border-signal-600" href="#">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px] text-signal-600">package_2</span>
+<span>Mis envÃ­os</span>
+</div>
+<span class="bg-ink-950 text-surface font-mono-code text-[11px] px-1.5 py-0.5 rounded-full font-semibold">4</span>
+</a>
+<!-- Nuevo envÃ­o -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-ink-700 hover:bg-sand-200 hover:text-ink-950 transition-colors font-body-md text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">add_box</span>
+<span>Nuevo envÃ­o</span>
+</a>
+<!-- FacturaciÃ³n -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-ink-700 hover:bg-sand-200 hover:text-ink-950 transition-colors font-body-md text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">receipt_long</span>
+<span>FacturaciÃ³n</span>
+</a>
+<!-- Perfil -->
+<a class="flex items-center gap-space-sm px-space-sm py-2 rounded-lg text-ink-700 hover:bg-sand-200 hover:text-ink-950 transition-colors font-body-md text-body-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">badge</span>
+<span>Perfil</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Node & Operative Status Block -->
+<div class="p-space-sm border-t border-sand-200 space-y-space-sm bg-paper">
+<!-- Terminal Status Node -->
+<div class="p-2.5 rounded-lg bg-surface border border-sand-300">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="w-2 h-2 rounded-full bg-signal-600 animate-pulse"></span>
+<span class="font-mono-code text-[10px] text-ink-500 uppercase font-semibold">NODO OPERATIVO ACTIVO</span>
+</div>
+<p class="font-mono-code text-[11px] text-ink-950 font-medium">BUE - CENTRO-04</p>
+<p class="font-caption text-caption text-ink-500 truncate">Terminal Retiro Operaciones</p>
+</div>
+<!-- User Information snippet -->
+<div class="flex items-center gap-2 p-1.5 rounded-lg">
+<div class="w-8 h-8 rounded-full bg-sand-300 flex items-center justify-center text-ink-950 font-heading-md text-body-sm font-semibold flex-shrink-0">
+            LR
+          </div>
+<div class="flex flex-col min-w-0">
+<span class="font-body-sm text-body-sm text-ink-950 font-semibold truncate leading-tight">LucÃ­a RamÃ­rez</span>
+<span class="font-caption text-caption text-ink-500 truncate leading-tight">lucia.ramirez@empresa.com</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- RIGHT/MAIN SECTION (Header + Scrollable Canvas) -->
+<div class="flex-1 flex flex-col min-w-0 bg-background overflow-hidden">
+<!-- TOP NAVBAR / HEADER BAR -->
+<header class="h-16 px-space-lg bg-paper border-b border-sand-300 flex items-center justify-between flex-shrink-0 z-10">
+<!-- Left: Search shortcut input -->
+<div class="flex items-center gap-space-md w-96">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">search</span>
+<input class="w-full bg-surface border border-sand-300 rounded-lg pl-9 pr-12 py-1.5 text-body-sm font-body-sm text-ink-950 placeholder:text-ink-500 focus:outline-none focus:border-route-600 focus:ring-1 focus:ring-route-600 transition-all shadow-none" placeholder="Buscar por guÃ­a, remito, cliente..." type="text"/>
+<kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 font-mono-code text-[10px] bg-sand-200 text-ink-700 px-1.5 py-0.5 rounded border border-sand-300">âŒ˜K</kbd>
+</div>
+</div>
+<!-- Right: Status Badge, Support, Bell, User Profile -->
+<div class="flex items-center gap-space-md">
+<!-- Operational network status badge -->
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 bg-surface border border-sand-300 rounded-full">
+<span class="w-2 h-2 rounded-full bg-mint-300 border border-ink-950"></span>
+<span class="font-mono-code text-[11px] text-ink-950 font-medium tracking-tight">Red operativa normal Â· CORREDOR CENTRO</span>
+</div>
+<div class="h-5 w-[1px] bg-sand-300 hidden sm:block"></div>
+<!-- Soporte Link -->
+<a class="text-ink-700 hover:text-ink-950 font-body-sm text-body-sm flex items-center gap-1 transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]">headset_mic</span>
+<span class="font-medium">Soporte</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative p-2 text-ink-700 hover:text-ink-950 hover:bg-sand-200 rounded-lg transition-colors" title="Notificaciones operativas">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-signal-600 rounded-full"></span>
+</button>
+<!-- User Profile Avatar Pill -->
+<div class="flex items-center gap-2 pl-2 border-l border-sand-300">
+<div class="w-8 h-8 rounded-full bg-ink-950 text-surface flex items-center justify-center font-heading-md text-caption font-bold">
+              LR
+            </div>
+<span class="font-body-sm text-body-sm font-semibold text-ink-950">LucÃ­a R.</span>
+</div>
+</div>
+</header>
+<!-- SCROLLABLE VIEW CANVAS -->
+<main class="flex-1 overflow-y-auto px-space-lg py-space-md space-y-space-md">
+<!-- PAGE HEADER -->
+<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-space-md border-b border-sand-300 pb-space-md">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-display-md text-display-md text-ink-950 font-bold tracking-tight">Mis envÃ­os</h1>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-sand-200 text-ink-700 font-mono-code text-caption font-medium border border-sand-300">
+                ACTUALIZACIÃ“N CONTINUA
+              </span>
+</div>
+<p class="font-body-md text-body-sm text-ink-700 mt-1">
+              GestionÃ¡ tus guÃ­as operativas, estados de entrega y facturaciÃ³n en tiempo real.
+            </p>
+</div>
+<!-- Action buttons group -->
+<div class="flex items-center gap-3">
+<button class="h-11 px-4 bg-surface border border-sand-300 hover:bg-sand-200 rounded-lg text-ink-950 text-body-sm font-semibold flex items-center gap-2 transition-all active:scale-95" id="toggle-empty-state" title="Alternar vista entre datos y estado vacÃ­o">
+<span class="material-symbols-outlined text-[18px] text-ink-500">visibility</span>
+<span id="toggle-state-text">Ver Estado VacÃ­o</span>
+</button>
+<!-- Trailing Action: Primary Button 'Nuevo envÃ­o' -->
+<button class="h-11 px-5 bg-signal-600 hover:bg-signal-500 rounded-lg text-surface text-body-sm font-heading-md font-semibold flex items-center gap-2 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+<span>Nuevo envÃ­o</span>
+</button>
+</div>
+</div>
+<!-- MAIN DATA CONTAINER (TABLE VIEW) -->
+<div class="space-y-space-md block" id="data-container">
+<!-- FILTER & CONTROL BAR -->
+<div class="bg-surface p-space-md rounded-xl border border-sand-300 space-y-space-md shadow-sm">
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<!-- Search input -->
+<div class="relative flex-1 max-w-xl">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-ink-500 text-[20px]">search</span>
+<input class="w-full bg-paper border border-sand-300 rounded-lg pl-10 pr-4 py-2 text-body-sm font-body-sm text-ink-950 placeholder:text-ink-500 focus:outline-none focus:border-route-600 focus:ring-1 focus:ring-route-600 transition-colors font-mono-code text-[13px]" placeholder="Buscar por cÃ³digo o destino (ej. EY-4F8A1C o Rosario)..." type="text"/>
+</div>
+<!-- Date picker dropdown & Export CSV action -->
+<div class="flex items-center gap-3 flex-wrap">
+<!-- Date range picker dropdown -->
+<button class="h-10 px-3.5 bg-paper border border-sand-300 hover:bg-sand-200 rounded-lg text-body-sm text-ink-950 font-body-sm flex items-center gap-2 transition-colors">
+<span class="material-symbols-outlined text-[18px] text-ink-700">calendar_today</span>
+<span class="font-medium">Rango de fechas: <strong class="font-semibold text-ink-950">Ãšltimos 30 dÃ­as</strong></span>
+<span class="material-symbols-outlined text-[18px] text-ink-500 ml-1">expand_more</span>
+</button>
+<!-- Secondary Action: Exportar CSV Button -->
+<button class="h-10 px-4 bg-surface border border-sand-300 hover:bg-sand-200 text-ink-950 font-body-sm text-body-sm font-semibold rounded-lg flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-[18px] text-ink-700">file_download</span>
+<span>Exportar CSV</span>
+</button>
+</div>
+</div>
+<!-- Filter chips row -->
+<div class="flex items-center gap-2 overflow-x-auto pt-1 border-t border-sand-200 scrollbar-none">
+<!-- Todos (Active) -->
+<button class="h-6 px-3 rounded-full bg-ink-950 text-surface font-body-sm text-caption font-semibold flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>Todos</span>
+<span class="bg-surface/20 text-surface text-[10px] font-mono-code px-1.5 rounded-full">4</span>
+</button>
+<!-- Pendiente -->
+<button class="h-6 px-3 rounded-full bg-paper hover:bg-sand-200 text-ink-700 border border-sand-300 font-body-sm text-caption font-medium flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>Pendiente</span>
+<span class="bg-sand-300 text-ink-700 text-[10px] font-mono-code px-1.5 rounded-full">1</span>
+</button>
+<!-- En trÃ¡nsito -->
+<button class="h-6 px-3 rounded-full bg-paper hover:bg-sand-200 text-ink-700 border border-sand-300 font-body-sm text-caption font-medium flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>En trÃ¡nsito</span>
+<span class="bg-sand-300 text-ink-700 text-[10px] font-mono-code px-1.5 rounded-full">1</span>
+</button>
+<!-- Entregado -->
+<button class="h-6 px-3 rounded-full bg-paper hover:bg-sand-200 text-ink-700 border border-sand-300 font-body-sm text-caption font-medium flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>Entregado</span>
+<span class="bg-sand-300 text-ink-700 text-[10px] font-mono-code px-1.5 rounded-full">1</span>
+</button>
+<!-- Cancelado -->
+<button class="h-6 px-3 rounded-full bg-paper hover:bg-sand-200 text-ink-500 border border-sand-300 font-body-sm text-caption font-medium flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>Cancelado</span>
+<span class="bg-sand-200 text-ink-500 text-[10px] font-mono-code px-1.5 rounded-full">0</span>
+</button>
+<!-- Con incidencia -->
+<button class="h-6 px-3 rounded-full bg-paper hover:bg-sand-200 text-danger-600 border border-sand-300 font-body-sm text-caption font-medium flex items-center gap-1.5 transition-colors flex-shrink-0">
+<span>Con incidencia</span>
+<span class="bg-danger-100 text-danger-600 text-[10px] font-mono-code px-1.5 rounded-full font-bold">1</span>
+</button>
+</div>
+</div>
+<!-- DATA TABLE (Card container 8px radius, sand-300 border) -->
+<div class="bg-surface rounded-xl border border-sand-300 shadow-sm overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<!-- Table Header -->
+<thead>
+<tr class="bg-paper border-b border-sand-300 text-ink-700 font-heading-md text-caption uppercase tracking-wider">
+<th class="py-3 px-4 font-semibold font-mono-code" scope="col">CÃ“DIGO</th>
+<th class="py-3 px-4 font-semibold" scope="col">DESTINO</th>
+<th class="py-3 px-4 font-semibold" scope="col">ESTADO</th>
+<th class="py-3 px-4 font-semibold" scope="col">CREADO</th>
+<th class="py-3 px-4 font-semibold" scope="col">ETA / ENTREGA</th>
+<th class="py-3 px-4 font-semibold text-right" scope="col">TOTAL (ARS)</th>
+<th class="py-3 px-4 font-semibold text-center w-24" scope="col">ACCIONES</th>
+</tr>
+</thead>
+<!-- Table Rows (44px-52px height) -->
+<tbody class="divide-y divide-sand-200">
+<!-- ROW 1: EY-4F8A1C -->
+<tr class="h-[52px] hover:bg-sand-200/50 transition-colors group">
+<td class="py-2.5 px-4">
+<div class="flex items-center gap-2">
+<span class="font-mono-code text-[13px] font-semibold text-route-600 bg-route-100/60 px-2 py-0.5 rounded border border-route-100">
+                          EY-4F8A1C
+                        </span>
+</div>
+</td>
+<td class="py-2.5 px-4 font-body-sm text-body-sm text-ink-950">
+<div class="font-medium text-ink-950">Rosario, Santa Fe</div>
+<div class="font-caption text-caption text-ink-500">Hub Centro Â· Troncal Directo</div>
+</td>
+<td class="py-2.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-route-100 text-route-600 font-body-sm text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-route-600 animate-pulse"></span>
+                        En trÃ¡nsito
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-700">
+                      10/11 Â· 18:00
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-950 font-medium">
+                      12/11 Â· 18:00 hs
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-body-sm font-semibold text-ink-950 text-right">
+                      $ 81.700
+                    </td>
+<td class="py-2.5 px-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<a class="p-1 rounded text-ink-500 hover:text-route-600 hover:bg-route-100 transition-colors" href="#" title="Ver tracking en vivo">
+<span class="material-symbols-outlined text-[20px]">near_me</span>
+</a>
+<button class="p-1 rounded text-ink-500 hover:text-ink-950 hover:bg-sand-200 transition-colors" title="Opciones">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 2: EY-9X8Y7Z -->
+<tr class="h-[52px] hover:bg-sand-200/50 transition-colors group">
+<td class="py-2.5 px-4">
+<span class="font-mono-code text-[13px] font-semibold text-ink-700 bg-sand-200 px-2 py-0.5 rounded border border-sand-300">
+                        EY-9X8Y7Z
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-body-sm text-body-sm text-ink-950">
+<div class="font-medium text-ink-950">Mendoza</div>
+<div class="font-caption text-caption text-ink-500">Sucursal MDZ-01 (Retiro en terminal)</div>
+</td>
+<td class="py-2.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint-100 text-[#4D7C0F] font-body-sm text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#4D7C0F]"></span>
+                        Entregado
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-700">
+                      05/11 Â· 09:15
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-[#4D7C0F] font-medium">
+                      08/11 Â· 14:20 hs
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-body-sm font-semibold text-ink-950 text-right">
+                      $ 42.300
+                    </td>
+<td class="py-2.5 px-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded text-ink-500 hover:text-ink-950 hover:bg-sand-200 transition-colors" title="Opciones">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 3: EY-1B3C5D -->
+<tr class="h-[52px] hover:bg-sand-200/50 transition-colors group">
+<td class="py-2.5 px-4">
+<span class="font-mono-code text-[13px] font-semibold text-ink-700 bg-sand-200 px-2 py-0.5 rounded border border-sand-300">
+                        EY-1B3C5D
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-body-sm text-body-sm text-ink-950">
+<div class="font-medium text-ink-950">La Plata, BA</div>
+<div class="font-caption text-caption text-ink-500">Puerta a Puerta Express</div>
+</td>
+<td class="py-2.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sand-200 text-ink-700 font-body-sm text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-700"></span>
+                        Pendiente
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-700">
+                      12/11 Â· 11:30
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-950 font-medium">
+                      13/11 Â· 12:00 hs
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-body-sm font-semibold text-ink-950 text-right">
+                      $ 17.000
+                    </td>
+<td class="py-2.5 px-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded text-ink-500 hover:text-ink-950 hover:bg-sand-200 transition-colors" title="Opciones">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- ROW 4: EY-7K2M4P -->
+<tr class="h-[52px] hover:bg-sand-200/50 transition-colors group">
+<td class="py-2.5 px-4">
+<span class="font-mono-code text-[13px] font-semibold text-danger-600 bg-danger-100 px-2 py-0.5 rounded border border-danger-100">
+                        EY-7K2M4P
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-body-sm text-body-sm text-ink-950">
+<div class="font-medium text-ink-950">Salta</div>
+<div class="font-caption text-caption text-danger-600 font-medium">Centro de DistribuciÃ³n SLA Â· Bloqueo de ruta</div>
+</td>
+<td class="py-2.5 px-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-danger-100 text-danger-600 font-body-sm text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-danger-600"></span>
+                        Con incidencia
+                      </span>
+</td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-ink-700">
+                      03/11 Â· 14:10
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-caption text-danger-600 font-medium">
+                      â€”
+                    </td>
+<td class="py-2.5 px-4 font-mono-code text-body-sm font-semibold text-ink-950 text-right">
+                      $ 56.400
+                    </td>
+<td class="py-2.5 px-4 text-center">
+<div class="flex items-center justify-center gap-1">
+<button class="p-1 rounded text-ink-500 hover:text-ink-950 hover:bg-sand-200 transition-colors" title="Opciones">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- TABLE FOOTER / PAGINATION -->
+<div class="p-space-md bg-paper border-t border-sand-300 flex flex-col sm:flex-row items-center justify-between gap-space-sm text-body-sm">
+<div class="flex items-center gap-4 text-ink-700 font-body-sm">
+<span>Mostrando <strong class="text-ink-950 font-semibold">1-4</strong> de <strong class="text-ink-950 font-semibold">4</strong> envÃ­os</span>
+<div class="flex items-center gap-1.5 pl-4 border-l border-sand-300">
+<span class="text-caption text-ink-500">Filas:</span>
+<select class="bg-surface border border-sand-300 rounded px-2 py-0.5 font-mono-code text-caption text-ink-950 focus:outline-none focus:border-route-600">
+<option>10 por pÃ¡gina</option>
+<option>25 por pÃ¡gina</option>
+<option>50 por pÃ¡gina</option>
+</select>
+</div>
+</div>
+<!-- Pagination controls -->
+<div class="flex items-center gap-2">
+<button class="h-8 px-2.5 rounded bg-surface border border-sand-300 text-ink-500 opacity-50 cursor-not-allowed flex items-center gap-1" disabled="">
+<span class="material-symbols-outlined text-[16px]">chevron_left</span>
+<span class="text-caption">Anterior</span>
+</button>
+<span class="px-3 py-1 font-mono-code text-caption bg-surface border border-sand-300 rounded text-ink-950 font-semibold">
+                  PÃ¡gina 1 de 1
+                </span>
+<button class="h-8 px-2.5 rounded bg-surface border border-sand-300 text-ink-500 opacity-50 cursor-not-allowed flex items-center gap-1" disabled="">
+<span class="text-caption">Siguiente</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- EMPTY STATE VARIANT CONTAINER (Initially Hidden or toggled) -->
+<div class="hidden bg-surface rounded-xl border border-sand-300 p-space-2xl text-center shadow-sm" id="empty-state-container">
+<div class="max-w-md mx-auto flex flex-col items-center">
+<!-- Clean visual wayfinding route-line SVG illustration -->
+<div class="w-48 h-36 mb-6 flex items-center justify-center relative">
+<svg class="text-sand-300" fill="none" height="120" viewbox="0 0 192 120" width="192" xmlns="http://www.w3.org/2000/svg">
+<!-- Background Grid Guide Lines -->
+<line stroke="#E7DFD1" stroke-dasharray="4 4" stroke-width="1" x1="16" x2="176" y1="20" y2="20"></line>
+<line stroke="#E7DFD1" stroke-dasharray="4 4" stroke-width="1" x1="16" x2="176" y1="60" y2="60"></line>
+<line stroke="#E7DFD1" stroke-dasharray="4 4" stroke-width="1" x1="16" x2="176" y1="100" y2="100"></line>
+<!-- Route Vector Path -->
+<path d="M 32 80 C 64 80, 80 35, 112 35 C 144 35, 140 70, 160 70" fill="none" stroke="#D8D0C0" stroke-linecap="round" stroke-width="2.5"></path>
+<path d="M 32 80 C 64 80, 80 35, 112 35" fill="none" stroke="#D93A00" stroke-dasharray="6 4" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Nodes -->
+<!-- Origin Node -->
+<circle cx="32" cy="80" fill="#F6F2E9" r="7" stroke="#08111F" stroke-width="2"></circle>
+<circle cx="32" cy="80" fill="#D93A00" r="3"></circle>
+<!-- Intermediary Waypoint -->
+<circle cx="112" cy="35" fill="#FFFFFF" r="5" stroke="#D8D0C0" stroke-width="2"></circle>
+<!-- Destination Node -->
+<circle cx="160" cy="70" fill="#F6F2E9" r="8" stroke="#1D4ED8" stroke-width="2"></circle>
+<circle cx="160" cy="70" fill="#1D4ED8" r="3.5"></circle>
+<!-- Small Tag / Radar -->
+<rect fill="#08111F" height="18" rx="4" width="46" x="135" y="15"></rect>
+<text fill="#FFFFFF" font-family="IBM Plex Mono" font-size="8" font-weight="600" text-anchor="middle" x="158" y="27">NODO-01</text>
+</svg>
+</div>
+<h2 class="font-heading-lg text-heading-lg text-ink-950 font-bold tracking-tight mb-2">
+              TodavÃ­a no tenÃ©s envÃ­os
+            </h2>
+<p class="font-body-md text-body-sm text-ink-700 mb-space-lg leading-relaxed">
+              CotizÃ¡ el primero y seguilo desde acÃ¡ con geolocalizaciÃ³n en tiempo real y confirmaciÃ³n electrÃ³nica inmediata.
+            </p>
+<button class="h-11 px-6 bg-signal-600 hover:bg-signal-500 rounded-lg text-surface text-body-sm font-heading-md font-semibold inline-flex items-center gap-2 transition-all shadow-sm">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Cotizar envÃ­o</span>
+</button>
+</div>
+</div>
+<!-- System Architecture & Node Summary Metric Bar (Operational tone) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-sm pt-2">
+<div class="bg-surface p-3.5 rounded-lg border border-sand-300 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-ink-500 uppercase tracking-wider font-mono-code">TOTAL EN GESTIÃ“N</p>
+<p class="font-heading-md text-heading-md text-ink-950 font-bold font-mono-code">4 guÃ­as</p>
+</div>
+<span class="material-symbols-outlined text-ink-500 text-[24px]">inventory_2</span>
+</div>
+<div class="bg-surface p-3.5 rounded-lg border border-sand-300 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-ink-500 uppercase tracking-wider font-mono-code">MONTO VALUADO</p>
+<p class="font-heading-md text-heading-md text-ink-950 font-bold font-mono-code">$ 197.400</p>
+</div>
+<span class="material-symbols-outlined text-ink-500 text-[24px]">payments</span>
+</div>
+<div class="bg-surface p-3.5 rounded-lg border border-sand-300 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-ink-500 uppercase tracking-wider font-mono-code">PUNTUALIDAD RED</p>
+<p class="font-heading-md text-heading-md text-[#4D7C0F] font-bold font-mono-code">98.4%</p>
+</div>
+<span class="material-symbols-outlined text-[#4D7C0F] text-[24px]">speed</span>
+</div>
+<div class="bg-surface p-3.5 rounded-lg border border-sand-300 flex items-center justify-between">
+<div>
+<p class="font-caption text-caption text-ink-500 uppercase tracking-wider font-mono-code">INCIDENCIAS ACTIVAS</p>
+<p class="font-heading-md text-heading-md text-danger-600 font-bold font-mono-code">1 caso</p>
+</div>
+<span class="material-symbols-outlined text-danger-600 text-[24px]">report_problem</span>
+</div>
+</div>
+</main>
+<!-- Subdued Operational Footer Strip -->
+<footer class="h-9 px-space-lg bg-paper border-t border-sand-300 flex items-center justify-between text-caption font-mono-code text-ink-500 flex-shrink-0">
+<div>
+          EnvÃ­oYa LogÃ­stica Integral S.A. Â· API Status: <span class="text-[#4D7C0F] font-semibold">200 OK (14ms)</span>
+</div>
+<div class="flex items-center gap-4">
+<a class="hover:text-ink-950 transition-colors" href="#">Seguridad de EnvÃ­os</a>
+<span>Â·</span>
+<a class="hover:text-ink-950 transition-colors" href="#">Centro de Ayuda</a>
+<span>Â·</span>
+<span>Nodo: BUE-RET-04</span>
+</div>
+</footer>
+</div>
+</div>
+<!-- Interactive script for state toggle and microinteractions -->
+<script>
+    const toggleBtn = document.getElementById('toggle-empty-state');
+    const dataContainer = document.getElementById('data-container');
+    const emptyContainer = document.getElementById('empty-state-container');
+    const toggleText = document.getElementById('toggle-state-text');
+
+    let isEmpty = false;
+
+    toggleBtn.addEventListener('click', () => {
+      isEmpty = !isEmpty;
+      if (isEmpty) {
+        dataContainer.classList.add('hidden');
+        emptyContainer.classList.remove('hidden');
+        toggleText.textContent = 'Ver Tabla con EnvÃ­os';
+      } else {
+        dataContainer.classList.remove('hidden');
+        emptyContainer.classList.add('hidden');
+        toggleText.textContent = 'Ver Estado VacÃ­o';
+      }
+    });
+  </script>
+</body></html>

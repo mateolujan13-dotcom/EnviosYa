@@ -1,0 +1,673 @@
+﻿<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnvÃ­oYa â€” Nuevo envÃ­o (Paso 3: CotizaciÃ³n y pago)</title>
+<!-- Google Fonts: Archivo, Inter & IBM Plex Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 with Forms & Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "ink-950": "#08111F",
+            "on-error-container": "#93000a",
+            "surface-container-high": "#ece8df",
+            "route-600": "#1D4ED8",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "inverse-surface": "#31302b",
+            "on-secondary-fixed-variant": "#404757",
+            "on-primary-fixed-variant": "#852400",
+            "surface-dim": "#dddad1",
+            "route-100": "#DBEAFE",
+            "surface-tint": "#ae3200",
+            "primary-fixed-dim": "#ffb59e",
+            "background": "#fdf9f0",
+            "ink-900": "#0B1220",
+            "surface-container-low": "#f7f3ea",
+            "tertiary-container": "#6b8aff",
+            "tertiary": "#2151da",
+            "sand-200": "#E7DFD1",
+            "on-primary-fixed": "#3a0b00",
+            "outline": "#8f7067",
+            "on-surface-variant": "#5b4038",
+            "tertiary-fixed": "#dce1ff",
+            "on-primary": "#ffffff",
+            "warning-500": "#F59E0B",
+            "danger-100": "#FEE4E2",
+            "outline-variant": "#e4beb3",
+            "secondary-container": "#d9dff4",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "on-error": "#ffffff",
+            "surface-container-highest": "#e6e2d9",
+            "on-secondary-container": "#5c6274",
+            "ink-500": "#4B5563",
+            "on-secondary": "#ffffff",
+            "on-primary-container": "#541400",
+            "on-tertiary-container": "#002174",
+            "secondary-fixed-dim": "#c0c6da",
+            "on-secondary-fixed": "#151b2a",
+            "ink-700": "#1E2A3B",
+            "signal-600": "#D93A00",
+            "primary-container": "#ff5a1f",
+            "on-background": "#1c1c16",
+            "surface-bright": "#fdf9f0",
+            "danger-600": "#B42318",
+            "sand-300": "#D8D0C0",
+            "surface-variant": "#e6e2d9",
+            "surface": "#FFFFFF",
+            "secondary-fixed": "#dce2f6",
+            "mint-100": "#ECFCCB",
+            "on-tertiary-fixed": "#001551",
+            "mint-300": "#B9F27C",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffdbd0",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#f1eee5",
+            "inverse-primary": "#ffb59e",
+            "inverse-on-surface": "#f4f0e7",
+            "primary": "#ae3200",
+            "secondary": "#585e6f",
+            "on-surface": "#1c1c16",
+            "signal-500": "#FF5A1F",
+            "surface-container-lowest": "#ffffff",
+            "paper": "#F6F2E9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin": "40px",
+            "space-lg": "24px",
+            "gutter": "24px",
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "space-2xl": "64px",
+            "space-md": "16px"
+          },
+          "fontFamily": {
+            "display-lg": ["Archivo"],
+            "body-md": ["Inter"],
+            "caption": ["Inter"],
+            "display-xl": ["Archivo"],
+            "heading-lg": ["Archivo"],
+            "mono-code": ["IBM Plex Mono"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "display-md": ["Archivo"],
+            "heading-md": ["Archivo"]
+          },
+          "fontSize": {
+            "display-lg": ["40px", { "lineHeight": "44px", "fontWeight": "700" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "60px", "fontWeight": "700" }],
+            "heading-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }],
+            "mono-code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-md": ["32px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "heading-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      font-size: 20px;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    /* Custom scrollbar for dense view */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F6F2E9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D8D0C0;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #4B5563;
+    }
+  </style>
+</head>
+<body class="h-full bg-paper font-body-md text-ink-950 antialiased overflow-x-hidden">
+<div class="flex h-screen w-full overflow-hidden">
+<!-- =====================================================================
+         SIDEBAR NAVIGATION (248px fixed desktop)
+         ===================================================================== -->
+<aside class="w-[248px] flex-shrink-0 bg-surface border-r border-sand-300 flex flex-col justify-between h-full z-20">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-16 px-space-md flex items-center justify-between border-b border-sand-200">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-signal-600 flex items-center justify-center text-surface shadow-sm">
+<span class="material-symbols-outlined text-surface" style="font-size: 20px;">local_shipping</span>
+</span>
+<span class="font-display-md text-heading-md font-bold tracking-tight text-ink-950">EnvÃ­oYa</span>
+</div>
+<span class="font-mono-code text-[10px] text-ink-500 bg-paper px-1.5 py-0.5 rounded border border-sand-200">v3.4</span>
+</div>
+<!-- Navigation Links -->
+<nav class="p-space-sm space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-paper hover:text-ink-950 font-body-sm transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-ink-500">grid_view</span>
+<span>Inicio</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg text-ink-700 hover:bg-paper hover:text-ink-950 font-body-sm transition-colors duration-150" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-ink-500">inventory_2</span>
+<span>Mis envÃ­os</span>
+</div>
+<span class="font-mono-code text-caption px-1.5 py-0.2 rounded-full bg-sand-200 text-ink-700">12</span>
+</a>
+<!-- Active Item: Nuevo envÃ­o -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-lg bg-primary-fixed text-primary font-heading-md text-body-sm font-semibold transition-all duration-150 shadow-sm border-l-4 border-signal-600" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-signal-600 fill">add_circle</span>
+<span class="text-ink-950 font-semibold">Nuevo envÃ­o</span>
+</div>
+<span class="w-2 h-2 rounded-full bg-signal-600"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-paper hover:text-ink-950 font-body-sm transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-ink-500">receipt_long</span>
+<span>FacturaciÃ³n</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-ink-700 hover:bg-paper hover:text-ink-950 font-body-sm transition-colors duration-150" href="#">
+<span class="material-symbols-outlined text-ink-500">person_outline</span>
+<span>Perfil</span>
+</a>
+</nav>
+</div>
+<!-- Bottom node operational status and user profile -->
+<div class="p-space-sm border-t border-sand-200 space-y-2.5 bg-paper/60">
+<!-- Node status card -->
+<div class="p-2.5 rounded-xl bg-surface border border-sand-300 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-mint-300 border border-ink-950 animate-pulse"></span>
+<span class="font-mono-code text-[11px] font-semibold text-ink-950 tracking-wider">NODO OPERATIVO ACTIVO</span>
+</div>
+</div>
+<p class="font-mono-code text-caption text-ink-700 font-medium">BUE - CENTRO-04</p>
+<p class="font-caption text-[11px] text-ink-500 truncate">Terminal Retiro Â· Plataforma C</p>
+</div>
+<!-- User profile badge -->
+<div class="p-2 rounded-lg hover:bg-surface border border-transparent hover:border-sand-300 transition-colors flex items-center justify-between">
+<div class="flex items-center gap-2.5 overflow-hidden">
+<div class="w-8 h-8 rounded-full bg-ink-950 text-surface flex items-center justify-center font-heading-md text-caption font-bold flex-shrink-0">
+              LR
+            </div>
+<div class="truncate">
+<p class="font-body-sm font-semibold text-ink-950 leading-tight truncate">LucÃ­a RamÃ­rez</p>
+<p class="font-caption text-ink-500 truncate">lucia.ramirez@distribuidoracent...</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-ink-500 text-[18px]">unfold_more</span>
+</div>
+</div>
+</aside>
+<!-- =====================================================================
+         MAIN VIEWPORT
+         ===================================================================== -->
+<div class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- TOP BAR (64px) -->
+<header class="h-16 flex-shrink-0 bg-surface border-b border-sand-300 px-space-lg flex items-center justify-between z-10">
+<!-- Left: Back link and search input -->
+<div class="flex items-center gap-6">
+<a class="inline-flex items-center gap-1.5 text-ink-700 hover:text-signal-600 font-body-sm font-medium transition-colors" href="#">
+<span class="material-symbols-outlined text-ink-500">arrow_back</span>
+<span>Volver a Mis envÃ­os</span>
+</a>
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-12 text-body-sm bg-paper border border-sand-300 rounded-lg text-ink-950 placeholder:text-ink-500 focus:outline-none focus:border-route-600 focus:ring-1 focus:ring-route-600 font-body-sm" placeholder="Buscar remitente, guÃ­a o cÃ³digo postal..." type="text"/>
+<div class="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-0.5">
+<kbd class="px-1.5 py-0.5 text-[10px] font-mono-code bg-surface rounded border border-sand-300 text-ink-500">âŒ˜K</kbd>
+</div>
+</div>
+</div>
+<!-- Right: Status Pill, Support, Notifications, Avatar -->
+<div class="flex items-center gap-4">
+<!-- Operational badge in mint pill -->
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-mint-100 border border-mint-300 rounded-full">
+<span class="w-2 h-2 rounded-full bg-[#16A34A]"></span>
+<span class="font-mono-code text-[11px] font-semibold text-ink-950">Red operativa normal Â· CORREDOR CENTRO</span>
+</div>
+<div class="h-5 w-px bg-sand-300"></div>
+<!-- Soporte -->
+<button class="inline-flex items-center gap-1.5 text-ink-700 hover:text-ink-950 text-body-sm font-medium">
+<span class="material-symbols-outlined text-ink-500">support_agent</span>
+<span>Soporte</span>
+</button>
+<!-- Notification Bell -->
+<button class="relative p-1.5 text-ink-700 hover:text-ink-950 rounded-lg hover:bg-paper transition-colors" title="Notificaciones">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-signal-600 ring-2 ring-surface"></span>
+</button>
+<!-- User Avatar Badge -->
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-ink-700 text-surface flex items-center justify-center font-heading-md text-caption font-bold">
+              LR
+            </div>
+<span class="text-body-sm font-medium text-ink-950">LucÃ­a R.</span>
+</div>
+</div>
+</header>
+<!-- CONTENT CANVAS (Scrollable) -->
+<main class="flex-1 overflow-y-auto px-space-xl py-space-lg bg-paper">
+<div class="max-w-[1140px] mx-auto space-y-6">
+<!-- PAGE HEADER & STEPPER -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-sand-300 pb-5">
+<div>
+<div class="flex items-center gap-3 mb-1">
+<span class="font-caption text-caption uppercase tracking-wider text-ink-500 font-semibold">Proceso de emisiÃ³n</span>
+<span class="px-2.5 py-0.5 rounded-full text-caption font-mono-code font-semibold bg-signal-600/10 text-signal-600 border border-signal-600/20">
+                  Paso 3 de 3 Â· CotizaciÃ³n y pago
+                </span>
+</div>
+<h1 class="font-display-lg text-heading-lg font-bold text-ink-950 tracking-tight">Nuevo envÃ­o</h1>
+</div>
+<!-- 3-STEP PROGRESS STEPPER -->
+<div class="flex items-center gap-2 bg-surface p-2 rounded-xl border border-sand-300 shadow-sm">
+<!-- Step 1: Completed -->
+<div class="flex items-center gap-2 px-3 py-1.5">
+<div class="w-6 h-6 rounded-full bg-ink-950 text-surface flex items-center justify-center text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] font-semibold text-ink-950">Origen y destino</span>
+<span class="font-caption text-[10px] text-ink-500">Completado</span>
+</div>
+</div>
+<div class="w-6 h-px bg-sand-300"></div>
+<!-- Step 2: Completed -->
+<div class="flex items-center gap-2 px-3 py-1.5">
+<div class="w-6 h-6 rounded-full bg-ink-950 text-surface flex items-center justify-center text-caption font-semibold">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] font-semibold text-ink-950">Paquetes y carga</span>
+<span class="font-caption text-[10px] text-ink-500">Completado</span>
+</div>
+</div>
+<div class="w-6 h-px bg-sand-300"></div>
+<!-- Step 3: Active -->
+<div class="flex items-center gap-2 px-3 py-1.5 bg-paper rounded-lg border border-sand-300">
+<div class="w-6 h-6 rounded-full bg-signal-600 text-surface flex items-center justify-center font-mono-code text-[12px] font-bold">
+                  3
+                </div>
+<div class="flex flex-col">
+<span class="font-body-sm text-[12px] font-bold text-signal-600">CotizaciÃ³n y pago</span>
+<span class="font-caption text-[10px] font-medium text-signal-600">En progreso</span>
+</div>
+</div>
+</div>
+</div>
+<!-- MAIN 60% / 40% GRID -->
+<div class="grid grid-cols-12 gap-6 items-start">
+<!-- =================================================================
+                 LEFT COLUMN (60% -> 7 cols)
+                 ================================================================= -->
+<div class="col-span-12 lg:col-span-7 space-y-6">
+<!-- Heading Block -->
+<div>
+<h2 class="font-display-md text-display-md text-ink-950 tracking-tight leading-tight">Todo listo para confirmar</h2>
+<p class="font-body-md text-ink-500 mt-1">RevisÃ¡ la cotizaciÃ³n detallada y las condiciones operativas antes de emitir la guÃ­a de transporte.</p>
+</div>
+<!-- ROUTE SUMMARY CARD WITH STYLIZED MAP PREVIEW -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm overflow-hidden">
+<div class="flex items-start justify-between border-b border-sand-200 pb-4 mb-4">
+<div>
+<span class="font-caption text-caption text-ink-500 uppercase tracking-wider font-semibold">Corredor logÃ­stico asignado</span>
+<h3 class="font-display-lg text-heading-lg font-bold text-ink-950 flex items-center gap-2 mt-0.5">
+                      CÃ³rdoba <span class="text-signal-600 font-mono-code">â†’</span> Rosario
+                    </h3>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-mono-code text-caption px-2 py-0.5 bg-paper border border-sand-300 rounded font-semibold text-ink-950">
+                      401 km Â· 4 h 35 min
+                    </span>
+<span class="font-mono-code text-caption text-ink-500">2 paquetes Â· 7.3 kg</span>
+</div>
+</div>
+<!-- Stylized vector-like schematic map preview -->
+<div class="w-full h-36 bg-paper rounded-lg border border-sand-300 relative overflow-hidden flex items-center justify-center p-4">
+<!-- Background grid coordinate pattern -->
+<div class="absolute inset-0 opacity-15" style="background-image: radial-gradient(#08111F 1px, transparent 1px); background-size: 16px 16px;"></div>
+<!-- Highway Line Graphic -->
+<svg class="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+<!-- RN 9 route path -->
+<path d="M 80,72 Q 240,40 460,72" fill="none" stroke="#D8D0C0" stroke-linecap="round" stroke-width="4"></path>
+<path d="M 80,72 Q 240,40 460,72" fill="none" stroke="#D93A00" stroke-dasharray="6,4" stroke-linecap="round" stroke-width="2.5"></path>
+</svg>
+<!-- Node CBA -->
+<div class="absolute left-16 top-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-ink-950 text-surface flex items-center justify-center font-mono-code text-[11px] font-bold border-2 border-surface shadow-sm">
+                      CBA
+                    </div>
+<span class="font-mono-code text-[11px] font-semibold text-ink-950 mt-1 bg-surface/90 px-1.5 py-0.5 rounded border border-sand-200">
+                      CÃ“RDOBA
+                    </span>
+<span class="font-caption text-[10px] text-ink-500">HUB Oeste</span>
+</div>
+<!-- Center Route Badge: RN 9 -->
+<div class="relative z-10 flex flex-col items-center bg-surface/95 border border-sand-300 px-3 py-1 rounded-md shadow-sm">
+<span class="font-mono-code text-[11px] font-bold text-route-600 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">alt_route</span> RN 9 Troncal
+                    </span>
+<span class="font-caption text-[10px] text-ink-500 font-mono-code">Monitoreo GPS activo</span>
+</div>
+<!-- Node ROS -->
+<div class="absolute right-16 top-1/2 -translate-y-1/2 flex flex-col items-center">
+<div class="w-7 h-7 rounded-full bg-signal-600 text-surface flex items-center justify-center font-mono-code text-[11px] font-bold border-2 border-surface shadow-sm animate-pulse">
+                      ROS
+                    </div>
+<span class="font-mono-code text-[11px] font-semibold text-ink-950 mt-1 bg-surface/90 px-1.5 py-0.5 rounded border border-sand-200">
+                      ROSARIO
+                    </span>
+<span class="font-caption text-[10px] text-ink-500">Centro DistribuciÃ³n</span>
+</div>
+</div>
+<!-- ETA Callout Bar -->
+<div class="mt-4 p-3 bg-paper rounded-lg border border-sand-200 flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-600">schedule</span>
+<span class="font-body-sm text-ink-950">
+                      Llegada estimada: <strong class="font-semibold">DÃ­a hÃ¡bil siguiente (10:00 - 14:00 hs)</strong>
+</span>
+</div>
+<span class="font-mono-code text-[11px] uppercase tracking-wider font-semibold text-ink-700 bg-sand-200 px-2 py-0.5 rounded">
+                    HUB CENTRO DIRECTO
+                  </span>
+</div>
+</div>
+<!-- COST BREAKDOWN CARD ('Desglose de cotizaciÃ³n') -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-sand-200 pb-3 mb-4">
+<h3 class="font-heading-lg text-heading-md font-bold text-ink-950 flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-600">receipt</span>
+                    Desglose de cotizaciÃ³n
+                  </h3>
+<span class="font-mono-code text-caption text-ink-500">Tarifa corporativa Tier-2</span>
+</div>
+<!-- Tabular rows with mono values -->
+<div class="space-y-3.5">
+<div class="flex items-center justify-between text-body-sm py-1">
+<span class="text-ink-700 font-body-sm">Flete base operativo</span>
+<span class="font-mono-code font-medium text-ink-950">ARS 3.500</span>
+</div>
+<div class="flex items-center justify-between text-body-sm py-1 border-t border-sand-100">
+<div>
+<span class="text-ink-700 font-body-sm">Distancia troncal (401 km)</span>
+<span class="text-caption text-ink-500 block">Tarifa por km de corredor interurbano</span>
+</div>
+<span class="font-mono-code font-medium text-ink-950">ARS 72.180</span>
+</div>
+<div class="flex items-center justify-between text-body-sm py-1 border-t border-sand-100">
+<span class="text-ink-700 font-body-sm">Peso tasado (7.3 kg)</span>
+<span class="font-mono-code font-medium text-ink-950">ARS 1.825</span>
+</div>
+<div class="flex items-center justify-between text-body-sm py-1 border-t border-sand-100">
+<div class="flex items-center gap-2">
+<span class="text-ink-700 font-body-sm">Tratamiento de carga frÃ¡gil (1 bulto)</span>
+<span class="px-1.5 py-0.2 rounded text-[10px] font-mono-code bg-primary-fixed text-signal-600 font-semibold">ESPECIAL</span>
+</div>
+<span class="font-mono-code font-medium text-ink-950">ARS 800</span>
+</div>
+<!-- Seguro logÃ­stico integral Toggle Row -->
+<div class="flex items-center justify-between p-3 rounded-lg bg-paper border border-sand-300">
+<div class="flex items-center gap-3">
+<!-- Toggle Switch ON in signal orange -->
+<button aria-checked="true" class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out bg-signal-600 focus:outline-none focus:ring-2 focus:ring-route-600" role="switch" type="button">
+<span class="translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-surface shadow ring-0 transition duration-200 ease-in-out"></span>
+</button>
+<div>
+<div class="font-body-sm font-semibold text-ink-950 flex items-center gap-1.5">
+                          Seguro logÃ­stico integral
+                          <span class="material-symbols-outlined text-signal-600 text-[16px]" title="Cobertura todo riesgo en trÃ¡nsito">verified_user</span>
+</div>
+<span class="font-caption text-ink-500">Valor declarado $165.000 Â· Cobertura 100% ante siniestro</span>
+</div>
+</div>
+<span class="font-mono-code font-bold text-ink-950">ARS 3.300</span>
+</div>
+</div>
+<!-- Divider -->
+<div class="h-px bg-sand-300 my-5"></div>
+<!-- Total Section -->
+<div class="bg-paper p-4 rounded-xl border border-sand-300 flex items-center justify-between">
+<div>
+<span class="font-caption uppercase tracking-wider text-ink-500 font-semibold block">Total de la cotizaciÃ³n</span>
+<span class="font-caption text-caption text-ink-500">IVA incluido (21%) Â· DÃ©bito en cta. cte.</span>
+</div>
+<div class="text-right">
+<span class="font-mono-code text-[32px] leading-tight font-bold text-ink-950 block tracking-tight">
+                      ARS 81.700
+                    </span>
+<span class="font-caption text-[11px] text-ink-500">Importe final a facturar</span>
+</div>
+</div>
+<!-- Countdown Timer & Validity Notice -->
+<div class="mt-4 flex items-center justify-between px-3 py-2 rounded-lg bg-mint-100/60 border border-mint-300 text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-950 text-[18px]">timer</span>
+<span class="font-body-sm text-ink-950">CotizaciÃ³n vÃ¡lida por 30 minutos</span>
+</div>
+<span class="font-mono-code text-caption font-bold text-ink-950 bg-surface px-2 py-0.5 rounded border border-sand-300">
+                    quedan 24:18 min
+                  </span>
+</div>
+<!-- Action Buttons -->
+<div class="mt-6 flex items-center justify-between gap-4 pt-2">
+<button class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-sand-300 text-ink-700 hover:text-ink-950 hover:bg-paper font-body-sm font-medium transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+<span>Volver a editar</span>
+</button>
+<button class="flex-1 max-w-xs h-[44px] bg-signal-600 hover:bg-signal-500 active:scale-95 text-surface font-heading-md font-semibold text-body-md rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all duration-150" type="button">
+<span>Confirmar envÃ­o</span>
+<span class="material-symbols-outlined text-surface">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- =================================================================
+                 RIGHT COLUMN (40% -> 5 cols)
+                 ================================================================= -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<!-- SUMMARY CARD 1: Destinatario y entrega -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-sand-200 pb-3 mb-3">
+<h4 class="font-heading-lg text-body-lg font-bold text-ink-950 flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-600">location_on</span>
+                    Destinatario y entrega
+                  </h4>
+<a class="font-caption text-caption text-signal-600 hover:underline font-semibold" href="#">Editar</a>
+</div>
+<div class="space-y-3">
+<!-- Recipient -->
+<div>
+<span class="font-caption text-caption text-ink-500 block">Destinatario</span>
+<p class="font-body-md font-semibold text-ink-950">MartÃ­n GÃ³mez</p>
+<p class="font-mono-code text-caption text-ink-700">+54 11 4022-8921</p>
+</div>
+<!-- Address -->
+<div class="border-t border-sand-200 pt-2.5">
+<span class="font-caption text-caption text-ink-500 block">DirecciÃ³n de descarga</span>
+<p class="font-body-sm text-ink-950 font-medium">Bv. OroÃ±o 1230</p>
+<p class="font-caption text-ink-700">Rosario, Santa Fe (S2000)</p>
+</div>
+<!-- Delivery Modality -->
+<div class="border-t border-sand-200 pt-2.5">
+<span class="font-caption text-caption text-ink-500 block">Modalidad acordada</span>
+<div class="flex items-start gap-2 mt-1">
+<span class="material-symbols-outlined text-route-600 text-[18px] mt-0.5">verified</span>
+<p class="font-body-sm text-ink-950 leading-snug">
+                        Entrega puerta a puerta con firma digital y DNI
+                      </p>
+</div>
+</div>
+</div>
+</div>
+<!-- SUMMARY CARD 2: Bultos declarados (2) -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm">
+<div class="flex items-center justify-between border-b border-sand-200 pb-3 mb-3">
+<div class="flex items-center gap-2">
+<h4 class="font-heading-lg text-body-lg font-bold text-ink-950">Bultos declarados</h4>
+<span class="w-5 h-5 rounded-full bg-sand-200 text-ink-950 text-caption font-mono-code font-bold flex items-center justify-center">2</span>
+</div>
+<a class="font-caption text-caption text-signal-600 hover:underline font-semibold" href="#">Editar</a>
+</div>
+<div class="space-y-3">
+<!-- Bulto 1 -->
+<div class="p-3 rounded-lg bg-paper border border-sand-200 flex items-start justify-between">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-surface border border-sand-300 flex items-center justify-center text-ink-950 font-mono-code text-caption font-bold">
+                        01
+                      </span>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-body-sm font-bold text-ink-950">Caja de repuestos</p>
+<!-- Orange pill tag Fragil -->
+<span class="px-2 py-0.5 rounded-full font-mono-code text-[10px] font-bold bg-primary-fixed text-signal-600 border border-signal-600/30">
+                            FrÃ¡gil
+                          </span>
+</div>
+<p class="font-mono-code text-caption text-ink-700 mt-0.5">4.5 kg Â· 30Ã—40Ã—25 cm</p>
+<p class="font-caption text-[11px] text-ink-500">Etiquetado frÃ¡gil verificado</p>
+</div>
+</div>
+</div>
+<!-- Bulto 2 -->
+<div class="p-3 rounded-lg bg-paper border border-sand-200 flex items-start justify-between">
+<div class="flex items-start gap-3">
+<span class="w-8 h-8 rounded-lg bg-surface border border-sand-300 flex items-center justify-center text-ink-950 font-mono-code text-caption font-bold">
+                        02
+                      </span>
+<div>
+<div class="flex items-center gap-2">
+<p class="font-body-sm font-bold text-ink-950">Caja de herramientas</p>
+<span class="px-2 py-0.5 rounded-full font-mono-code text-[10px] font-semibold bg-sand-200 text-ink-700">
+                            EstÃ¡ndar
+                          </span>
+</div>
+<p class="font-mono-code text-caption text-ink-700 mt-0.5">2.8 kg Â· 20Ã—30Ã—20 cm</p>
+<p class="font-caption text-[11px] text-ink-500">Embalaje reforzado</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- TRUST / PAYMENT TERMS CARD ('CondiciÃ³n de pago') -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm">
+<h4 class="font-heading-lg text-body-lg font-bold text-ink-950 flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-signal-600">account_balance_wallet</span>
+                  CondiciÃ³n de pago
+                </h4>
+<!-- Payment modality selector -->
+<div class="grid grid-cols-2 gap-2 bg-paper p-1 rounded-lg border border-sand-300 mb-3">
+<button class="py-2 px-3 rounded-md text-caption font-medium text-ink-700 hover:text-ink-950 hover:bg-surface/50 text-center transition-all" type="button">
+                    Pago por envÃ­o
+                    <span class="block text-[10px] text-ink-500 font-mono-code">Tarjetas o QR</span>
+</button>
+<button class="py-2 px-3 rounded-md text-caption font-bold bg-surface text-ink-950 shadow-sm border border-sand-300 text-center" type="button">
+                    FacturaciÃ³n mensual
+                    <span class="block text-[10px] text-signal-600 font-mono-code font-semibold">Cta. corriente activa</span>
+</button>
+</div>
+<!-- Invoice note -->
+<div class="p-3 rounded-lg bg-surface border border-sand-200 space-y-1">
+<div class="flex items-center gap-1.5 text-ink-950 font-body-sm font-semibold">
+<span class="material-symbols-outlined text-ink-700 text-[18px]">description</span>
+<span>Factura A automÃ¡tica</span>
+</div>
+<p class="font-caption text-ink-700 leading-relaxed">
+                    Emitida a <strong class="text-ink-950">Distribuidora Central S.R.L.</strong>
+</p>
+<p class="font-mono-code text-caption text-ink-500">CUIT 27-34982110-4</p>
+</div>
+</div>
+<!-- SUBTLE WARNING BANNER EXAMPLE -->
+<div class="p-3.5 rounded-xl bg-warning-500/10 border border-warning-500/40 text-ink-950 flex items-start gap-3">
+<span class="material-symbols-outlined text-warning-500 flex-shrink-0 mt-0.5">warning</span>
+<div class="flex-1">
+<p class="font-body-sm text-[13px] font-medium text-ink-950 leading-snug">
+                    Â¿Demora prolongada? Si la cotizaciÃ³n vence, recalculÃ¡ el precio para actualizar la tarifa segÃºn la demanda de flota.
+                  </p>
+<button class="mt-2 inline-flex items-center gap-1.5 font-mono-code text-[12px] font-bold text-ink-950 hover:text-signal-600 underline" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+                    Recalcular tarifa
+                  </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- GLOBAL DESKTOP FOOTER / STATUS LINE -->
+<footer class="h-10 bg-surface border-t border-sand-300 px-space-lg flex items-center justify-between text-caption font-mono-code text-ink-500 z-10">
+<div class="flex items-center gap-4">
+<span class="flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-300 border border-ink-950"></span>
+            Sistema en lÃ­nea Â· Latencia: 18ms
+          </span>
+<span class="text-sand-300">|</span>
+<span>API Gateway v3.4.1</span>
+</div>
+<div class="flex items-center gap-4">
+<span>Soporte tÃ©cnico 24/7: 0800-444-ENVIOS</span>
+<span class="text-sand-300">|</span>
+<span>Â© 2025 EnvÃ­oYa LogÃ­stica Integral S.A.</span>
+</div>
+</footer>
+</div>
+</div>
+<!-- Micro-interactions JS -->
+<script>
+    // Simple toggle interaction for demonstration
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.querySelector('[role="switch"]');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+          const isChecked = toggleBtn.getAttribute('aria-checked') === 'true';
+          toggleBtn.setAttribute('aria-checked', String(!isChecked));
+          if (isChecked) {
+            toggleBtn.classList.remove('bg-signal-600');
+            toggleBtn.classList.add('bg-sand-300');
+            toggleBtn.querySelector('span').classList.remove('translate-x-5');
+            toggleBtn.querySelector('span').classList.add('translate-x-0');
+          } else {
+            toggleBtn.classList.add('bg-signal-600');
+            toggleBtn.classList.remove('bg-sand-300');
+            toggleBtn.querySelector('span').classList.add('translate-x-5');
+            toggleBtn.querySelector('span').classList.remove('translate-x-0');
+          }
+        });
+      }
+    });
+  </script>
+</body></html>

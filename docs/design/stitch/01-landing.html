@@ -1,0 +1,523 @@
+﻿<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnvÃ­oYa â€” LogÃ­stica Nacional &amp; Seguimiento en Tiempo Real</title>
+<!-- Typography: Archivo, Inter, IBM Plex Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-container": "#002174",
+            "route-100": "#DBEAFE",
+            "on-error": "#ffffff",
+            "surface-dim": "#dddad1",
+            "surface-container-highest": "#e6e2d9",
+            "on-primary-container": "#541400",
+            "on-error-container": "#93000a",
+            "ink-900": "#0B1220",
+            "surface-container-high": "#ece8df",
+            "surface-tint": "#ae3200",
+            "on-tertiary": "#ffffff",
+            "tertiary-container": "#6b8aff",
+            "sand-200": "#E7DFD1",
+            "secondary": "#585e6f",
+            "paper": "#F6F2E9",
+            "surface": "#FFFFFF",
+            "signal-500": "#FF5A1F",
+            "ink-500": "#4B5563",
+            "on-secondary-container": "#5c6274",
+            "surface-variant": "#e6e2d9",
+            "inverse-primary": "#ffb59e",
+            "inverse-surface": "#31302b",
+            "background": "#fdf9f0",
+            "secondary-fixed-dim": "#c0c6da",
+            "error-container": "#ffdad6",
+            "mint-300": "#B9F27C",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "primary": "#ae3200",
+            "warning-500": "#F59E0B",
+            "signal-600": "#D93A00",
+            "on-secondary": "#ffffff",
+            "sand-300": "#D8D0C0",
+            "secondary-fixed": "#dce2f6",
+            "route-600": "#1D4ED8",
+            "on-tertiary-fixed": "#001551",
+            "secondary-container": "#d9dff4",
+            "on-surface-variant": "#5b4038",
+            "tertiary": "#2151da",
+            "outline-variant": "#e4beb3",
+            "on-background": "#1c1c16",
+            "surface-container": "#f1eee5",
+            "on-primary": "#ffffff",
+            "primary-container": "#ff5a1f",
+            "on-surface": "#1c1c16",
+            "inverse-on-surface": "#f4f0e7",
+            "on-primary-fixed-variant": "#852400",
+            "mint-100": "#ECFCCB",
+            "primary-fixed-dim": "#ffb59e",
+            "danger-100": "#FEE4E2",
+            "surface-container-lowest": "#ffffff",
+            "error": "#ba1a1a",
+            "on-secondary-fixed-variant": "#404757",
+            "surface-container-low": "#f7f3ea",
+            "on-secondary-fixed": "#151b2a",
+            "on-primary-fixed": "#3a0b00",
+            "primary-fixed": "#ffdbd0",
+            "surface-bright": "#fdf9f0",
+            "outline": "#8f7067",
+            "danger-600": "#B42318",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "ink-700": "#1E2A3B",
+            "tertiary-fixed": "#dce1ff",
+            "ink-950": "#08111F"
+          },
+          borderRadius: {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          spacing: {
+            "space-xs": "4px",
+            "space-sm": "8px",
+            "space-md": "16px",
+            "space-lg": "24px",
+            "space-xl": "32px",
+            "space-2xl": "64px",
+            "gutter": "24px",
+            "margin": "40px"
+          },
+          fontFamily: {
+            "display-xl": ["Archivo", "sans-serif"],
+            "display-lg": ["Archivo", "sans-serif"],
+            "display-md": ["Archivo", "sans-serif"],
+            "heading-lg": ["Archivo", "sans-serif"],
+            "heading-md": ["Archivo", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "caption": ["Inter", "sans-serif"],
+            "mono-code": ["IBM Plex Mono", "monospace"]
+          },
+          fontSize: {
+            "display-xl": ["56px", { lineHeight: "60px", fontWeight: "700" }],
+            "display-lg": ["40px", { lineHeight: "44px", fontWeight: "700" }],
+            "display-md": ["32px", { lineHeight: "36px", fontWeight: "700" }],
+            "heading-lg": ["24px", { lineHeight: "30px", fontWeight: "600" }],
+            "heading-md": ["20px", { lineHeight: "26px", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "mono-code": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-paper text-ink-950 font-body-md antialiased selection:bg-signal-500 selection:text-white min-h-screen flex flex-col">
+<!-- 1. Top Navigation Anchor (Shared Components compliant) -->
+<header class="w-full sticky top-0 z-50 flex items-center justify-between px-space-xl py-space-md border-b border-sand-200 dark:border-ink-700 bg-paper dark:bg-ink-950">
+<div class="flex items-center gap-space-xl">
+<!-- Wordmark Brand -->
+<a class="font-display-md text-display-md text-ink-950 dark:text-surface font-bold tracking-tight flex items-center gap-2" href="#">
+<span class="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-signal-600 text-white font-mono-code text-sm font-bold">
+<span class="material-symbols-outlined text-[18px]">local_shipping</span>
+</span>
+<span>EnvÃ­oYa</span>
+</a>
+<!-- Desktop Nav links -->
+<nav class="hidden md:flex items-center space-x-6">
+<a class="text-ink-700 dark:text-sand-200 font-body-md text-body-md hover:text-ink-950 dark:hover:text-surface transition-colors duration-150" href="#servicios">Servicios</a>
+<a class="text-ink-700 dark:text-sand-200 font-body-md text-body-md hover:text-ink-950 dark:hover:text-surface transition-colors duration-150" href="#como-funciona">CÃ³mo Funciona</a>
+<a class="text-ink-700 dark:text-sand-200 font-body-md text-body-md hover:text-ink-950 dark:hover:text-surface transition-colors duration-150" href="#cobertura">Cobertura</a>
+<a class="text-ink-700 dark:text-sand-200 font-body-md text-body-md hover:text-ink-950 dark:hover:text-surface transition-colors duration-150" href="#tarifas">Tarifas</a>
+<a class="text-ink-700 dark:text-sand-200 font-body-md text-body-md hover:text-ink-950 dark:hover:text-surface transition-colors duration-150" href="#empresas">Empresas</a>
+</nav>
+</div>
+<!-- Right cluster actions -->
+<div class="flex items-center gap-space-md">
+<a class="text-ink-700 hover:text-ink-950 font-body-md text-body-md font-semibold px-3 py-2 transition-colors duration-150" href="#ingresar">Ingresar</a>
+<a class="inline-flex items-center justify-center bg-signal-600 text-white font-body-md font-semibold px-5 py-2.5 rounded-xl hover:bg-signal-500 transition-all duration-150 active:scale-95 text-body-sm shadow-none" href="#cotizar">
+        Cotizar envÃ­o
+      </a>
+</div>
+</header>
+<main class="flex-grow">
+<!-- 2. Hero Section (Split 55/45, 1200px max-width, strictly 1 orange CTA) -->
+<section class="w-full max-w-[1200px] mx-auto px-6 py-12 lg:py-16">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Side (55% -> 7 cols) -->
+<div class="lg:col-span-7 flex flex-col justify-center">
+<!-- Eyebrow Badge -->
+<div class="inline-flex items-center gap-2 mb-4">
+<span class="w-2 h-2 rounded-full bg-signal-600"></span>
+<span class="font-mono-code text-caption text-ink-500 uppercase tracking-widest font-semibold">LOGÃSTICA NACIONAL</span>
+</div>
+<!-- Headline -->
+<h1 class="font-display-xl text-display-xl text-ink-900 tracking-tight mb-4">
+            Tu envÃ­o, en el mapa.<br/>Sin sorpresas.
+          </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-ink-700 max-w-xl mb-8">
+            CotizÃ¡, despachÃ¡ y seguÃ­ cada paquete desde un solo lugar. Cobertura federal con geolocalizaciÃ³n transparente en tiempo real.
+          </p>
+<!-- Quick Tracking Box -->
+<div class="bg-surface border border-sand-300 rounded-xl p-5 mb-6 max-w-xl">
+<label class="block font-mono-code text-caption uppercase text-ink-500 font-semibold mb-2" for="tracking-input">
+              SEGUIMIENTO EN TIEMPO REAL
+            </label>
+<form class="flex flex-col sm:flex-row gap-2" onsubmit="event.preventDefault();">
+<div class="relative flex-grow">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-500 text-[20px]">pin_drop</span>
+<input class="w-full pl-10 pr-3 py-3 border border-sand-300 rounded-xl font-mono-code text-mono-code text-ink-900 bg-surface focus:outline-none focus:ring-2 focus:ring-route-600 focus:border-route-600" id="tracking-input" placeholder="IngresÃ¡ tu cÃ³digo EY-XXXXXX" type="text" value="EY-4F8A1C"/>
+</div>
+<button class="inline-flex items-center justify-center bg-ink-900 text-white font-body-md font-medium px-5 py-3 rounded-xl hover:bg-ink-700 transition-colors duration-150 whitespace-nowrap active:scale-95" type="submit">
+                Seguir envÃ­o
+              </button>
+</form>
+</div>
+<!-- Action & Trust Row: Strictly Single Signal-Orange primary CTA -->
+<div class="flex flex-col sm:flex-row sm:items-center gap-4 max-w-xl">
+<a class="inline-flex items-center justify-center bg-signal-600 text-white font-heading-md text-body-md font-semibold px-8 py-3.5 rounded-xl hover:bg-signal-500 transition-all duration-150 active:scale-95 h-12" href="#cotizar">
+              Cotizar envÃ­o
+              <span class="material-symbols-outlined ml-2 text-[20px]">arrow_forward</span>
+</a>
+<div class="flex items-center gap-2 text-ink-500 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-signal-600 text-[18px]">verified_user</span>
+<span>Sin cuenta previa para seguir un envÃ­o</span>
+</div>
+</div>
+</div>
+<!-- Right Side (45% -> 5 cols): Stylized Light Vector Map Card -->
+<div class="lg:col-span-5 relative">
+<!-- Main Map Surface Card -->
+<div class="bg-surface border border-sand-300 rounded-xl p-6 relative overflow-hidden h-[440px] flex flex-col justify-between">
+<!-- Blueprint / Operational Grid Pattern Background -->
+<div class="absolute inset-0 opacity-40 pointer-events-none" style="background-image: linear-gradient(to right, #D8D0C0 1px, transparent 1px), linear-gradient(to bottom, #D8D0C0 1px, transparent 1px); background-size: 24px 24px;"></div>
+<!-- Map Top Bar: Sector and coordinates -->
+<div class="relative z-10 flex items-center justify-between border-b border-sand-200 pb-3">
+<div class="flex items-center gap-2 font-mono-code text-caption text-ink-700 font-medium">
+<span class="material-symbols-outlined text-route-600 text-[16px]">navigation</span>
+<span>CORREDOR CENTRAL Â· RN 9</span>
+</div>
+<span class="font-mono-code text-caption bg-paper border border-sand-300 text-ink-700 px-2 py-0.5 rounded-lg">
+                401 km Â· RN 9
+              </span>
+</div>
+<!-- Stylized Route Vector Representation -->
+<div class="relative z-0 my-auto w-full h-56 flex items-center justify-center">
+<svg class="w-full h-full" fill="none" viewbox="0 0 340 200" xmlns="http://www.w3.org/2000/svg">
+<!-- Administrative Region Contours -->
+<path d="M 20 180 Q 90 140 120 70 T 320 20" fill="none" stroke="#E7DFD1" stroke-width="1.5"></path>
+<path d="M 50 190 Q 140 160 180 120 T 330 90" fill="none" stroke="#E7DFD1" stroke-dasharray="4 4" stroke-width="1.5"></path>
+<!-- Completed Route Segment (Solid Signal Orange) -->
+<path d="M 60 140 Q 140 100 200 90" stroke="#D93A00" stroke-linecap="round" stroke-width="3.5"></path>
+<!-- Projected Route Segment (Dashed Signal Orange) -->
+<path d="M 200 90 Q 250 82 280 60" stroke="#D93A00" stroke-dasharray="6 6" stroke-linecap="round" stroke-width="3"></path>
+<!-- Origin Node: CÃ³rdoba -->
+<g transform="translate(60, 140)">
+<circle cx="0" cy="0" fill="#0B1220" r="10"></circle>
+<circle cx="0" cy="0" fill="#FFFFFF" r="4"></circle>
+<text class="font-body-sm text-[12px] font-semibold" fill="#0B1220" x="-12" y="24">CÃ³rdoba</text>
+<text class="font-mono-code text-[10px]" fill="#4B5563" x="-12" y="36">COR Â· 08:30</text>
+</g>
+<!-- Current Transit Hub Marker -->
+<g transform="translate(200, 90)">
+<circle cx="0" cy="0" fill="#DBEAFE" fill-opacity="0.8" r="14"></circle>
+<circle cx="0" cy="0" fill="#1D4ED8" r="6"></circle>
+<circle cx="0" cy="0" fill="#FFFFFF" r="2.5"></circle>
+<text class="font-mono-code text-[10px] font-medium" fill="#1D4ED8" x="-20" y="-12">En Ruta 9 Â· km 284</text>
+</g>
+<!-- Destination Node: Rosario -->
+<g transform="translate(280, 60)">
+<!-- Beacon Halo -->
+<circle cx="0" cy="0" fill="#D93A00" fill-opacity="0.15" r="14"></circle>
+<circle cx="0" cy="0" fill="#D93A00" r="9"></circle>
+<circle cx="0" cy="0" fill="#FFFFFF" r="3.5"></circle>
+<text class="font-body-sm text-[12px] font-semibold" fill="#0B1220" x="-8" y="22">Rosario</text>
+<text class="font-mono-code text-[10px]" fill="#4B5563" x="-8" y="34">ROS Â· ETA 18:00</text>
+</g>
+</svg>
+</div>
+<!-- Floating Overlay Transit Card -->
+<div class="relative z-10 bg-surface border border-sand-300 rounded-xl p-4">
+<div class="flex items-center justify-between mb-2">
+<!-- Status Chip -->
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-route-100 text-route-600 font-mono-code text-caption font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-route-600 animate-pulse"></span>
+                  EN TRÃNSITO
+                </span>
+<span class="font-mono-code text-caption text-ink-500 font-medium">EY-4F8A1C</span>
+</div>
+<div class="flex items-baseline justify-between">
+<div>
+<h3 class="font-heading-md text-heading-md text-ink-950 font-bold">CÃ³rdoba â†’ Rosario</h3>
+<p class="font-body-sm text-body-sm text-ink-700 flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[16px] text-ink-500">schedule</span>
+                    Llega maÃ±ana 18:00 hs
+                  </p>
+</div>
+<div class="text-right">
+<span class="font-mono-code text-[11px] text-mint-300 bg-ink-950 px-2 py-0.5 rounded font-medium">ON TIME</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Trust Strip (Metrics Banner): Sand-300 borders and paper background -->
+<section class="w-full border-y border-sand-300 bg-surface py-8">
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-sand-300">
+<!-- Metric 1 -->
+<div class="py-4 md:py-0 md:px-8 first:pl-0 flex flex-col justify-center">
+<span class="font-display-lg text-display-lg text-ink-900 tracking-tight">+12.000</span>
+<span class="font-body-sm text-body-sm text-ink-700 mt-1">EnvÃ­os completados este mes en todo el paÃ­s</span>
+</div>
+<!-- Metric 2 -->
+<div class="py-4 md:py-0 md:px-8 flex flex-col justify-center">
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg text-ink-900 tracking-tight">98%</span>
+<span class="font-mono-code text-caption bg-mint-100 text-ink-950 px-2 py-0.5 rounded font-semibold">SLA OK</span>
+</div>
+<span class="font-body-sm text-body-sm text-ink-700 mt-1">Entregas a tiempo certificadas por auditorÃ­a</span>
+</div>
+<!-- Metric 3 -->
+<div class="py-4 md:py-0 md:px-8 last:pr-0 flex flex-col justify-center">
+<span class="font-heading-lg text-heading-lg text-ink-900 tracking-tight">Cobertura nacional</span>
+<span class="font-body-sm text-body-sm text-ink-700 mt-1">24 provincias y mÃ¡s de 800 localidades conectadas</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Services Section ('Nuestras Soluciones') -->
+<section class="w-full max-w-[1200px] mx-auto px-6 py-16" id="servicios">
+<div class="mb-10">
+<span class="font-mono-code text-caption text-ink-500 uppercase tracking-widest font-semibold block mb-2">SERVICIOS</span>
+<h2 class="font-display-md text-display-md text-ink-950">LogÃ­stica diseÃ±ada para cada escala</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Service Card 1: Particulares -->
+<div class="bg-surface border border-sand-300 rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-paper border border-sand-300 flex items-center justify-center text-ink-900 mb-5">
+<span class="material-symbols-outlined text-[26px]">package_2</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-heading-lg text-heading-lg text-ink-950">Particulares</h3>
+<span class="font-mono-code text-caption bg-paper border border-sand-300 text-ink-900 px-2 py-1 rounded font-medium">Desde $4.200 ARS</span>
+</div>
+<p class="font-body-md text-body-md text-ink-700 mb-6">
+              EnvÃ­os puerta a puerta, encomiendas personales y compras online. Retiro a domicilio sin costo adicional en radios urbanos.
+            </p>
+</div>
+<div class="border-t border-sand-200 pt-4">
+<a class="inline-flex items-center font-body-md text-body-md font-semibold text-ink-900 hover:text-signal-600 transition-colors duration-150" href="#cotizar">
+              Cotizar particular
+              <span class="material-symbols-outlined ml-1.5 text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service Card 2: Empresas -->
+<div class="bg-surface border border-sand-300 rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-paper border border-sand-300 flex items-center justify-center text-ink-900 mb-5">
+<span class="material-symbols-outlined text-[26px]">apartment</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-heading-lg text-heading-lg text-ink-950">Empresas</h3>
+<span class="font-mono-code text-caption bg-route-100 text-route-600 px-2 py-1 rounded font-medium">B2B &amp; eCommerce</span>
+</div>
+<p class="font-body-md text-body-md text-ink-700 mb-6">
+              Soluciones B2B integradas con Tiendanube y Shopify, gestiÃ³n de logÃ­stica inversa masiva y facturaciÃ³n centralizada A/B.
+            </p>
+</div>
+<div class="border-t border-sand-200 pt-4">
+<a class="inline-flex items-center font-body-md text-body-md font-semibold text-ink-900 hover:text-signal-600 transition-colors duration-150" href="#empresas">
+              Ver planes corporativos
+              <span class="material-symbols-outlined ml-1.5 text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- Service Card 3: Seguimiento -->
+<div class="bg-surface border border-sand-300 rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-xl bg-paper border border-sand-300 flex items-center justify-center text-ink-900 mb-5">
+<span class="material-symbols-outlined text-[26px]">radar</span>
+</div>
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-heading-lg text-heading-lg text-ink-950">Seguimiento</h3>
+<span class="font-mono-code text-caption bg-mint-100 text-ink-950 px-2 py-1 rounded font-medium">GPS Activo</span>
+</div>
+<p class="font-body-md text-body-md text-ink-700 mb-6">
+              Visibilidad punto a punto con telemetrÃ­a en tiempo real, alertas programadas vÃ­a WhatsApp y comprobante digital firmado al recibir.
+            </p>
+</div>
+<div class="border-t border-sand-200 pt-4">
+<a class="inline-flex items-center font-body-md text-body-md font-semibold text-ink-900 hover:text-signal-600 transition-colors duration-150" href="#tracking-demo">
+              Probar tracking demo
+              <span class="material-symbols-outlined ml-1.5 text-[18px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. 'CÃ³mo funciona' Section (Numbered Operational Route) -->
+<section class="w-full bg-surface border-y border-sand-300 py-16" id="como-funciona">
+<div class="max-w-[1200px] mx-auto px-6">
+<div class="mb-12">
+<span class="font-mono-code text-caption text-ink-500 uppercase tracking-widest font-semibold block mb-2">PROCESO OPERATIVO</span>
+<h2 class="font-display-md text-display-md text-ink-950">Tu paquete en destino en 3 pasos</h2>
+</div>
+<!-- Step items connected structurally -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+<!-- Step 01 -->
+<div class="relative bg-paper border border-sand-300 rounded-xl p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono-code text-display-md text-ink-900 font-bold">01</span>
+<span class="w-8 h-8 rounded-full bg-surface border border-sand-300 flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-[18px]">calculate</span>
+</span>
+</div>
+<h3 class="font-heading-md text-heading-md text-ink-950 mb-2">CotizÃ¡ y generÃ¡ tu etiqueta</h3>
+<p class="font-body-md text-body-md text-ink-700">
+              IngresÃ¡ origen, destino y medidas. ObtenÃ© el valor al instante en pesos argentinos e imprimÃ­ la etiqueta con cÃ³digo unificado EY.
+            </p>
+</div>
+<!-- Step 02 -->
+<div class="relative bg-paper border border-sand-300 rounded-xl p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono-code text-display-md text-ink-900 font-bold">02</span>
+<span class="w-8 h-8 rounded-full bg-surface border border-sand-300 flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-[18px]">rv_hookup</span>
+</span>
+</div>
+<h3 class="font-heading-md text-heading-md text-ink-950 mb-2">DespachÃ¡ o pedÃ­ retiro</h3>
+<p class="font-body-md text-body-md text-ink-700">
+              Dejalo en cualquiera de nuestras sucursales o te lo pasamos a buscar por tu puerta sin vueltas ni demoras de ventanilla.
+            </p>
+</div>
+<!-- Step 03 -->
+<div class="relative bg-paper border border-sand-300 rounded-xl p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="font-mono-code text-display-md text-ink-900 font-bold">03</span>
+<span class="w-8 h-8 rounded-full bg-surface border border-sand-300 flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-[18px]">task_alt</span>
+</span>
+</div>
+<h3 class="font-heading-md text-heading-md text-ink-950 mb-2">Seguimiento hasta la entrega</h3>
+<p class="font-body-md text-body-md text-ink-700">
+              SeguÃ­ la ruta en vivo desde el mapa interactivo con hora estimada certera hasta la confirmaciÃ³n de firma digital en destino.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Final High-Contrast CTA Band (ink-950 dark background) -->
+<section class="w-full max-w-[1200px] mx-auto px-6 py-16">
+<div class="bg-ink-950 text-surface rounded-xl p-8 lg:p-12 relative overflow-hidden border border-ink-700">
+<!-- Subtle coordinate pattern in background -->
+<div class="absolute right-0 top-0 bottom-0 w-1/3 opacity-10 pointer-events-none hidden md:block" style="background-image: radial-gradient(#FFFFFF 1px, transparent 1px); background-size: 16px 16px;"></div>
+<div class="max-w-2xl relative z-10">
+<span class="font-mono-code text-caption text-sand-300 uppercase tracking-widest font-semibold block mb-2">OPERATORIA INMEDIATA</span>
+<h2 class="font-display-lg text-display-lg text-surface tracking-tight mb-4">
+            CotizÃ¡ tu prÃ³ximo envÃ­o en menos de 2 minutos
+          </h2>
+<p class="font-body-lg text-body-lg text-sand-300 mb-8">
+            Sin contratos forzosos ni comisiones ocultas. PagÃ¡s solo por lo que enviÃ¡s con las tarifas mÃ¡s competitivas de Argentina.
+          </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<!-- Secondary action outline -->
+<a class="inline-flex items-center justify-center bg-signal-600 text-white font-heading-md text-body-md font-semibold px-8 py-3.5 rounded-xl hover:bg-signal-500 transition-all duration-150 active:scale-95" href="#cotizar">
+              Cotizar envÃ­o ahora
+            </a>
+<a class="inline-flex items-center justify-center border border-ink-500 text-surface hover:bg-ink-900 font-heading-md text-body-md font-medium px-6 py-3.5 rounded-xl transition-colors duration-150" href="#contacto">
+              Hablar con un asesor
+            </a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- 7. Footer (Shared Components compliant) -->
+<footer class="w-full px-space-xl py-space-2xl border-t border-ink-700 bg-ink-950 dark:bg-ink-900 text-surface-container-highest">
+<div class="max-w-[1200px] mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-ink-700">
+<!-- Brand Info -->
+<div class="md:col-span-4">
+<div class="font-display-md text-display-md text-surface font-bold tracking-tight mb-4 flex items-center gap-2">
+<span class="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-signal-600 text-white font-mono-code text-xs font-bold">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+</span>
+<span>EnvÃ­oYa</span>
+</div>
+<p class="font-body-sm text-body-sm text-sand-300 max-w-sm mb-6">
+            Infraestructura logÃ­stica inteligente para personas y empresas. Trazabilidad garantizada de extremo a extremo en todo el territorio argentino.
+          </p>
+<div class="font-mono-code text-caption text-sand-300">
+            SOPORTE OPERATIVO: 0810-333-ENVIOS
+          </div>
+</div>
+<!-- Links: Producto -->
+<div class="md:col-span-2 md:col-start-6">
+<h4 class="font-heading-md text-body-md text-surface font-semibold mb-4">Producto</h4>
+<ul class="space-y-2.5">
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#servicios">Servicios</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#tarifas">Tarifas</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#cobertura">Cobertura</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#api">API Desarrolladores</a></li>
+</ul>
+</div>
+<!-- Links: CompaÃ±Ã­a -->
+<div class="md:col-span-2">
+<h4 class="font-heading-md text-body-md text-surface font-semibold mb-4">CompaÃ±Ã­a</h4>
+<ul class="space-y-2.5">
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#sobre-nosotros">Sobre EnvÃ­oYa</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#sucursales">Sucursales</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#novedades">Novedades</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#carreras">Contacto Operacional</a></li>
+</ul>
+</div>
+<!-- Links: Soporte & Legal -->
+<div class="md:col-span-3">
+<h4 class="font-heading-md text-body-md text-surface font-semibold mb-4">Soporte</h4>
+<ul class="space-y-2.5">
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#centro-ayuda">Centro de Ayuda</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#seguridad">Seguridad de EnvÃ­os</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#terminos">TÃ©rminos y Condiciones</a></li>
+<li><a class="text-sand-300 dark:text-sand-200 font-body-sm text-body-sm hover:text-surface transition-colors" href="#privacidad">PolÃ­tica de Privacidad</a></li>
+</ul>
+</div>
+</div>
+<!-- Copyright & Bottom metadata -->
+<div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 font-caption text-caption text-sand-300">
+<div>
+          Â© 2025 EnvÃ­oYa LogÃ­stica Integral S.A. Todos los derechos reservados.
+        </div>
+<div class="flex items-center gap-6">
+<a class="hover:text-surface transition-colors" href="#aviso-legal">Aviso Legal</a>
+<span>Â·</span>
+<span>Buenos Aires, Argentina</span>
+<span>Â·</span>
+<span class="font-mono-code text-[11px] text-mint-300 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-300"></span> SISTEMA OPERATIVO
+          </span>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

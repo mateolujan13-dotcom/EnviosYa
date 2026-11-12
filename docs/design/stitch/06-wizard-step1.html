@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+
+<html class="h-full bg-paper" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nuevo envÃ­o Â· EnvÃ­oYa LogÃ­stica Integral</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration matching EnvÃ­oYa Tokens verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-highest": "#e6e2d9",
+            "danger-600": "#B42318",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#1c1c16",
+            "signal-500": "#FF5A1F",
+            "tertiary": "#2151da",
+            "inverse-surface": "#31302b",
+            "ink-900": "#0B1220",
+            "mint-300": "#B9F27C",
+            "on-error-container": "#93000a",
+            "signal-600": "#D93A00",
+            "surface-bright": "#fdf9f0",
+            "ink-950": "#08111F",
+            "on-tertiary-fixed": "#001551",
+            "ink-700": "#1E2A3B",
+            "mint-100": "#ECFCCB",
+            "surface-container-low": "#f7f3ea",
+            "warning-500": "#F59E0B",
+            "on-primary": "#ffffff",
+            "surface-variant": "#e6e2d9",
+            "secondary-fixed-dim": "#c0c6da",
+            "error": "#ba1a1a",
+            "danger-100": "#FEE4E2",
+            "secondary": "#585e6f",
+            "sand-300": "#D8D0C0",
+            "paper": "#F6F2E9",
+            "outline-variant": "#e4beb3",
+            "outline": "#8f7067",
+            "primary-fixed-dim": "#ffb59e",
+            "tertiary-container": "#6b8aff",
+            "on-secondary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#3a0b00",
+            "surface-container-high": "#ece8df",
+            "route-100": "#DBEAFE",
+            "sand-200": "#E7DFD1",
+            "inverse-primary": "#ffb59e",
+            "primary-container": "#ff5a1f",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "inverse-on-surface": "#f4f0e7",
+            "surface-dim": "#dddad1",
+            "on-secondary-fixed": "#151b2a",
+            "surface-tint": "#ae3200",
+            "route-600": "#1D4ED8",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#5b4038",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#404757",
+            "on-secondary-container": "#5c6274",
+            "on-background": "#1c1c16",
+            "ink-500": "#4B5563",
+            "surface-container": "#f1eee5",
+            "secondary-fixed": "#dce2f6",
+            "tertiary-fixed": "#dce1ff",
+            "primary": "#ae3200",
+            "surface": "#FFFFFF",
+            "background": "#fdf9f0",
+            "on-tertiary-container": "#002174",
+            "secondary-container": "#d9dff4",
+            "on-primary-container": "#541400",
+            "primary-fixed": "#ffdbd0",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "on-primary-fixed-variant": "#852400"
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          spacing: {
+            gutter: "24px",
+            "space-xl": "32px",
+            "space-xs": "4px",
+            "space-2xl": "64px",
+            "space-lg": "24px",
+            "space-sm": "8px",
+            margin: "40px",
+            "space-md": "16px"
+          },
+          fontFamily: {
+            "heading-md": ["Archivo", "sans-serif"],
+            "display-xl": ["Archivo", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "display-lg": ["Archivo", "sans-serif"],
+            "heading-lg": ["Archivo", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "display-md": ["Archivo", "sans-serif"],
+            caption: ["Inter", "sans-serif"],
+            "mono-code": ["IBM Plex Mono", "monospace"]
+          },
+          fontSize: {
+            "heading-md": ["20px", { lineHeight: "26px", fontWeight: "600" }],
+            "display-xl": ["56px", { lineHeight: "60px", fontWeight: "700" }],
+            "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "display-lg": ["40px", { lineHeight: "44px", fontWeight: "700" }],
+            "heading-lg": ["24px", { lineHeight: "30px", fontWeight: "600" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "display-md": ["32px", { lineHeight: "36px", fontWeight: "700" }],
+            caption: ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "mono-code": ["13px", { lineHeight: "18px", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    /* Subtle OpenStreetMap geometric grid styling */
+    .map-grid-bg {
+      background-color: #F4F1EA;
+      background-image: 
+        linear-gradient(to right, rgba(216, 208, 192, 0.45) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(216, 208, 192, 0.45) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+  </style>
+</head>
+<body class="h-full bg-paper text-ink-950 font-body-md antialiased flex overflow-hidden">
+<!-- SIDEBAR NAVIGATION SHELL (248px Client Shell) -->
+<aside class="w-[248px] bg-paper border-r border-sand-300 flex flex-col justify-between shrink-0 h-full select-none z-30">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-16 px-space-lg flex items-center border-b border-sand-200">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-8 h-8 rounded-lg bg-ink-950 flex items-center justify-center text-surface text-lg font-bold font-heading-md">
+<span class="material-symbols-outlined text-signal-500 text-[22px]">local_shipping</span>
+</div>
+<span class="font-display-md text-[22px] tracking-tight font-bold text-ink-950">EnvÃ­oYa</span>
+</a>
+</div>
+<!-- Navigation Links -->
+<nav class="p-space-md space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-ink-700 hover:bg-sand-200/60 hover:text-ink-950 transition-colors font-body-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">grid_view</span>
+<span>Inicio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-ink-700 hover:bg-sand-200/60 hover:text-ink-950 transition-colors font-body-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">inventory_2</span>
+<span>Mis envÃ­os</span>
+</a>
+<!-- Active Item -->
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-surface border border-sand-300 text-ink-950 font-body-sm font-semibold shadow-sm" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-signal-600 fill">add_circle</span>
+<span>Nuevo envÃ­o</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-signal-600"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-ink-700 hover:bg-sand-200/60 hover:text-ink-950 transition-colors font-body-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">receipt_long</span>
+<span>FacturaciÃ³n</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-ink-700 hover:bg-sand-200/60 hover:text-ink-950 transition-colors font-body-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-ink-500">person</span>
+<span>Perfil</span>
+</a>
+</nav>
+</div>
+<!-- Bottom Sidebar Section (Regional Hub & Profile) -->
+<div class="p-space-md border-t border-sand-200 space-y-3">
+<!-- Operational Hub Status Card -->
+<div class="bg-surface p-3 rounded-lg border border-sand-300">
+<div class="flex items-center justify-between mb-1.5">
+<span class="font-caption text-[11px] uppercase tracking-wider font-semibold text-ink-500">Nodo Operativo</span>
+<span class="inline-flex items-center gap-1 font-mono-code text-[11px] text-mint-300 bg-ink-950 px-1.5 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-mint-300 animate-pulse"></span>
+            ACTIVO
+          </span>
+</div>
+<p class="font-mono-code text-[12px] font-semibold text-ink-950 tracking-tight">BUE - CENTRO-04</p>
+<p class="font-caption text-[11px] text-ink-500 mt-0.5">Terminal Retiro Â· Plataforma C</p>
+</div>
+<!-- User Profile Badge -->
+<div class="flex items-center gap-3 pt-1 px-1">
+<div class="w-9 h-9 rounded-lg bg-surface border border-sand-300 flex items-center justify-center font-heading-md font-semibold text-ink-900 text-xs">
+          LR
+        </div>
+<div class="flex-1 min-w-0">
+<p class="font-body-sm font-semibold text-ink-950 truncate leading-snug">LucÃ­a RamÃ­rez</p>
+<p class="font-caption text-[11px] text-ink-500 truncate">lucia.ramirez@distrib.ar</p>
+</div>
+<button class="text-ink-500 hover:text-ink-950" title="Cerrar sesiÃ³n">
+<span class="material-symbols-outlined text-[18px]">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS (TopBar + Content Area) -->
+<div class="flex-1 flex flex-col min-w-0 h-full overflow-hidden bg-background">
+<!-- TOP APP BAR (64px) -->
+<header class="h-16 bg-surface border-b border-sand-300 px-space-xl flex items-center justify-between shrink-0 z-20">
+<!-- Search Field -->
+<div class="relative w-80">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">search</span>
+<input class="w-full h-9 pl-9 pr-12 rounded-lg bg-paper border border-sand-300 text-ink-950 placeholder-ink-500 text-body-sm focus:outline-none focus:ring-1 focus:ring-route-600 focus:border-route-600 transition-all font-body-sm" placeholder="Buscar remitente, guÃ­a o cÃ³digo postal..." type="text"/>
+<kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 font-mono-code text-[11px] bg-surface text-ink-500 px-1.5 py-0.5 rounded border border-sand-300">âŒ˜K</kbd>
+</div>
+<!-- Operational Status & Trailing Cluster -->
+<div class="flex items-center gap-5">
+<!-- Live Status Pill -->
+<div class="flex items-center gap-2 bg-paper px-3 py-1.5 rounded-full border border-sand-300">
+<span class="w-2 h-2 rounded-full bg-signal-500"></span>
+<span class="font-caption text-[12px] font-medium text-ink-700">Red operativa normal</span>
+<span class="font-mono-code text-[11px] text-ink-500 border-l border-sand-300 pl-2">CORREDOR CENTRO</span>
+</div>
+<!-- Help / Support link -->
+<a class="font-body-sm text-ink-700 hover:text-route-600 font-medium transition-colors flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-[18px]">help_center</span>
+<span>Soporte</span>
+</a>
+<!-- Notification Bell -->
+<button class="relative w-9 h-9 rounded-lg border border-sand-300 bg-surface flex items-center justify-center text-ink-700 hover:text-ink-950 hover:bg-sand-200/40 transition-colors">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-signal-600 rounded-full"></span>
+</button>
+<!-- User Dropdown Pill -->
+<div class="flex items-center gap-2 pl-2 border-l border-sand-200">
+<button class="flex items-center gap-2 py-1 px-1.5 rounded-lg hover:bg-sand-200/50 transition-colors">
+<span class="w-8 h-8 rounded-lg bg-ink-950 text-surface flex items-center justify-center font-heading-md font-medium text-xs">
+              LR
+            </span>
+<span class="font-body-sm font-semibold text-ink-950">LucÃ­a R.</span>
+<span class="material-symbols-outlined text-[18px] text-ink-500">keyboard_arrow_down</span>
+</button>
+</div>
+</div>
+</header>
+<!-- CONTENT SCROLL AREA -->
+<main class="flex-1 overflow-y-auto px-space-xl py-space-lg">
+<div class="max-w-[1160px] mx-auto space-y-6">
+<!-- Header Content & Back Navigation -->
+<div class="flex flex-col gap-1.5">
+<div>
+<a class="inline-flex items-center gap-1.5 font-body-sm text-ink-700 hover:text-ink-950 font-medium transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+<span>Volver a Mis envÃ­os</span>
+</a>
+</div>
+<div class="flex items-baseline justify-between mt-1">
+<h1 class="font-display-md text-display-md font-bold text-ink-950 tracking-tight">Nuevo envÃ­o</h1>
+<span class="font-body-md text-body-md text-ink-500 font-medium">Paso 1 de 3 Â· Origen y destino</span>
+</div>
+</div>
+<!-- STEPPER COMPONENT (Section 6.7 DESIGN.md) -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-md shadow-sm">
+<div class="flex items-center justify-between relative">
+<!-- Step 1: Active -->
+<div class="flex items-center gap-3 z-10 bg-surface pr-4">
+<div class="w-7 h-7 rounded-full bg-signal-600 text-white flex items-center justify-center font-heading-md font-bold text-xs shrink-0 shadow-sm">
+                1
+              </div>
+<div>
+<span class="font-heading-md text-body-sm font-bold text-ink-950 tracking-tight">Origen y destino</span>
+<span class="block font-caption text-[11px] text-signal-600 font-medium">En progreso</span>
+</div>
+</div>
+<!-- Connecting Line 1-2 -->
+<div class="flex-1 h-[2px] bg-sand-300 mx-2"></div>
+<!-- Step 2: Future -->
+<div class="flex items-center gap-3 z-10 bg-surface px-4">
+<div class="w-7 h-7 rounded-full bg-paper border border-sand-300 text-ink-500 flex items-center justify-center font-heading-md font-semibold text-xs shrink-0">
+                2
+              </div>
+<div>
+<span class="font-heading-md text-body-sm font-medium text-ink-500">Paquetes y carga</span>
+<span class="block font-caption text-[11px] text-ink-500">Pendiente</span>
+</div>
+</div>
+<!-- Connecting Line 2-3 -->
+<div class="flex-1 h-[2px] bg-sand-300 mx-2"></div>
+<!-- Step 3: Future -->
+<div class="flex items-center gap-3 z-10 bg-surface pl-4">
+<div class="w-7 h-7 rounded-full bg-paper border border-sand-300 text-ink-500 flex items-center justify-center font-heading-md font-semibold text-xs shrink-0">
+                3
+              </div>
+<div>
+<span class="font-heading-md text-body-sm font-medium text-ink-500">CotizaciÃ³n y pago</span>
+<span class="block font-caption text-[11px] text-ink-500">Pendiente</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2-COLUMN MAIN GRID (~60% / ~40%) -->
+<div class="grid grid-cols-12 gap-gutter items-start pb-12">
+<!-- LEFT COLUMN: FORM CARDS (7 Cols ~ 58%) -->
+<div class="col-span-12 lg:col-span-7 space-y-6">
+<!-- SECTION 1: PUNTO DE RETIRO (ORIGEN) -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm">
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-ink-950"></span>
+<h2 class="font-heading-md text-heading-md text-ink-950 font-bold">Punto de retiro (Origen)</h2>
+</div>
+<button class="font-body-sm font-semibold text-route-600 hover:underline flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[16px]">swap_horiz</span>
+<span>Cambiar origen</span>
+</button>
+</div>
+<!-- Remitente predeterminado Card -->
+<div class="mt-4 p-3.5 bg-paper rounded-lg border border-sand-300 flex items-start justify-between">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="font-heading-md text-body-sm font-bold text-ink-950">LucÃ­a RamÃ­rez</span>
+<span class="bg-mint-100 text-ink-900 border border-mint-300 font-caption text-[11px] font-semibold px-2 py-0.5 rounded-full inline-flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px] text-ink-900">check_circle</span>
+                      Remitente predeterminado
+                    </span>
+</div>
+<p class="font-body-sm text-ink-700 flex items-center gap-1.5">
+<span class="material-symbols-outlined text-ink-500 text-[16px]">location_on</span>
+                    Av. Rivadavia 4321, Piso 2, Dpto B
+                  </p>
+<p class="font-caption text-ink-500 pl-6">
+                    Caballito, Ciudad AutÃ³noma de Buenos Aires (C1405DHG)
+                  </p>
+<p class="font-mono-code text-[12px] text-ink-700 pl-6 pt-0.5">
+                    +54 11 5555-2345 Â· CUIT: 27-34982110-4
+                  </p>
+</div>
+<button class="px-2.5 py-1 text-ink-700 hover:text-ink-950 font-body-sm font-medium border border-sand-300 rounded hover:bg-surface transition-colors text-xs">
+                  Editar
+                </button>
+</div>
+</div>
+<!-- SECTION 2: PUNTO DE ENTREGA (DESTINO) -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-lg shadow-sm space-y-5">
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-signal-600"></span>
+<h2 class="font-heading-md text-heading-md text-ink-950 font-bold">Punto de entrega (Destino)</h2>
+</div>
+<span class="font-caption text-ink-500">Campos obligatorios *</span>
+</div>
+<!-- Input: Destinatario -->
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="destinatario">
+                  Nombre y apellido del destinatario *
+                </label>
+<div class="relative">
+<input class="w-full h-11 px-3 rounded-lg bg-surface border border-sand-300 text-ink-950 font-body-md focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none" id="destinatario" placeholder="Ej: MartÃ­n GÃ³mez" type="text" value="MartÃ­n GÃ³mez"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">person</span>
+</div>
+</div>
+<!-- Input: DirecciÃ³n con Estado de Advertencia / ValidaciÃ³n -->
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="calle-numero">
+                  Calle y nÃºmero *
+                </label>
+<div class="relative">
+<input class="w-full h-11 px-3 rounded-lg bg-surface border border-danger-600 text-ink-950 font-body-md focus:border-danger-600 focus:ring-1 focus:ring-danger-600 focus:outline-none" id="calle-numero" placeholder="Ej: Bv. OroÃ±o 1450" type="text" value="Bv. OroÃ±o"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-danger-600 text-[18px]">error</span>
+</div>
+<!-- Callout de validaciÃ³n requerido en prompt -->
+<div class="mt-2 p-2.5 bg-danger-100/60 rounded-lg border border-danger-600/30 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-danger-600 text-[18px] shrink-0 mt-0.5">warning</span>
+<div>
+<p class="font-body-sm text-[13px] font-semibold text-danger-600 leading-tight">
+                      No encontramos esta direcciÃ³n exacta. IngresÃ¡ el nÃºmero de altura catastral.
+                    </p>
+<p class="font-caption text-[11px] text-ink-700 mt-0.5">
+                      RevisÃ¡ calle, nÃºmero y ciudad para evitar demoras operativas o desvÃ­os de ruta.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Grid: Provincia & Localidad -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="provincia">
+                    Provincia *
+                  </label>
+<select class="w-full h-11 px-3 rounded-lg bg-surface border border-sand-300 text-ink-950 font-body-md focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none" id="provincia">
+<option selected="" value="SF">Santa Fe</option>
+<option value="BA">Buenos Aires</option>
+<option value="CABA">Ciudad AutÃ³noma de Buenos Aires</option>
+<option value="CBA">CÃ³rdoba</option>
+<option value="ER">Entre RÃ­os</option>
+</select>
+</div>
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="localidad">
+                    Ciudad / Localidad *
+                  </label>
+<select class="w-full h-11 px-3 rounded-lg bg-surface border border-sand-300 text-ink-950 font-body-md focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none" id="localidad">
+<option selected="" value="ROS">Rosario</option>
+<option value="SFE">Santa Fe Capital</option>
+<option value="VGG">Villa Gobernador GÃ¡lvez</option>
+<option value="RAF">Rafaela</option>
+<option value="VEN">Venado Tuerto</option>
+</select>
+</div>
+</div>
+<!-- Grid: CÃ³digo Postal & TelÃ©fono -->
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="cp">
+                    CÃ³digo Postal *
+                  </label>
+<div class="relative">
+<input class="w-full h-11 px-3 font-mono-code text-[14px] font-semibold rounded-lg bg-surface border border-sand-300 text-ink-950 focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none uppercase" id="cp" placeholder="S2000" type="text" value="S2000"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">markunread_mailbox</span>
+</div>
+<span class="font-caption text-[11px] text-ink-500 mt-1 block">Formato argentino (CPA o 4 dÃ­gitos)</span>
+</div>
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="telefono">
+                    TelÃ©fono de contacto *
+                  </label>
+<div class="relative">
+<input class="w-full h-11 px-3 font-mono-code text-[13px] rounded-lg bg-surface border border-sand-300 text-ink-950 focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none" id="telefono" placeholder="+54 9 11 ..." type="tel" value="+54 341 512-3849"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-ink-500 text-[18px]">phone</span>
+</div>
+<span class="font-caption text-[11px] text-ink-500 mt-1 block">Para avisos de entrega vÃ­a WhatsApp/SMS</span>
+</div>
+</div>
+<!-- Observaciones / Notas de entrega -->
+<div>
+<label class="block font-body-sm font-medium text-ink-950 mb-1" for="notas">
+                  Notas de entrega / Observaciones operativas
+                </label>
+<textarea class="w-full p-3 rounded-lg bg-surface border border-sand-300 text-ink-950 font-body-sm focus:border-route-600 focus:ring-1 focus:ring-route-600 focus:outline-none resize-none" id="notas" placeholder="Ej: Timbre 4B, horario de recepciÃ³n 9 a 17 hs. Dejar en recepciÃ³n si no responde." rows="3">Timbre 4B, horario de recepciÃ³n 9 a 17 hs. PorterÃ­a disponible.</textarea>
+</div>
+<!-- Action Bar / Buttons (44px Signal CTA) -->
+<div class="pt-4 border-t border-sand-200 flex items-center justify-between">
+<button class="font-body-sm font-semibold text-ink-700 hover:text-ink-950 transition-colors" type="button">
+                  Guardar borrador
+                </button>
+<div class="flex items-center gap-3">
+<a class="px-4 py-2.5 text-ink-700 hover:text-ink-950 font-body-sm font-medium" href="#">
+                    Cancelar
+                  </a>
+<!-- Single Primary Action in signal-600 -->
+<button class="h-[44px] px-6 rounded-lg bg-signal-600 hover:bg-signal-500 text-white font-body-sm font-semibold inline-flex items-center gap-2 shadow-sm transition-all active:scale-[0.98]" type="button">
+<span>Calcular ruta</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- RIGHT COLUMN: MAP PREVIEW & OPERATIONAL METRICS (5 Cols ~ 42%) -->
+<div class="col-span-12 lg:col-span-5 space-y-6">
+<!-- MAP PREVIEW CARD (OpenStreetMap Aesthetic & Route Plotting) -->
+<div class="bg-surface rounded-xl border border-sand-300 overflow-hidden shadow-sm">
+<!-- Map Card Header -->
+<div class="p-3.5 px-space-lg border-b border-sand-200 flex items-center justify-between bg-surface">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-ink-700 text-[18px]">map</span>
+<span class="font-heading-md text-body-sm font-bold text-ink-950">VisualizaciÃ³n de ruta calculada</span>
+</div>
+<span class="font-caption text-[11px] font-mono-code text-ink-500 bg-sand-200/50 px-2 py-0.5 rounded">RN 9 Â· AUTOPISTA</span>
+</div>
+<!-- Styled Map Canvas Simulator -->
+<div class="relative h-[310px] w-full map-grid-bg overflow-hidden border-b border-sand-200 flex items-center justify-center p-4">
+<!-- OpenStreetMap stylized river / coastline mockup (RÃ­o ParanÃ¡ reference) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40" xmlns="http://www.w3.org/2000/svg">
+<!-- ParanÃ¡ River curve representation -->
+<path d="M 320 0 Q 340 120 280 200 T 210 320" fill="none" stroke="#6b8aff" stroke-linecap="round" stroke-width="24"></path>
+<path d="M 320 0 Q 340 120 280 200 T 210 320" fill="none" stroke="#DBEAFE" stroke-linecap="round" stroke-width="12"></path>
+<!-- Geographic coordinates gridlines -->
+<line stroke="#D8D0C0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="480" y1="90" y2="90"></line>
+<line stroke="#D8D0C0" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="480" y1="210" y2="210"></line>
+<line stroke="#D8D0C0" stroke-dasharray="3,3" stroke-width="1" x1="180" x2="180" y1="0" y2="320"></line>
+<line stroke="#D8D0C0" stroke-dasharray="3,3" stroke-width="1" x1="360" x2="360" y1="0" y2="320"></line>
+<!-- Actual Route Line (RN 9 Corredor CABA -> Rosario) -->
+<path d="M 330 250 L 220 180 L 160 120 L 120 70" fill="none" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M 330 250 L 220 180 L 160 120 L 120 70" fill="none" stroke="#1D4ED8" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></path>
+<!-- Animated Pulse Direction Segment in signal orange -->
+<path d="M 220 180 L 160 120" fill="none" stroke="#FF5A1F" stroke-dasharray="8,6" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<!-- Origin Node Marker (CABA) -->
+<div class="absolute bottom-10 right-14 flex flex-col items-center">
+<div class="px-2 py-0.5 rounded bg-ink-950 text-surface font-mono-code text-[10px] font-bold shadow-sm whitespace-nowrap mb-1">
+                    CABA (ORIG)
+                  </div>
+<div class="w-4 h-4 rounded-full bg-ink-950 border-2 border-surface flex items-center justify-center shadow">
+<div class="w-1.5 h-1.5 rounded-full bg-white"></div>
+</div>
+</div>
+<!-- Destination Node Marker (ROS) -->
+<div class="absolute top-10 left-16 flex flex-col items-center">
+<div class="px-2 py-0.5 rounded bg-signal-600 text-white font-mono-code text-[10px] font-bold shadow-sm whitespace-nowrap mb-1 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                    ROS (DEST)
+                  </div>
+<div class="w-5 h-5 rounded-full bg-signal-600 border-2 border-surface flex items-center justify-center shadow">
+<span class="material-symbols-outlined text-white text-[12px]">location_on</span>
+</div>
+</div>
+<!-- Logistics Transit Truck Marker along RN 9 -->
+<div class="absolute top-28 left-36 bg-surface p-1 rounded border border-sand-300 shadow flex items-center gap-1.5">
+<span class="material-symbols-outlined text-route-600 text-[14px]">local_shipping</span>
+<span class="font-mono-code text-[9px] font-semibold text-ink-900">RN 9 Â· KM 184</span>
+</div>
+<!-- OpenStreetMap Map Scale Attribution Badge -->
+<div class="absolute bottom-2 left-2 bg-surface/90 backdrop-blur-xs px-2 py-0.5 rounded border border-sand-300 text-[10px] text-ink-500 font-mono-code">
+                  Â© OpenStreetMap Â· 1:250.000
+                </div>
+<!-- Map Tools Controller Cluster -->
+<div class="absolute top-3 right-3 flex flex-col gap-1 bg-surface border border-sand-300 rounded shadow-xs">
+<button class="w-7 h-7 flex items-center justify-center text-ink-700 hover:bg-sand-200 border-b border-sand-200 text-sm font-bold">+</button>
+<button class="w-7 h-7 flex items-center justify-center text-ink-700 hover:bg-sand-200 text-sm font-bold">âˆ’</button>
+</div>
+</div>
+<!-- Route Metrics Bar Inside Card -->
+<div class="p-space-lg bg-surface">
+<div class="grid grid-cols-2 gap-4 pb-3 border-b border-sand-200">
+<div>
+<span class="font-caption text-ink-500 uppercase tracking-wider text-[11px] font-semibold block mb-0.5">Distancia terrestre</span>
+<span class="font-mono-code text-heading-md font-bold text-ink-950">401 km</span>
+<span class="font-caption text-ink-500 text-[11px] block">Por Autopista Bs. As. - Rosario</span>
+</div>
+<div>
+<span class="font-caption text-ink-500 uppercase tracking-wider text-[11px] font-semibold block mb-0.5">Tiempo estimado de trÃ¡nsito</span>
+<span class="font-mono-code text-heading-md font-bold text-ink-950">4 h 35 min</span>
+<span class="font-caption text-mint-300 bg-ink-950 px-1.5 py-0.2 rounded font-mono-code text-[10px] inline-block font-semibold">FLUJO NORMAL</span>
+</div>
+</div>
+<!-- ETA Badge Alert -->
+<div class="mt-3.5 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-600 text-[20px]">schedule</span>
+<div>
+<span class="font-body-sm font-bold text-ink-950">Llegada estimada</span>
+<span class="block font-caption text-ink-500">DÃ­a hÃ¡bil siguiente (10:00 - 14:00 hs)</span>
+</div>
+</div>
+<span class="bg-route-100 text-route-600 font-mono-code text-[11px] font-semibold px-2 py-1 rounded">
+                    HUB CENTRO DIRECTO
+                  </span>
+</div>
+</div>
+</div>
+<!-- HELPER BOX / TIP CARD (OpenStreetMap & Logistical Quality) -->
+<div class="bg-surface rounded-xl border border-sand-300 p-space-md shadow-sm flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-paper border border-sand-300 flex items-center justify-center text-ink-700 shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-[18px]">explore</span>
+</div>
+<div class="space-y-1">
+<p class="font-body-sm font-semibold text-ink-950">
+                  CÃ¡lculo de trayecto optimizado
+                </p>
+<p class="font-caption text-[12px] text-ink-700 leading-relaxed">
+                  Usamos datos de <span class="font-medium text-ink-950">OpenStreetMap</span> y el monitoreo de trÃ¡fico vial de Argentina para calcular la ruta mÃ¡s eficiente, garantizar trazabilidad satelital y evitar demoras en centros de distribuciÃ³n intermedios.
+                </p>
+<div class="pt-1 flex items-center gap-3 text-[11px] text-ink-500 font-caption">
+<span>âœ“ GeocodificaciÃ³n precisa</span>
+<span>âœ“ Nodos de transferencia directa</span>
+</div>
+</div>
+</div>
+<!-- SECURITY & INTEGRITY CHIP -->
+<div class="p-3 bg-paper rounded-lg border border-sand-200 flex items-center justify-between text-xs text-ink-500 font-caption">
+<span class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-mint-300 bg-ink-950 p-0.5 rounded-full text-[12px]">verified</span>
+                Seguro de carga certificado hasta $ 500.000 ARS
+              </span>
+<a class="text-route-600 hover:underline font-medium" href="#">Ver pÃ³liza</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

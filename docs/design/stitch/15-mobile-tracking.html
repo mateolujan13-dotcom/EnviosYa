@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnvíoYa · Seguimiento Operativo en Vivo</title>
+<!-- Typography: Archivo, Inter, IBM Plex Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "ink-900": "#0B1220",
+            "paper": "#F6F2E9",
+            "on-surface": "#1c1c16",
+            "ink-700": "#1E2A3B",
+            "primary": "#ae3200",
+            "background": "#fdf9f0",
+            "on-tertiary-container": "#002174",
+            "on-primary-fixed": "#3a0b00",
+            "surface-dim": "#dddad1",
+            "warning-500": "#F59E0B",
+            "sand-300": "#D8D0C0",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "route-600": "#1D4ED8",
+            "surface-container-low": "#f7f3ea",
+            "danger-600": "#B42318",
+            "on-secondary-fixed-variant": "#404757",
+            "on-primary-container": "#541400",
+            "surface-tint": "#ae3200",
+            "on-primary": "#ffffff",
+            "on-error": "#ffffff",
+            "tertiary": "#2151da",
+            "on-secondary-container": "#5c6274",
+            "on-secondary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-background": "#1c1c16",
+            "sand-200": "#E7DFD1",
+            "signal-600": "#D93A00",
+            "ink-950": "#08111F",
+            "on-secondary-fixed": "#151b2a",
+            "error-container": "#ffdad6",
+            "inverse-on-surface": "#f4f0e7",
+            "secondary-fixed": "#dce2f6",
+            "outline": "#8f7067",
+            "on-surface-variant": "#5b4038",
+            "outline-variant": "#e4beb3",
+            "primary-fixed-dim": "#ffb59e",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "on-tertiary-fixed": "#001551",
+            "surface-container-highest": "#e6e2d9",
+            "secondary": "#585e6f",
+            "tertiary-container": "#6b8aff",
+            "danger-100": "#FEE4E2",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#dce1ff",
+            "surface-container-high": "#ece8df",
+            "mint-300": "#B9F27C",
+            "inverse-surface": "#31302b",
+            "mint-100": "#ECFCCB",
+            "inverse-primary": "#ffb59e",
+            "on-primary-fixed-variant": "#852400",
+            "surface-variant": "#e6e2d9",
+            "primary-fixed": "#ffdbd0",
+            "route-100": "#DBEAFE",
+            "ink-500": "#4B5563",
+            "surface-container": "#f1eee5",
+            "signal-500": "#FF5A1F",
+            "surface-bright": "#fdf9f0",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#ff5a1f",
+            "secondary-container": "#d9dff4",
+            "secondary-fixed-dim": "#c0c6da",
+            "surface": "#FFFFFF",
+            "on-tertiary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "space-lg": "24px",
+            "space-xl": "32px",
+            "space-xs": "4px",
+            "space-md": "16px",
+            "gutter": "24px",
+            "margin": "40px",
+            "space-2xl": "64px"
+          },
+          "fontFamily": {
+            "display-md": ["Archivo"],
+            "display-lg": ["Archivo"],
+            "heading-lg": ["Archivo"],
+            "body-md": ["Inter"],
+            "mono-code": ["IBM Plex Mono"],
+            "body-lg": ["Inter"],
+            "display-xl": ["Archivo"],
+            "heading-md": ["Archivo"],
+            "caption": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "display-md": ["32px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "display-lg": ["40px", { "lineHeight": "44px", "fontWeight": "700" }],
+            "heading-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "mono-code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "60px", "fontWeight": "700" }],
+            "heading-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    /* Radar pulse for live marker */
+    @keyframes radarPing {
+      0% { transform: scale(1); opacity: 0.8; }
+      100% { transform: scale(2.4); opacity: 0; }
+    }
+    .pulse-radar {
+      animation: radarPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-paper text-ink-900 font-body-md antialiased min-h-screen flex justify-center selection:bg-primary-fixed selection:text-ink-900">
+<!-- Mobile Frame Anchor (390px Target) -->
+<div class="w-full max-w-[390px] min-h-screen bg-paper flex flex-col relative pb-32">
+<!-- 1. Top Bar (Shared Component: TopAppBar docked mobile with live node status) -->
+<header class="sticky top-0 z-40 bg-paper border-b border-sand-200 px-space-md py-space-sm flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<button aria-label="Menu principal" class="w-9 h-9 flex items-center justify-center rounded-lg text-ink-700 hover:bg-sand-200 transition-colors" type="button">
+<span class="material-symbols-outlined text-[22px]">menu</span>
+</button>
+<div class="flex items-center gap-1.5">
+<div class="w-6 h-6 rounded bg-signal-600 text-white flex items-center justify-center font-heading-md text-body-sm font-bold tracking-tighter">
+            E
+          </div>
+<span class="text-heading-lg font-heading-lg font-bold text-ink-900 tracking-tight">EnvíoYa</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-mint-100 border border-sand-300 text-ink-900 font-body-sm text-[11px] font-medium">
+<span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+<span>Red normal</span>
+</div>
+<button aria-label="Búsqueda" class="w-8 h-8 flex items-center justify-center rounded-lg text-ink-700 hover:bg-sand-200 transition-colors" type="button">
+<span class="material-symbols-outlined text-[20px]">search</span>
+</button>
+</div>
+</header>
+<!-- Main Content Stream -->
+<main class="flex-1 px-space-md pt-space-md space-y-space-md">
+<!-- 2. Tracking Search Input Section -->
+<section aria-labelledby="tracking-input-heading" class="space-y-1.5">
+<div class="flex items-center justify-between text-ink-500 font-body-sm text-[12px]">
+<span class="font-medium text-ink-700" id="tracking-input-heading">Código de guía nacional</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-mono-code text-ink-500">
+<span class="w-1.5 h-1.5 rounded-full bg-signal-600"></span>
+            Actualizado hace 4 min
+          </span>
+</div>
+<div class="relative flex items-center bg-surface border border-sand-300 rounded-xl p-1 focus-within:border-route-600 focus-within:ring-2 focus-within:ring-route-100 transition-all shadow-sm">
+<div class="pl-2.5 pr-1.5 text-ink-500 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+</div>
+<input aria-label="Número de seguimiento" class="w-full bg-transparent border-0 py-1.5 px-1 font-mono-code text-[15px] font-semibold tracking-wider text-ink-950 focus:ring-0 uppercase placeholder-ink-500" readonly="" type="text" value="EY-4F8A1C"/>
+<button class="p-2 text-ink-700 hover:text-signal-600 hover:bg-paper rounded-lg transition-colors flex items-center justify-center" title="Escanear comprobante" type="button">
+<span class="material-symbols-outlined text-[20px]">qr_code_scanner</span>
+</button>
+<button class="bg-ink-900 hover:bg-ink-700 text-paper px-3 py-2 rounded-lg font-heading-md text-caption font-semibold flex items-center gap-1 active:scale-95 transition-all" type="button">
+<span>Buscar</span>
+</button>
+</div>
+</section>
+<!-- 3. Status Header Card -->
+<section class="bg-surface border border-sand-300 rounded-xl p-space-md space-y-3.5 shadow-sm">
+<!-- Status Pill & Actions -->
+<div class="flex items-center justify-between">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-route-100 border border-secondary-container text-route-600 font-body-sm text-[12px] font-semibold">
+<span class="w-2 h-2 rounded-full bg-route-600 animate-ping"></span>
+<span>En tránsito</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="inline-flex items-center gap-1 px-2.5 py-1 text-caption font-medium rounded-lg text-ink-700 hover:bg-paper border border-sand-200 transition-colors" onclick="navigator.clipboard?.writeText('https://envioya.com.ar/rastreo/EY-4F8A1C'); this.innerText='¡Copiado!'" type="button">
+<span class="material-symbols-outlined text-[16px]">share</span>
+<span>Compartir</span>
+</button>
+</div>
+</div>
+<!-- Headline & ETA -->
+<div>
+<h1 class="font-display-md text-heading-lg text-ink-950 leading-tight">Tu envío está en camino.</h1>
+<div class="mt-2 flex items-center gap-2 text-ink-900 bg-sand-200/50 p-2.5 rounded-lg border border-sand-200">
+<span class="material-symbols-outlined text-signal-600 text-[20px]">schedule</span>
+<div class="flex-1">
+<div class="text-[11px] uppercase tracking-wider font-semibold text-ink-500 font-caption">Entrega estimada</div>
+<div class="font-heading-md text-body-md font-bold text-ink-950">Llega mañana antes de las 18:00 hs</div>
+</div>
+</div>
+</div>
+<!-- Corridor & Metadata Tags -->
+<div class="pt-2 border-t border-sand-200 space-y-2">
+<div class="flex items-center justify-between text-body-sm font-medium text-ink-900">
+<span class="text-caption text-ink-500">Corredor logístico:</span>
+<span class="font-mono-code font-semibold">Córdoba → Rosario</span>
+</div>
+<div class="text-[12px] text-ink-500 flex items-center justify-between">
+<span>401 km totales · RN 9 Troncal</span>
+<span class="text-signal-600 font-medium">Prioridad Estándar</span>
+</div>
+<!-- Feature Chips -->
+<div class="flex flex-wrap gap-1.5 pt-1">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-ink-700 text-caption font-mono-code border border-sand-200">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+              2 paquetes (7.3 kg)
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-mint-100 text-ink-900 text-caption font-medium border border-mint-300">
+<span class="material-symbols-outlined text-[14px] text-ink-900">verified_user</span>
+              Seguro activo
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-ink-700 text-caption font-medium border border-sand-200">
+<span class="material-symbols-outlined text-[14px]">sensors</span>
+              Telemetría 24/7
+            </span>
+</div>
+</div>
+</section>
+<!-- 4. Map Schematic Card -->
+<section aria-label="Mapa de ruta interactivo" class="bg-surface border border-sand-300 rounded-xl overflow-hidden shadow-sm">
+<!-- Map header bar -->
+<div class="bg-surface-container-high px-space-md py-2 border-b border-sand-200 flex items-center justify-between">
+<div class="flex items-center gap-1.5 text-ink-900">
+<span class="material-symbols-outlined text-signal-600 text-[18px]">satellite_alt</span>
+<span class="font-heading-md text-caption font-bold tracking-tight">Telemetría RN 9 en Vivo</span>
+</div>
+<span class="text-caption font-mono-code text-route-600 bg-route-100 px-2 py-0.5 rounded font-semibold">
+            Tránsito fluido
+          </span>
+</div>
+<!-- Vector Transit Route Visualizer -->
+<div class="p-space-md bg-[#FAF7F0] relative">
+<!-- Corridor Visual Canvas -->
+<div class="relative py-4">
+<!-- Road Backbone Line -->
+<div class="h-2 w-full bg-sand-300 rounded-full relative overflow-hidden">
+<!-- Active progress bar (62% traveled) -->
+<div class="h-full bg-signal-600 rounded-full w-[61%]"></div>
+</div>
+<!-- Route Nodes -->
+<div class="flex justify-between items-start mt-3">
+<!-- Origin Pin (Córdoba Hub Oeste) -->
+<div class="text-left w-1/3">
+<div class="inline-flex items-center gap-1">
+<span class="w-3 h-3 rounded-full bg-ink-900 ring-2 ring-surface"></span>
+<span class="font-heading-md text-body-sm font-bold text-ink-900">CBA</span>
+</div>
+<p class="text-[11px] text-ink-500 font-caption leading-tight mt-0.5">Hub Oeste Av. Colón</p>
+<p class="font-mono-code text-[10px] text-ink-500">Salida 10/11 21:30</p>
+</div>
+<!-- Live Mid-marker Pin (Leones Km 245) -->
+<div class="text-center w-1/3 -mt-6 flex flex-col items-center">
+<div class="relative flex items-center justify-center">
+<span class="absolute w-7 h-7 rounded-full bg-signal-500 opacity-75 pulse-radar"></span>
+<span class="relative w-4 h-4 rounded-full bg-signal-600 border-2 border-white flex items-center justify-center shadow-md">
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</span>
+</div>
+<div class="mt-2 bg-ink-900 text-paper text-[10px] font-mono-code px-2 py-0.5 rounded shadow whitespace-nowrap">
+                  Km 245 · 78 km/h
+                </div>
+<p class="text-[10px] text-signal-600 font-semibold font-caption mt-0.5">Leones (Cba)</p>
+</div>
+<!-- Destination Pin (Rosario Hub Circunvalación) -->
+<div class="text-right w-1/3">
+<div class="inline-flex items-center justify-end gap-1">
+<span class="font-heading-md text-body-sm font-bold text-ink-900">ROS</span>
+<span class="w-3 h-3 rounded-full border-2 border-ink-900 bg-surface"></span>
+</div>
+<p class="text-[11px] text-ink-500 font-caption leading-tight mt-0.5">Centro Distribución</p>
+<p class="font-mono-code text-[10px] text-ink-500">ETA 11/11 14:00</p>
+</div>
+</div>
+</div>
+<!-- Live telemetry mini-card overlay -->
+<div class="mt-3 pt-3 border-t border-sand-300/80 flex items-center justify-between text-caption font-mono-code">
+<div class="flex items-center gap-1.5 text-ink-700">
+<span class="material-symbols-outlined text-[16px] text-ink-500">navigation</span>
+<span>Restan <strong class="text-ink-950 font-bold">156 km</strong></span>
+</div>
+<div class="text-ink-700 font-semibold">
+              Tiempo estimado: <span class="text-signal-600 font-bold">~2h 15m</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Vertical Timeline (5 operational events) -->
+<section class="bg-surface border border-sand-300 rounded-xl p-space-md shadow-sm space-y-4">
+<div class="flex items-center justify-between border-b border-sand-200 pb-2.5">
+<h2 class="font-heading-md text-body-md font-bold text-ink-900">Trazabilidad Operativa</h2>
+<span class="font-mono-code text-[11px] text-ink-500">5 hitos registrados</span>
+</div>
+<div class="relative pl-6 space-y-5 before:absolute before:left-[11px] before:top-2 before:bottom-3 before:w-0.5 before:bg-sand-300">
+<!-- Event 1: Despacho completado -->
+<div class="relative group">
+<span class="absolute -left-[23px] top-1 w-5 h-5 rounded-full bg-ink-900 text-white flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[13px] font-bold">check</span>
+</span>
+<div class="space-y-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-heading-md text-body-sm font-bold text-ink-900">Despachado desde Sucursal Córdoba</h3>
+<span class="font-mono-code text-caption text-ink-500">10/11 · 18:00 hs</span>
+</div>
+<p class="text-caption text-ink-500">Hub Centro Av. Colón 450 · Lote <span class="font-mono-code text-ink-700 font-medium">#COR-882</span> precintado.</p>
+</div>
+</div>
+<!-- Event 2: Salida en unidad pesada -->
+<div class="relative group">
+<span class="absolute -left-[23px] top-1 w-5 h-5 rounded-full bg-ink-900 text-white flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[13px] font-bold">check</span>
+</span>
+<div class="space-y-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-heading-md text-body-sm font-bold text-ink-900">Salida hacia Centro de Transferencia</h3>
+<span class="font-mono-code text-caption text-ink-500">10/11 · 21:30 hs</span>
+</div>
+<p class="text-caption text-ink-500">Unidad Scania R450 troncal <span class="font-mono-code font-semibold text-ink-700">[AF-902-AA]</span>.</p>
+</div>
+</div>
+<!-- Event 3: ACTUAL / EN CURSO (Signal Orange Hero Callout) -->
+<div class="relative">
+<span class="absolute -left-[25px] top-1 w-6 h-6 rounded-full bg-signal-600 text-white flex items-center justify-center ring-4 ring-surface shadow">
+<span class="material-symbols-outlined text-[15px]">local_shipping</span>
+</span>
+<div class="bg-paper border-2 border-signal-600/40 rounded-xl p-3 space-y-1.5 shadow-sm">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold font-mono-code text-signal-600 uppercase tracking-widest bg-primary-fixed px-1.5 py-0.5 rounded">Hito Actual</span>
+<span class="font-mono-code text-caption font-semibold text-signal-600">11/11 · 06:15 hs</span>
+</div>
+<h3 class="font-heading-md text-body-md font-bold text-ink-950">En tránsito por Autopista RN 9</h3>
+<p class="text-caption text-ink-700 leading-normal">
+                Posición actual en <strong>Km 245 (Leones)</strong>. Velocidad crucero 78 km/h. Condiciones climáticas despejadas, temp 18°C.
+              </p>
+<div class="pt-1.5 flex items-center gap-2 text-[11px] font-mono-code text-ink-500 border-t border-sand-300">
+<span class="inline-flex items-center gap-1 text-[#16A34A] font-semibold">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                  GPS Nominal
+                </span>
+<span>·</span>
+<span>Satélite ARSAT-2</span>
+</div>
+</div>
+</div>
+<!-- Event 4: Futuro - Clasificación Cross-docking -->
+<div class="relative opacity-70">
+<span class="absolute -left-[23px] top-1 w-5 h-5 rounded-full bg-surface border-2 border-sand-300 text-ink-500 flex items-center justify-center ring-4 ring-surface">
+<span class="w-2 h-2 rounded-full bg-sand-300"></span>
+</span>
+<div class="space-y-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-heading-md text-body-sm font-semibold text-ink-700">Llegada a Hub Rosario Circunvalación</h3>
+<span class="font-mono-code text-caption text-ink-500">Est. 11/11 · 14:00</span>
+</div>
+<p class="text-caption text-ink-500">Descarga y clasificación automática en cinta cross-docking sur.</p>
+</div>
+</div>
+<!-- Event 5: Futuro - Última Milla & Entrega -->
+<div class="relative opacity-70">
+<span class="absolute -left-[23px] top-1 w-5 h-5 rounded-full bg-surface border-2 border-sand-300 text-ink-500 flex items-center justify-center ring-4 ring-surface">
+<span class="material-symbols-outlined text-[12px] text-sand-300">home</span>
+</span>
+<div class="space-y-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-heading-md text-body-sm font-semibold text-ink-700">En reparto y entrega final</h3>
+<span class="font-mono-code text-caption text-ink-500">Est. 12/11 · &lt;18:00</span>
+</div>
+<p class="text-caption text-ink-500">Destino: Bv. Oroño 1230. Entrega bajo validación de firma digital y DNI.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 6. Details & Notification Widget -->
+<section class="space-y-space-md">
+<!-- Operador Card -->
+<div class="bg-surface border border-sand-300 rounded-xl p-space-md flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-sand-200 border border-sand-300 flex items-center justify-center text-ink-700 font-bold font-mono-code">
+              CD
+            </div>
+<div>
+<div class="text-caption text-ink-500 uppercase tracking-wider font-semibold">Chofer a cargo</div>
+<div class="font-heading-md text-body-sm font-bold text-ink-900">Carlos Díaz</div>
+<div class="text-[11px] font-caption text-ink-500">Licencia Nacional Nivel III · Troncales</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-ink-500">badge</span>
+</div>
+<!-- WhatsApp Alert Subscription Card -->
+<div class="bg-surface border border-sand-300 rounded-xl p-space-md space-y-3 shadow-sm">
+<div class="flex items-start gap-2.5">
+<span class="w-8 h-8 rounded-lg bg-[#25D366]/10 text-[#128C7E] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">chat</span>
+</span>
+<div>
+<h4 class="font-heading-md text-body-sm font-bold text-ink-900">Recibí alertas automáticas en tu celular</h4>
+<p class="text-caption text-ink-500 leading-normal mt-0.5">Te avisamos por WhatsApp en el momento que la camioneta salga hacia tu domicilio.</p>
+</div>
+</div>
+<div class="flex gap-2">
+<div class="relative flex-1">
+<span class="absolute left-2.5 top-2.5 text-caption font-mono-code text-ink-500">+54 9</span>
+<input class="w-full bg-paper border border-sand-300 rounded-lg pl-14 pr-2 py-2 text-body-sm font-mono-code text-ink-900 placeholder:text-ink-500 focus:outline-none focus:border-route-600 focus:ring-1 focus:ring-route-600" placeholder="341 123-4567" type="tel"/>
+</div>
+<button class="px-4 py-2 bg-ink-900 hover:bg-ink-700 text-paper font-heading-md text-caption font-semibold rounded-lg shrink-0 transition-colors" type="button">
+              Suscribirme
+            </button>
+</div>
+</div>
+</section>
+<!-- Security / Guarantee Notice -->
+<div class="text-center px-4 py-2 text-[11px] text-ink-500 font-caption space-y-1">
+<div class="flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-ink-500">lock</span>
+<span>Transacción y seguimiento protegidos por Encriptación TLS 1.3</span>
+</div>
+<p>© 2024 EnvíoYa Logística S.A. Todos los derechos reservados.</p>
+</div>
+</main>
+<!-- 7. Bottom Sticky Bar (Navigation and Critical Actions) -->
+<div class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[390px] z-50 bg-paper/95 backdrop-blur-md border-t border-sand-300 px-space-md py-3 shadow-[0_-4px_12px_rgba(11,18,32,0.05)]">
+<div class="flex flex-col gap-2">
+<!-- Primary Action: Iniciar sesión -->
+<button class="w-full h-[44px] bg-signal-600 hover:bg-primary active:bg-signal-600 text-white font-heading-md text-body-sm font-bold rounded-lg flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">lock_open</span>
+<span>Iniciar sesión para gestionar entrega</span>
+</button>
+<!-- Secondary Action: Consultar otra guía -->
+<button class="w-full h-[36px] bg-transparent hover:bg-sand-200 text-ink-700 font-heading-md text-caption font-semibold rounded-lg flex items-center justify-center gap-1.5 transition-colors" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" type="button">
+<span class="material-symbols-outlined text-[16px]">search</span>
+<span>Buscar otro envío</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

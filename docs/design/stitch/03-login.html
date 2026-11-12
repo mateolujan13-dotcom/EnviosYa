@@ -1,0 +1,424 @@
+﻿<!DOCTYPE html>
+
+<html class="h-full" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>IngresÃ¡ a tu cuenta | EnvÃ­oYa</title>
+<!-- Google Fonts: Archivo, Inter, IBM Plex Mono -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Forms and Container Queries -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "ink-500": "#4B5563",
+            "on-primary": "#ffffff",
+            "surface-tint": "#ae3200",
+            "on-primary-fixed": "#3a0b00",
+            "on-error-container": "#93000a",
+            "on-background": "#1c1c16",
+            "primary-fixed": "#ffdbd0",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "surface-dim": "#dddad1",
+            "primary-fixed-dim": "#ffb59e",
+            "on-primary-container": "#541400",
+            "inverse-primary": "#ffb59e",
+            "on-tertiary": "#ffffff",
+            "outline-variant": "#e4beb3",
+            "signal-500": "#FF5A1F",
+            "on-surface": "#1c1c16",
+            "inverse-surface": "#31302b",
+            "on-secondary-fixed-variant": "#404757",
+            "surface-variant": "#e6e2d9",
+            "on-tertiary-fixed": "#001551",
+            "tertiary": "#2151da",
+            "secondary": "#585e6f",
+            "sand-300": "#D8D0C0",
+            "primary-container": "#ff5a1f",
+            "ink-700": "#1E2A3B",
+            "primary": "#ae3200",
+            "secondary-fixed": "#dce2f6",
+            "ink-950": "#08111F",
+            "secondary-container": "#d9dff4",
+            "on-secondary-fixed": "#151b2a",
+            "on-secondary": "#ffffff",
+            "surface-container": "#f1eee5",
+            "sand-200": "#E7DFD1",
+            "surface-bright": "#fdf9f0",
+            "surface-container-highest": "#e6e2d9",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary-container": "#5c6274",
+            "mint-300": "#B9F27C",
+            "inverse-on-surface": "#f4f0e7",
+            "signal-600": "#D93A00",
+            "secondary-fixed-dim": "#c0c6da",
+            "on-surface-variant": "#5b4038",
+            "warning-500": "#F59E0B",
+            "paper": "#F6F2E9",
+            "tertiary-container": "#6b8aff",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "surface-container-high": "#ece8df",
+            "ink-900": "#0B1220",
+            "surface": "#FFFFFF",
+            "route-600": "#1D4ED8",
+            "error-container": "#ffdad6",
+            "route-100": "#DBEAFE",
+            "danger-600": "#B42318",
+            "outline": "#8f7067",
+            "mint-100": "#ECFCCB",
+            "background": "#fdf9f0",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#dce1ff",
+            "surface-container-low": "#f7f3ea",
+            "on-primary-fixed-variant": "#852400",
+            "danger-100": "#FEE4E2",
+            "on-error": "#ffffff",
+            "on-tertiary-container": "#002174"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-xs": "4px",
+            "margin": "40px",
+            "space-xl": "32px",
+            "space-2xl": "64px",
+            "space-sm": "8px",
+            "gutter": "24px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "mono-code": ["IBM Plex Mono", "monospace"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "display-xl": ["Archivo", "sans-serif"],
+            "heading-md": ["Archivo", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "display-md": ["Archivo", "sans-serif"],
+            "heading-lg": ["Archivo", "sans-serif"],
+            "display-lg": ["Archivo", "sans-serif"],
+            "caption": ["Inter", "sans-serif"]
+          },
+          "fontSize": {
+            "mono-code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "60px", "fontWeight": "700" }],
+            "heading-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "display-md": ["32px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "heading-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }],
+            "display-lg": ["40px", { "lineHeight": "44px", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    
+    /* Subtle grid pattern background for the operational right panel */
+    .bg-grid-transit {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(29, 78, 216, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(29, 78, 216, 0.08) 1px, transparent 1px);
+    }
+  </style>
+</head>
+<body class="bg-paper text-ink-950 font-body-md antialiased min-h-screen selection:bg-signal-500 selection:text-white">
+<!-- Desktop Split Screen Layout (45% Left / 55% Right at 1440x900) -->
+<main class="min-h-screen w-full flex flex-col md:flex-row">
+<!-- LEFT PANEL (45% Width): Auth Canvas -->
+<section class="w-full md:w-[45%] bg-paper min-h-screen px-8 sm:px-12 lg:px-16 py-10 lg:py-12 flex flex-col justify-between border-r border-sand-200 z-10">
+<!-- Top: Brand Wordmark -->
+<header class="w-full flex items-center justify-between">
+<a class="inline-flex items-center gap-2 group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-route-600 rounded" href="#">
+<div class="w-8 h-8 rounded-lg bg-ink-950 flex items-center justify-center text-white relative">
+<span class="material-symbols-outlined text-signal-500 text-lg" data-icon="local_shipping">local_shipping</span>
+<span class="absolute -top-1 -right-1 w-2.5 h-2.5 bg-signal-600 rounded-full border-2 border-paper"></span>
+</div>
+<span class="font-display-md text-heading-lg text-ink-950 font-bold tracking-tight">
+            EnvÃ­o<span class="text-signal-600">Ya</span>
+</span>
+</a>
+<div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-sand-200">
+<span class="w-2 h-2 rounded-full bg-mint-300"></span>
+<span class="font-caption text-caption text-ink-700 font-medium">Sistemas Operativos 100%</span>
+</div>
+</header>
+<!-- Center: Login Form Container (max-w-md w-full mx-auto my-auto) -->
+<div class="w-full max-w-md mx-auto my-auto py-8">
+<!-- Header Text -->
+<div class="mb-6">
+<h1 class="font-display-md text-display-md text-ink-900 tracking-tight mb-2">
+            IngresÃ¡ a tu cuenta
+          </h1>
+<p class="font-body-md text-body-md text-ink-500">
+            GestionÃ¡ tus envÃ­os y seguÃ­ cada paquete.
+          </p>
+</div>
+<!-- Inline Error Banner / Alert Box -->
+<div class="mb-6 p-4 rounded-lg bg-danger-100 border border-danger-600 flex items-start gap-3 text-danger-600" role="alert">
+<span class="material-symbols-outlined text-danger-600 mt-0.5 shrink-0" data-icon="error" data-weight="fill" style="font-variation-settings: 'FILL' 1;">error</span>
+<div class="flex-1">
+<p class="font-body-sm text-body-sm font-semibold text-danger-600 leading-snug">
+              Email o contraseÃ±a incorrectos.
+            </p>
+<p class="font-caption text-caption text-danger-600 opacity-90 mt-0.5">
+              Por favor verificÃ¡ tus credenciales o restablecÃ© tu clave de acceso.
+            </p>
+</div>
+</div>
+<!-- Authentication Form -->
+<form class="space-y-5" onsubmit="event.preventDefault();">
+<!-- Field: Email -->
+<div class="space-y-1.5">
+<label class="block font-body-sm text-body-sm font-medium text-ink-700" for="email">
+              Correo electrÃ³nico
+            </label>
+<div class="relative">
+<input class="w-full min-h-[44px] px-3.5 py-2.5 bg-surface text-ink-950 font-body-md text-body-md border border-sand-300 rounded-lg placeholder-ink-500 focus:outline-none focus:border-route-600 focus:ring-2 focus:ring-route-600 transition-colors" id="email" name="email" placeholder="tu@email.com" required="" type="email" value="usuario@ejemplo.com"/>
+<div class="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-ink-500">
+<span class="material-symbols-outlined text-xl" data-icon="mail">mail</span>
+</div>
+</div>
+</div>
+<!-- Field: Password (with requested red danger-600 border and toggle) -->
+<div class="space-y-1.5">
+<label class="block font-body-sm text-body-sm font-medium text-ink-700" for="password">
+              ContraseÃ±a
+            </label>
+<div class="relative">
+<input aria-describedby="password-error" aria-invalid="true" class="w-full min-h-[44px] px-3.5 py-2.5 pr-11 bg-surface text-ink-950 font-body-md text-body-md border-2 border-danger-600 rounded-lg placeholder-ink-500 focus:outline-none focus:ring-2 focus:ring-danger-600 transition-colors" id="password" name="password" placeholder="IngresÃ¡ tu contraseÃ±a" required="" type="password" value="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"/>
+<button aria-label="Mostrar u ocultar contraseÃ±a" class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-ink-500 hover:text-ink-700 focus:outline-none focus:text-route-600 min-h-[44px] px-2" id="togglePassword" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="visibility" id="togglePasswordIcon">visibility</span>
+</button>
+</div>
+<p class="font-caption text-caption text-danger-600 font-medium flex items-center gap-1 mt-1" id="password-error">
+<span class="material-symbols-outlined text-sm" data-icon="priority_high">priority_high</span>
+              ContraseÃ±a no vÃ¡lida para este usuario.
+            </p>
+</div>
+<!-- Checkbox + Forgot Password Row -->
+<div class="flex items-center justify-between pt-1">
+<label class="flex items-center gap-2 cursor-pointer select-none">
+<input class="w-4 h-4 rounded text-signal-600 border-sand-300 focus:ring-signal-600 focus:ring-offset-0 focus:ring-2 cursor-pointer" id="remember" name="remember" type="checkbox"/>
+<span class="font-body-sm text-body-sm text-ink-700 font-medium">Recordarme</span>
+</label>
+<a class="font-body-sm text-body-sm text-route-600 font-medium hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-route-600 rounded" href="#">
+              OlvidÃ© mi contraseÃ±a
+            </a>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full min-h-[44px] py-3 px-5 bg-signal-600 hover:bg-signal-500 active:scale-[0.99] text-white font-body-md text-body-md font-semibold rounded-lg flex items-center justify-center gap-2 focus:outline-none focus:ring-4 focus:ring-signal-500/30 transition-all cursor-pointer shadow-sm" type="submit">
+<span>Ingresar</span>
+<span class="material-symbols-outlined text-xl" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<!-- Divider -->
+<div class="relative py-2 flex items-center">
+<div class="flex-grow border-t border-sand-300"></div>
+<span class="flex-shrink mx-4 font-caption text-caption text-ink-500 uppercase tracking-wider font-semibold">o</span>
+<div class="flex-grow border-t border-sand-300"></div>
+</div>
+<!-- Secondary Link Action -->
+<div class="text-center pt-1">
+<p class="font-body-sm text-body-sm text-ink-700">
+              Â¿No tenÃ©s una cuenta? 
+              <a class="text-signal-600 font-semibold hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-route-600 rounded ml-1" href="#">
+                Crear cuenta
+              </a>
+</p>
+</div>
+</form>
+<!-- Tracking Quick Check Feature Box -->
+<div class="mt-8 p-3.5 bg-surface rounded-lg border border-sand-200 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-lg" data-icon="search">search</span>
+</div>
+<div>
+<p class="font-body-sm text-body-sm font-semibold text-ink-950">Â¿SÃ³lo necesitÃ¡s rastrear?</p>
+<p class="font-caption text-caption text-ink-500">ConsultÃ¡ sin necesidad de iniciar sesiÃ³n.</p>
+</div>
+</div>
+<a class="font-body-sm text-caption text-route-600 font-semibold hover:underline shrink-0" href="#">
+            Rastrear EnvÃ­o â†’
+          </a>
+</div>
+</div>
+<!-- Bottom: Support & Legal Details -->
+<footer class="pt-6 border-t border-sand-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-ink-500 font-caption text-caption">
+<p>EnvÃ­oYa LogÃ­stica Integral Â· Soporte 0810-333-ENVIOS</p>
+<div class="flex items-center gap-3">
+<a class="hover:text-ink-950 transition-colors" href="#">Centro de Ayuda</a>
+<span>Â·</span>
+<a class="hover:text-ink-950 transition-colors" href="#">Seguridad</a>
+</div>
+</footer>
+</section>
+<!-- RIGHT PANEL (55% Width): Operational Graphic & Hero Feature Canvas -->
+<section class="w-full md:w-[55%] bg-ink-950 min-h-screen relative overflow-hidden flex flex-col justify-between p-8 sm:p-12 lg:p-16 text-white border-l border-ink-900 select-none">
+<!-- Geometric Transit Route Background Vector Graphic -->
+<div class="absolute inset-0 bg-grid-transit pointer-events-none opacity-40"></div>
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-30" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="routeGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.8"></stop>
+<stop offset="50%" stop-color="#FF5A1F" stop-opacity="0.9"></stop>
+<stop offset="100%" stop-color="#2151DA" stop-opacity="0.4"></stop>
+</lineargradient>
+<lineargradient id="glowGrad" x1="0%" x2="100%" y1="0%" y2="0%">
+<stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.1"></stop>
+<stop offset="100%" stop-color="#1D4ED8" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Transit Arterials -->
+<path d="M-50,180 C200,120 400,280 650,220 C850,170 1000,320 1200,260" fill="none" stroke="rgba(29, 78, 216, 0.25)" stroke-dasharray="6,6" stroke-width="2"></path>
+<path d="M-20,480 C240,420 380,560 620,440 C880,310 1050,490 1250,380" fill="none" stroke="url(#routeGrad)" stroke-width="2.5"></path>
+<path d="M120,800 C320,620 540,780 780,610 C960,480 1100,540 1280,480" fill="none" stroke="rgba(255, 90, 31, 0.3)" stroke-dasharray="4,8" stroke-width="1.5"></path>
+<!-- Wayfinding Map Nodes -->
+<circle cx="240" cy="420" fill="#1D4ED8" r="4"></circle>
+<circle cx="240" cy="420" fill="none" opacity="0.6" r="10" stroke="#1D4ED8" stroke-width="1"></circle>
+<circle cx="620" cy="440" fill="#FF5A1F" r="5"></circle>
+<circle cx="620" cy="440" fill="none" opacity="0.5" r="14" stroke="#FF5A1F" stroke-width="1.5"></circle>
+<circle cx="880" cy="310" fill="#B9F27C" r="4"></circle>
+<circle cx="880" cy="310" fill="none" opacity="0.6" r="8" stroke="#B9F27C" stroke-width="1"></circle>
+</svg>
+<!-- Radial Vignette Overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-transparent to-ink-950/80 pointer-events-none"></div>
+<!-- Top Right Header: System Status & Tag -->
+<div class="relative z-10 flex items-center justify-between">
+<div class="flex items-center gap-2 text-sand-300 font-mono-code text-mono-code">
+<span class="w-2 h-2 rounded-full bg-mint-300 animate-pulse"></span>
+<span>NODO_CENTRAL_AR // REGION_CENTRO</span>
+</div>
+<div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1 bg-ink-900/90 border border-sand-200/10 rounded-full font-caption text-caption text-sand-200">
+<span class="material-symbols-outlined text-sm text-signal-500" data-icon="satellite_alt">satellite_alt</span>
+<span>TelemetrÃ­a Satelital Activa</span>
+</div>
+</div>
+<!-- Center Dynamic Element: Floating Tracking Card Mockup -->
+<div class="relative z-10 my-auto py-8">
+<!-- Value Proposition Headline -->
+<div class="max-w-xl mb-10">
+<div class="inline-block mb-3 px-3 py-1 rounded bg-signal-600/20 border border-signal-600/40 text-signal-500 font-mono-code text-mono-code font-semibold tracking-wide">
+            PLATAFORMA OPERATIVA B2B &amp; B2C
+          </div>
+<h2 class="font-display-xl text-display-lg lg:text-display-xl font-bold tracking-tight text-white leading-none mb-4">
+            Todos tus envÃ­os, <br class="hidden sm:block"/>en un solo lugar.
+          </h2>
+<p class="font-body-lg text-body-lg text-sand-200 max-w-lg leading-relaxed">
+            Trazabilidad satelital en tiempo real, gestiÃ³n de despachos corporativos y control operativo de punta a punta.
+          </p>
+</div>
+<!-- Floating High-Fidelity Tracking Card -->
+<div class="max-w-md w-full bg-ink-900/90 backdrop-blur-md rounded-xl p-6 border border-white/10 shadow-2xl relative overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+<!-- Ambient card top glow -->
+<div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-route-600 via-signal-500 to-mint-300"></div>
+<!-- Card Header: Code & Chip -->
+<div class="flex items-center justify-between pb-4 border-b border-white/10">
+<div>
+<span class="block font-caption text-caption text-sand-300 uppercase tracking-wider font-medium">GuÃ­a Operativa</span>
+<span class="font-mono-code text-heading-md font-semibold text-white tracking-wider">EY-4F8A1C</span>
+</div>
+<!-- Status Chip -->
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-route-100 text-route-600 font-body-sm text-caption font-bold tracking-wide">
+<span class="w-2 h-2 rounded-full bg-route-600 animate-ping"></span>
+<span>En trÃ¡nsito</span>
+</div>
+</div>
+<!-- Delivery Route Graphic -->
+<div class="py-5">
+<div class="flex items-center justify-between mb-2">
+<div>
+<span class="font-caption text-caption text-sand-300 block">Origen</span>
+<span class="font-heading-md text-body-md font-bold text-white">CÃ³rdoba</span>
+<span class="font-mono-code text-caption text-sand-300 block">Hub COR-01</span>
+</div>
+<!-- Route Indicator Arrow with pulsing vehicle -->
+<div class="flex-1 mx-4 flex flex-col items-center">
+<div class="w-full flex items-center relative">
+<div class="w-3 h-3 rounded-full bg-route-600 ring-4 ring-route-600/20 shrink-0"></div>
+<div class="flex-1 h-0.5 bg-gradient-to-r from-route-600 via-signal-500 to-white/20 relative mx-1">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-ink-950 p-1 rounded-full border border-signal-500 text-signal-500">
+<span class="material-symbols-outlined text-sm block" data-icon="local_shipping">local_shipping</span>
+</div>
+</div>
+<div class="w-3 h-3 rounded-full bg-white/20 shrink-0"></div>
+</div>
+<span class="font-mono-code text-[11px] text-sand-300 mt-2 font-medium">402 km completados (68%)</span>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-sand-300 block">Destino</span>
+<span class="font-heading-md text-body-md font-bold text-white">Rosario</span>
+<span class="font-mono-code text-caption text-sand-300 block">Centro ROS-03</span>
+</div>
+</div>
+</div>
+<!-- Card Footer ETA & Metadata -->
+<div class="pt-4 border-t border-white/10 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-500 text-lg" data-icon="schedule">schedule</span>
+<div>
+<span class="font-caption text-caption text-sand-300 block leading-tight">EstimaciÃ³n de arribo</span>
+<span class="font-body-sm text-body-sm font-semibold text-white">Llega maÃ±ana 18:00</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-caption text-caption text-sand-300 block leading-tight">Servicio</span>
+<span class="font-mono-code text-body-sm font-semibold text-mint-300">EXPRÃ‰S 24H</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Panel: Trust Metrics & Network Extent -->
+<footer class="relative z-10 pt-6 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-body-sm text-body-sm text-sand-300">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-signal-600"></span>
+<span class="font-medium text-white">Cobertura en 24 provincias</span>
+<span class="text-white/30">Â·</span>
+<span>MÃ¡s de 800 localidades conectadas</span>
+</div>
+<div class="font-mono-code text-caption text-sand-300/80">
+          SLA 99.8% Cumplimiento Operacional
+        </div>
+</footer>
+</section>
+</main>
+<!-- Interactive script for Password Toggle -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleBtn = document.getElementById('togglePassword');
+      const passwordInput = document.getElementById('password');
+      const toggleIcon = document.getElementById('togglePasswordIcon');
+
+      if (toggleBtn && passwordInput && toggleIcon) {
+        toggleBtn.addEventListener('click', () => {
+          const isPassword = passwordInput.getAttribute('type') === 'password';
+          passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+          toggleIcon.textContent = isPassword ? 'visibility_off' : 'visibility';
+          toggleBtn.setAttribute('aria-label', isPassword ? 'Ocultar contraseÃ±a' : 'Mostrar contraseÃ±a');
+        });
+      }
+    });
+  </script>
+</body></html>

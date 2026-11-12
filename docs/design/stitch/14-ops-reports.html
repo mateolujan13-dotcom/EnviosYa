@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-paper" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>EnvíoYa — Terminal Central | Reportes Operacionales</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "sand-200": "#E7DFD1",
+            "tertiary-fixed": "#dce1ff",
+            "outline-variant": "#e4beb3",
+            "route-600": "#1D4ED8",
+            "secondary": "#585e6f",
+            "on-surface-variant": "#5b4038",
+            "sand-300": "#D8D0C0",
+            "secondary-fixed-dim": "#c0c6da",
+            "tertiary-container": "#6b8aff",
+            "primary-fixed-dim": "#ffb59e",
+            "surface": "#FFFFFF",
+            "background": "#fdf9f0",
+            "warning-500": "#F59E0B",
+            "on-primary-container": "#541400",
+            "on-secondary-container": "#5c6274",
+            "tertiary": "#2151da",
+            "surface-dim": "#dddad1",
+            "mint-300": "#B9F27C",
+            "route-100": "#DBEAFE",
+            "surface-bright": "#fdf9f0",
+            "on-tertiary": "#ffffff",
+            "surface-container-low": "#f7f3ea",
+            "surface-variant": "#e6e2d9",
+            "on-primary-fixed": "#3a0b00",
+            "on-secondary-fixed-variant": "#404757",
+            "inverse-primary": "#ffb59e",
+            "surface-container-highest": "#e6e2d9",
+            "surface-tint": "#ae3200",
+            "on-tertiary-container": "#002174",
+            "primary-container": "#ff5a1f",
+            "paper": "#F6F2E9",
+            "on-primary": "#ffffff",
+            "danger-600": "#B42318",
+            "ink-950": "#08111F",
+            "on-secondary": "#ffffff",
+            "ink-500": "#4B5563",
+            "signal-500": "#FF5A1F",
+            "secondary-container": "#d9dff4",
+            "on-error": "#ffffff",
+            "on-surface": "#1c1c16",
+            "tertiary-fixed-dim": "#b7c4ff",
+            "inverse-on-surface": "#f4f0e7",
+            "error-container": "#ffdad6",
+            "surface-container": "#f1eee5",
+            "inverse-surface": "#31302b",
+            "on-secondary-fixed": "#151b2a",
+            "secondary-fixed": "#dce2f6",
+            "error": "#ba1a1a",
+            "on-error-container": "#93000a",
+            "ink-900": "#0B1220",
+            "on-tertiary-fixed-variant": "#0039b5",
+            "on-background": "#1c1c16",
+            "signal-600": "#D93A00",
+            "on-tertiary-fixed": "#001551",
+            "mint-100": "#ECFCCB",
+            "outline": "#8f7067",
+            "danger-100": "#FEE4E2",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-high": "#ece8df",
+            "primary-fixed": "#ffdbd0",
+            "primary": "#ae3200",
+            "on-primary-fixed-variant": "#852400",
+            "ink-700": "#1E2A3B"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-sm": "8px",
+            "space-lg": "24px",
+            "gutter": "24px",
+            "margin": "40px",
+            "space-2xl": "64px",
+            "space-xl": "32px",
+            "space-xs": "4px"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "display-xl": ["Archivo"],
+            "display-md": ["Archivo"],
+            "caption": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-md": ["Inter"],
+            "display-lg": ["Archivo"],
+            "heading-md": ["Archivo"],
+            "mono-code": ["IBM Plex Mono"],
+            "heading-lg": ["Archivo"]
+          },
+          "fontSize": {
+            "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+            "display-xl": ["56px", { "lineHeight": "60px", "fontWeight": "700" }],
+            "display-md": ["32px", { "lineHeight": "36px", "fontWeight": "700" }],
+            "caption": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+            "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["40px", { "lineHeight": "44px", "fontWeight": "700" }],
+            "heading-md": ["20px", { "lineHeight": "26px", "fontWeight": "600" }],
+            "mono-code": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+            "heading-lg": ["24px", { "lineHeight": "30px", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F6F2E9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D8D0C0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="h-full bg-paper text-ink-950 font-body-md antialiased overflow-x-hidden flex">
+<!-- LEFT SIDEBAR (SideNavBar component from Shared Components) -->
+<aside class="fixed top-0 left-0 h-screen w-[248px] z-40 bg-ink-950 border-r border-ink-900 select-none">
+<div class="flex flex-col justify-between h-full w-[248px] p-space-md">
+<!-- Top Brand & Nav -->
+<div class="flex flex-col gap-6">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-2 py-1">
+<div class="w-8 h-8 rounded-lg bg-signal-500 flex items-center justify-center text-surface font-display-md text-heading-md font-bold shadow-sm">
+            E
+          </div>
+<div class="flex flex-col">
+<span class="font-display-md text-heading-md tracking-tight font-bold text-surface">EnvíoYa</span>
+<span class="font-caption text-caption text-sand-300 font-mono-code tracking-wide">Terminal Central</span>
+</div>
+</div>
+<!-- Dispatch CTA -->
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-3 bg-signal-600 hover:bg-signal-500 text-surface rounded-lg font-heading-md text-body-sm font-semibold transition-colors duration-150 active:scale-[0.99]">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>Nuevo Despacho</span>
+</button>
+<!-- Navigation Tabs -->
+<nav class="flex flex-col gap-1">
+<!-- Dashboard -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<!-- Envíos -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">local_shipping</span>
+<span>Envíos</span>
+</a>
+<!-- Clientes -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">groups</span>
+<span>Clientes</span>
+</a>
+<!-- Repartidores -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">two_wheeler</span>
+<span>Repartidores</span>
+</a>
+<!-- Reportes (ACTIVE TAB) -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-signal-500 font-heading-md text-body-sm bg-ink-900 rounded-lg border-l-2 border-signal-500" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="font-bold">Reportes</span>
+</a>
+<!-- Usuarios -->
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">manage_accounts</span>
+<span>Usuarios</span>
+</a>
+</nav>
+</div>
+<!-- Footer Nav -->
+<div class="flex flex-col gap-1 border-t border-ink-900 pt-4">
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Configuración</span>
+</a>
+<a class="flex items-center gap-space-sm px-space-md py-space-sm text-sand-300 font-body-sm text-body-sm rounded-lg hover:bg-ink-900 hover:text-surface transition-colors duration-150 active:scale-[0.99]" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Ayuda</span>
+</a>
+<!-- System Node ID Badge -->
+<div class="mt-2 px-3 py-2 bg-ink-900/60 rounded border border-ink-900 flex items-center justify-between">
+<span class="font-mono-code text-caption text-sand-300 text-[11px]">NODE: AR-COR-01</span>
+<span class="inline-block w-2 h-2 rounded-full bg-mint-300"></span>
+</div>
+</div>
+</div>
+</aside>
+<!-- MAIN CANVAS CONTAINER -->
+<div class="pl-[248px] w-full min-h-screen flex flex-col">
+<!-- TOP NAVIGATION BAR (TopNavBar component from Shared Components) -->
+<header class="sticky top-0 right-0 z-30 bg-surface border-b border-sand-200">
+<div class="flex items-center justify-between h-[56px] px-space-lg w-full">
+<!-- Left Section: Hub Selector & Search -->
+<div class="flex items-center gap-4 flex-1 max-w-2xl">
+<!-- Sucursal Picker -->
+<div class="flex items-center gap-1.5 px-2.5 py-1.5 bg-paper rounded border border-sand-300 hover:border-ink-500 cursor-pointer transition-colors duration-150">
+<span class="material-symbols-outlined text-signal-600 text-[18px]">location_on</span>
+<span class="font-heading-md text-caption font-bold text-ink-950">Sucursal Córdoba</span>
+<span class="font-mono-code text-caption text-ink-500 text-[11px] bg-sand-200 px-1 rounded">COR-01</span>
+<span class="material-symbols-outlined text-ink-500 text-[16px]">expand_more</span>
+</div>
+<!-- Global Search -->
+<div class="relative flex-1">
+<span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-ink-500">
+<span class="material-symbols-outlined text-[18px]">search</span>
+</span>
+<input class="w-full pl-9 pr-3 py-1.5 bg-paper border border-sand-300 rounded font-body-sm text-body-sm text-ink-950 placeholder-ink-500 focus:outline-none focus:ring-1 focus:ring-route-600 focus:border-route-600 transition-colors" placeholder="Buscar despacho, conductor, remito o ID de bulto..." type="text"/>
+</div>
+</div>
+<!-- Right Section: Telemetry, Actions & Profile -->
+<div class="flex items-center gap-4">
+<!-- Telemetry Status Pill -->
+<div class="hidden xl:flex items-center gap-2 px-2.5 py-1 bg-mint-100 border border-mint-300 text-ink-950 rounded-full font-mono-code text-caption text-[11px]">
+<span class="w-2 h-2 rounded-full bg-[#16A34A] animate-pulse"></span>
+<span>Telemetría Satelital: 100% Red normal</span>
+</div>
+<!-- Action Icons -->
+<div class="flex items-center gap-1">
+<button class="relative p-2 text-ink-700 hover:text-ink-950 hover:bg-surface-container rounded transition-colors" title="Notificaciones operativas">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-signal-600"></span>
+</button>
+<button class="p-2 text-ink-700 hover:text-ink-950 hover:bg-surface-container rounded transition-colors" title="Ajustes de terminal">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+<!-- Vertical Divider -->
+<div class="h-6 w-[1px] bg-sand-200"></div>
+<!-- Primary Quick Action -->
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-signal-600 hover:bg-signal-500 text-surface rounded font-heading-md text-caption font-semibold transition-colors duration-150 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[16px]">local_shipping</span>
+<span>Nuevo Envío</span>
+</button>
+<!-- User Profile -->
+<div class="flex items-center gap-2 pl-1 cursor-pointer">
+<div class="w-8 h-8 rounded bg-ink-900 border border-ink-700 text-sand-200 flex items-center justify-center font-heading-md font-semibold text-caption">
+              CM
+            </div>
+<div class="flex flex-col text-left">
+<span class="font-heading-md text-caption font-bold text-ink-950 leading-tight">Carlos Méndez</span>
+<span class="font-caption text-caption text-ink-500 text-[11px] leading-tight">Despachador Jefe</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- REPORTES PAGE CONTENT CANVAS -->
+<main class="flex-1 p-space-lg max-w-[1440px] mx-auto w-full flex flex-col gap-6 custom-scrollbar">
+<!-- SECTION 1: Page Header & Global Filter Bar -->
+<section class="flex flex-col gap-4">
+<!-- Title & Telemetry Header -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-col">
+<div class="flex items-center gap-3">
+<h1 class="font-display-md text-display-md font-bold text-ink-950 tracking-tight">Reportes</h1>
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-mint-100 border border-mint-300 text-ink-950 font-caption text-caption font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-[#16A34A]"></span>
+                Actualización en tiempo real · Corredores Nacionales
+              </span>
+</div>
+<p class="font-mono-code text-caption text-ink-500 mt-1">
+              CORTE OPERATIVO: 12/11/2026 18:32:04 ART · DATACENTER COR-CENTRAL
+            </p>
+</div>
+<!-- Utility Action Controls -->
+<div class="flex items-center gap-2">
+<button class="flex items-center gap-1.5 px-3 py-2 bg-surface hover:bg-surface-container border border-sand-300 rounded font-body-sm text-body-sm text-ink-950 font-medium transition-colors">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Exportar CSV</span>
+</button>
+<button class="p-2 bg-surface hover:bg-surface-container border border-sand-300 rounded text-ink-950 transition-colors" title="Refrescar métricas">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Control Filter Bar (Wayfinding / Operational Style) -->
+<div class="bg-surface border border-sand-300 rounded-lg p-3 flex flex-wrap items-center justify-between gap-4">
+<div class="flex flex-wrap items-center gap-3">
+<!-- Date Filter Dropdown -->
+<div class="flex items-center gap-2 px-3 py-1.5 bg-paper rounded border border-sand-200">
+<span class="material-symbols-outlined text-ink-500 text-[18px]">date_range</span>
+<span class="font-body-sm text-caption text-ink-500 font-medium">Período:</span>
+<span class="font-mono-code text-body-sm font-semibold text-ink-950">01/11/2026 – 12/11/2026</span>
+<span class="material-symbols-outlined text-ink-500 text-[16px] cursor-pointer">arrow_drop_down</span>
+</div>
+<!-- Hub Scope Dropdown -->
+<div class="flex items-center gap-2 px-3 py-1.5 bg-paper rounded border border-sand-200">
+<span class="material-symbols-outlined text-ink-500 text-[18px]">hub</span>
+<span class="font-body-sm text-body-sm font-medium text-ink-950">Sucursal: Todas (5 Hubs)</span>
+<span class="material-symbols-outlined text-ink-500 text-[16px] cursor-pointer">arrow_drop_down</span>
+</div>
+<!-- Cargo Type Segmented Control -->
+<div class="flex items-center bg-paper p-0.5 rounded border border-sand-200">
+<button class="px-3 py-1 text-caption font-semibold bg-surface text-ink-950 rounded shadow-sm">
+                Toda Carga
+              </button>
+<button class="px-3 py-1 text-caption font-medium text-ink-500 hover:text-ink-950">
+                Paquetería Exprés
+              </button>
+<button class="px-3 py-1 text-caption font-medium text-ink-500 hover:text-ink-950">
+                Palletizado FTL
+              </button>
+</div>
+</div>
+<div class="flex items-center gap-2 text-caption text-ink-500 font-mono-code">
+<span class="inline-block w-2 h-2 rounded-full bg-signal-600"></span>
+<span>MUESTRA: 128 REGISTROS ACTIVOS</span>
+</div>
+</div>
+</section>
+<!-- SECTION 2: Operational KPI Cards Row -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- KPI 1 -->
+<div class="bg-surface border border-sand-300 rounded-lg p- space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-caption font-semibold text-ink-500 tracking-wider">ENVÍOS TOTALES</span>
+<div class="w-8 h-8 rounded bg-paper border border-sand-200 flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-[18px]">package_2</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-display-lg text-display-lg font-bold text-ink-950">128</span>
+</div>
+<div class="mt-3 pt-3 border-t border-sand-200 flex items-center gap-1.5 text-caption font-mono-code">
+<span class="text-[#16A34A] font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">trending_up</span> +8%
+            </span>
+<span class="text-ink-500">vs. período anterior (118)</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface border border-sand-300 rounded-lg p- space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-caption font-semibold text-ink-500 tracking-wider">TIEMPO PROMEDIO</span>
+<div class="w-8 h-8 rounded bg-paper border border-sand-200 flex items-center justify-center text-ink-700">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+</div>
+<div class="mt-2">
+<span class="font-display-lg text-display-lg font-bold text-ink-950">2.4 <span class="text-heading-md font-medium text-ink-500">días</span></span>
+</div>
+<div class="mt-3 pt-3 border-t border-sand-200 flex items-center gap-1.5 text-caption font-mono-code">
+<span class="text-route-600 font-bold flex items-center">
+<span class="material-symbols-outlined text-[16px]">arrow_downward</span> -0.3d
+            </span>
+<span class="text-ink-500">optimización corredor RN 9</span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface border border-sand-300 rounded-lg p- space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-caption font-semibold text-ink-500 tracking-wider">A TIEMPO (SLA)</span>
+<span class="px-2 py-0.5 rounded bg-mint-100 text-ink-950 font-mono-code text-[11px] font-bold border border-mint-300 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-[#16A34A]">check_circle</span> A TIEMPO
+            </span>
+</div>
+<div class="mt-2">
+<span class="font-display-lg text-display-lg font-bold text-ink-950">94<span class="text-display-md text-ink-500 font-normal">%</span></span>
+</div>
+<div class="mt-3 pt-3 border-t border-sand-200 flex items-center justify-between text-caption font-mono-code">
+<span class="text-ink-500">SLA contractual meta:</span>
+<span class="font-bold text-ink-950">92%</span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface border border-sand-300 rounded-lg p- space-md flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-caption font-semibold text-ink-500 tracking-wider">INCIDENCIAS ACTIVAS</span>
+<span class="px-2 py-0.5 rounded bg-danger-100 text-danger-600 font-mono-code text-[11px] font-bold border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span> ALERTA
+            </span>
+</div>
+<div class="mt-2 flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg font-bold text-ink-950">3</span>
+<span class="font-mono-code text-caption text-ink-500">(2.3% del total)</span>
+</div>
+<div class="mt-3 pt-3 border-t border-sand-200 flex items-center gap-1.5 text-caption font-mono-code text-ink-700">
+<span class="w-1.5 h-1.5 rounded-full bg-signal-600"></span>
+<span>2 demoras ruta · 1 dir. errónea</span>
+</div>
+</div>
+</section>
+<!-- SECTION 3: Operational Insight Banner Card -->
+<section class="bg-surface border-l-4 border-l-signal-600 border border-sand-300 rounded-lg p-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+<div class="flex items-start gap-3">
+<div class="p-2 bg-paper rounded border border-sand-200 text-signal-600 shrink-0">
+<span class="material-symbols-outlined text-[24px]">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-2">
+<span class="font-heading-md text-body-md font-bold text-ink-950">Hallazgo Operacional — Nodo Córdoba</span>
+<span class="px-2 py-0.5 rounded bg-mint-100 text-ink-950 border border-mint-300 font-mono-code text-[11px] font-bold">
+                +12% EFICIENCIA
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-ink-700 mt-1 max-w-4xl">
+              Córdoba mejoró 12% vs. el período anterior. La apertura de la bahía 4 en la Terminal Central redujo el cuello de botella en transferencia directa hacia el corredor RN 9 (Rosario–Buenos Aires).
+            </p>
+</div>
+</div>
+<a class="inline-flex items-center gap-1 text-signal-600 hover:text-signal-500 font-heading-md text-caption font-bold shrink-0 transition-colors" href="#">
+<span>Ver desglose de bahías</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</section>
+<!-- SECTION 4: Analytical Charts Row (3 strictly styled cards) -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+<!-- CHART 1: Envíos por sucursal -->
+<div class="bg-surface border border-sand-300 rounded-lg p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<div>
+<h3 class="font-heading-md text-body-md font-bold text-ink-950">Envíos por sucursal</h3>
+<p class="font-caption text-caption text-ink-500">Distribución de carga por nodo de origen</p>
+</div>
+<span class="font-mono-code text-caption font-bold px-2 py-1 bg-paper rounded text-ink-700 border border-sand-200">
+                128 despachos
+              </span>
+</div>
+<!-- Horizontal Bars -->
+<div class="mt-4 flex flex-col gap-3 font-mono-code text-caption">
+<!-- Item 1: Córdoba -->
+<div>
+<div class="flex justify-between text-ink-950 mb-1">
+<span class="font-semibold">Córdoba (COR-01) <span class="text-[10px] text-signal-600 bg-sand-200 px-1 rounded">HUB</span></span>
+<span class="font-bold">42 envíos <span class="text-ink-500 font-normal">(32.8%)</span></span>
+</div>
+<div class="w-full bg-paper h-2.5 rounded-full overflow-hidden border border-sand-200">
+<div class="bg-signal-600 h-full rounded-full" style="width: 32.8%"></div>
+</div>
+</div>
+<!-- Item 2: Rosario -->
+<div>
+<div class="flex justify-between text-ink-950 mb-1">
+<span class="font-semibold">Rosario (ROS-02)</span>
+<span class="font-bold">31 envíos <span class="text-ink-500 font-normal">(24.2%)</span></span>
+</div>
+<div class="w-full bg-paper h-2.5 rounded-full overflow-hidden border border-sand-200">
+<div class="bg-route-600 h-full rounded-full" style="width: 24.2%"></div>
+</div>
+</div>
+<!-- Item 3: CABA -->
+<div>
+<div class="flex justify-between text-ink-950 mb-1">
+<span class="font-semibold">CABA Retiro (BUE-01)</span>
+<span class="font-bold">28 envíos <span class="text-ink-500 font-normal">(21.9%)</span></span>
+</div>
+<div class="w-full bg-paper h-2.5 rounded-full overflow-hidden border border-sand-200">
+<div class="bg-ink-900 h-full rounded-full" style="width: 21.9%"></div>
+</div>
+</div>
+<!-- Item 4: Mendoza -->
+<div>
+<div class="flex justify-between text-ink-950 mb-1">
+<span class="font-semibold">Mendoza (MDZ-01)</span>
+<span class="font-bold">15 envíos <span class="text-ink-500 font-normal">(11.7%)</span></span>
+</div>
+<div class="w-full bg-paper h-2.5 rounded-full overflow-hidden border border-sand-200">
+<div class="bg-ink-500 h-full rounded-full" style="width: 11.7%"></div>
+</div>
+</div>
+<!-- Item 5: Salta -->
+<div>
+<div class="flex justify-between text-ink-950 mb-1">
+<span class="font-semibold">Salta (SLA-01)</span>
+<span class="font-bold">12 envíos <span class="text-ink-500 font-normal">(9.4%)</span></span>
+</div>
+<div class="w-full bg-paper h-2.5 rounded-full overflow-hidden border border-sand-200">
+<div class="bg-sand-300 h-full rounded-full" style="width: 9.4%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-[11px] font-mono-code text-ink-500">
+<span>Rango 5 hubs operativos</span>
+<span>CAPACIDAD: 84.6%</span>
+</div>
+</div>
+<!-- CHART 2: Tiempo de entrega (Line Graph & Benchmark) -->
+<div class="bg-surface border border-sand-300 rounded-lg p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<div>
+<h3 class="font-heading-md text-body-md font-bold text-ink-950">Tiempo de entrega</h3>
+<p class="font-caption text-caption text-ink-500">Tendencia semanal días en tránsito</p>
+</div>
+<span class="flex items-center gap-1 font-mono-code text-[11px] text-mint-300 bg-ink-950 px-2 py-0.5 rounded font-semibold">
+                OBJETIVO CUMPLIDO
+              </span>
+</div>
+<!-- SVG Data Visualization -->
+<div class="mt-4 relative h-40 w-full flex flex-col justify-end">
+<!-- SVG Curve with strict theme colors -->
+<svg class="w-full h-32 overflow-visible" preserveaspectratio="none" viewbox="0 0 320 120">
+<!-- Benchmark dashed line (SLA <= 2.5d at y=60) -->
+<line stroke="#ae3200" stroke-dasharray="4 4" stroke-width="1.5" x1="0" x2="320" y1="60" y2="60"></line>
+<text fill="#ae3200" font-family="IBM Plex Mono" font-size="9" font-weight="600" text-anchor="end" x="315" y="55">SLA 2.5d</text>
+<!-- Gradient Fill -->
+<defs>
+<lineargradient id="routeGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#1D4ED8" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#1D4ED8" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<path d="M 10,105 L 85,85 L 160,65 L 235,45 L 310,35 L 310,120 L 10,120 Z" fill="url(#routeGradient)"></path>
+<!-- Trend Line: Sem 41 (3.1d) -> Sem 45 (2.4d) -->
+<polyline fill="none" points="10,105 85,85 160,65 235,45 310,35" stroke="#1D4ED8" stroke-width="3"></polyline>
+<!-- Markers -->
+<circle cx="10" cy="105" fill="#08111F" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="85" cy="85" fill="#08111F" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="160" cy="65" fill="#08111F" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="235" cy="45" fill="#08111F" r="4" stroke="#FFFFFF" stroke-width="2"></circle>
+<circle cx="310" cy="35" fill="#FF5A1F" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between pt-2 border-t border-sand-200 font-mono-code text-[11px] text-ink-500">
+<span class="text-center">S41<br/><b class="text-ink-950">3.1d</b></span>
+<span class="text-center">S42<br/><b class="text-ink-950">2.9d</b></span>
+<span class="text-center">S43<br/><b class="text-ink-950">2.7d</b></span>
+<span class="text-center">S44<br/><b class="text-ink-950">2.5d</b></span>
+<span class="text-center text-signal-600">S45<br/><b class="text-signal-600">2.4d</b></span>
+</div>
+</div>
+</div>
+<div class="mt-3 pt-3 border-t border-sand-200 flex items-center justify-between text-[11px] font-mono-code">
+<span class="text-ink-500">Tendencia mensual:</span>
+<span class="text-[#16A34A] font-bold flex items-center">
+<span class="material-symbols-outlined text-[14px]">south_east</span> Reducción de 0.7 días
+            </span>
+</div>
+</div>
+<!-- CHART 3: Distribución por estado (Donut Chart) -->
+<div class="bg-surface border border-sand-300 rounded-lg p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<div>
+<h3 class="font-heading-md text-body-md font-bold text-ink-950">Distribución por estado</h3>
+<p class="font-caption text-caption text-ink-500">Volumen consolidado en tiempo real</p>
+</div>
+<span class="material-symbols-outlined text-ink-500 text-[20px]">pie_chart</span>
+</div>
+<!-- Donut layout -->
+<div class="mt-3 flex items-center justify-center gap-6">
+<!-- SVG Donut Chart -->
+<div class="relative w-32 h-32 shrink-0">
+<svg class="w-32 h-32 -rotate-90" viewbox="0 0 36 36">
+<!-- Background circle -->
+<circle cx="18" cy="18" fill="transparent" r="14" stroke="#E7DFD1" stroke-width="4.5"></circle>
+<!-- Mint (Entregados 68% -> stroke-dasharray: 59.8 88) -->
+<circle cx="18" cy="18" fill="transparent" r="14" stroke="#B9F27C" stroke-dasharray="59.8 88" stroke-dashoffset="0" stroke-width="4.5"></circle>
+<!-- Route Blue (En tránsito 22% -> stroke-dasharray: 19.36 88) offset: -59.8 -->
+<circle cx="18" cy="18" fill="transparent" r="14" stroke="#1D4ED8" stroke-dasharray="19.36 88" stroke-dashoffset="-59.8" stroke-width="4.5"></circle>
+<!-- Sand (Pendientes 7% -> stroke-dasharray: 6.16 88) offset: -79.16 -->
+<circle cx="18" cy="18" fill="transparent" r="14" stroke="#D8D0C0" stroke-dasharray="6.16 88" stroke-dashoffset="-79.16" stroke-width="4.5"></circle>
+<!-- Danger (Con incidencia 3% -> stroke-dasharray: 2.64 88) offset: -85.32 -->
+<circle cx="18" cy="18" fill="transparent" r="14" stroke="#B42318" stroke-dasharray="2.64 88" stroke-dashoffset="-85.32" stroke-width="4.5"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="font-display-md text-heading-md font-bold text-ink-950 leading-none">128</span>
+<span class="font-caption text-[10px] text-ink-500 font-mono-code">TOTAL</span>
+</div>
+</div>
+<!-- Legend List -->
+<div class="flex flex-col gap-2 font-mono-code text-caption flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-mint-300 border border-sand-300"></span>
+<span class="text-ink-950 font-medium">Entregados</span>
+</div>
+<span class="font-bold text-ink-950">87 <span class="text-ink-500 font-normal">(68%)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-route-600"></span>
+<span class="text-ink-950 font-medium">En tránsito</span>
+</div>
+<span class="font-bold text-ink-950">28 <span class="text-ink-500 font-normal">(22%)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-sand-300"></span>
+<span class="text-ink-950 font-medium">Pendientes</span>
+</div>
+<span class="font-bold text-ink-950">9 <span class="text-ink-500 font-normal">(7%)</span></span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-danger-600"></span>
+<span class="text-ink-950 font-medium">Incidencias</span>
+</div>
+<span class="font-bold text-danger-600">4 <span class="text-danger-600 font-normal">(3%)</span></span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-[11px] font-mono-code text-ink-500">
+<span>Último corte: Hace 4 min</span>
+<span class="text-route-600 font-semibold cursor-pointer hover:underline">Ver anomalías</span>
+</div>
+</div>
+</section>
+<!-- SECTION 5: Bottom Grid Section (Table + Empty State Reference) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-4 pb-6">
+<!-- Left Table: Top Repartidores (8 cols) -->
+<div class="lg:col-span-8 bg-surface border border-sand-300 rounded-lg p-space-md flex flex-col justify-between">
+<div>
+<div class="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-sand-200">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-signal-600 text-[20px]">leaderboard</span>
+<h3 class="font-heading-md text-body-md font-bold text-ink-950">Top repartidores</h3>
+<span class="text-caption text-ink-500 font-mono-code">Ranking corredor RN 9 &amp; Urbano</span>
+</div>
+<div class="flex items-center gap-2 font-mono-code text-caption">
+<span class="text-ink-500">ORDENADO POR:</span>
+<span class="px-2 py-0.5 bg-paper rounded border border-sand-200 text-ink-950 font-semibold">EFICIENCIA SLA ↓</span>
+</div>
+</div>
+<!-- Operational Table -->
+<div class="overflow-x-auto mt-3">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-sand-200 font-mono-code text-caption text-ink-500">
+<th class="py-2 pr-3 font-semibold">CONDUCTOR</th>
+<th class="py-2 px-3 font-semibold">UNIDAD / VEHÍCULO</th>
+<th class="py-2 px-3 font-semibold">ZONA / CORREDOR</th>
+<th class="py-2 px-3 font-semibold text-right">ENTREGAS</th>
+<th class="py-2 px-3 font-semibold text-right">EFICIENCIA SLA</th>
+<th class="py-2 pl-3 font-semibold text-right">CALIFICACIÓN</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-sand-200 font-body-sm text-body-sm text-ink-950">
+<!-- Row 1: Carlos Díaz -->
+<tr class="hover:bg-paper transition-colors duration-100">
+<td class="py-2.5 pr-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-ink-900 text-surface font-heading-md font-bold text-caption flex items-center justify-center">CD</div>
+<span class="font-bold">Carlos Díaz</span>
+</div>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-caption text-ink-700">
+                      Scania R450 <span class="bg-sand-200 px-1 py-0.5 rounded text-[11px] font-bold text-ink-950">AF-902-AA</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-paper border border-sand-200 text-caption font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-signal-600"></span> Córdoba ↔ Rosario
+                      </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right">38</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right text-[#16A34A]">98.2%</td>
+<td class="py-2.5 pl-3 font-mono-code text-right font-semibold">⭐ 4.8</td>
+</tr>
+<!-- Row 2: Ana Ruiz -->
+<tr class="hover:bg-paper transition-colors duration-100">
+<td class="py-2.5 pr-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-route-600 text-surface font-heading-md font-bold text-caption flex items-center justify-center">AR</div>
+<span class="font-bold">Ana Ruiz</span>
+</div>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-caption text-ink-700">
+                      Renault Master <span class="bg-sand-200 px-1 py-0.5 rounded text-[11px] font-bold text-ink-950">AG-412-BB</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-paper border border-sand-200 text-caption font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-route-600"></span> Rosario Urbano &amp; Hub
+                      </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right">31</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right text-[#16A34A]">99.1%</td>
+<td class="py-2.5 pl-3 font-mono-code text-right font-semibold">⭐ 4.9</td>
+</tr>
+<!-- Row 3: Diego Paz -->
+<tr class="hover:bg-paper transition-colors duration-100">
+<td class="py-2.5 pr-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-ink-700 text-surface font-heading-md font-bold text-caption flex items-center justify-center">DP</div>
+<span class="font-bold">Diego Paz</span>
+</div>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-caption text-ink-700">
+                      Iveco Daily <span class="bg-sand-200 px-1 py-0.5 rounded text-[11px] font-bold text-ink-950">AD-884-PO</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-paper border border-sand-200 text-caption font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-ink-700"></span> CABA &amp; Conurbano Norte
+                      </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right">27</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right text-ink-950">94.5%</td>
+<td class="py-2.5 pl-3 font-mono-code text-right font-semibold">⭐ 4.6</td>
+</tr>
+<!-- Row 4: Romina Véliz -->
+<tr class="hover:bg-paper transition-colors duration-100">
+<td class="py-2.5 pr-3">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-full bg-secondary text-surface font-heading-md font-bold text-caption flex items-center justify-center">RV</div>
+<span class="font-bold">Romina Véliz</span>
+</div>
+</td>
+<td class="py-2.5 px-3 font-mono-code text-caption text-ink-700">
+                      Corven Triax <span class="bg-sand-200 px-1 py-0.5 rounded text-[11px] font-bold text-ink-950">A144-XTR</span>
+</td>
+<td class="py-2.5 px-3">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-paper border border-sand-200 text-caption font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span> Última milla Mendoza
+                      </span>
+</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right">19</td>
+<td class="py-2.5 px-3 font-mono-code font-bold text-right text-ink-950">96.0%</td>
+<td class="py-2.5 pl-3 font-mono-code text-right font-semibold">⭐ 4.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-sand-200 flex items-center justify-between text-caption font-mono-code text-ink-500">
+<span>MOSTRANDO 4 DE 42 REPARTIDORES ACTIVOS</span>
+<a class="text-signal-600 font-bold hover:underline" href="#">Ver nómina completa →</a>
+</div>
+</div>
+<!-- Right Side Card: Empty state preview / Filter reset pattern (4 cols) -->
+<div class="lg:col-span-4 bg-surface border border-sand-300 rounded-lg p-space-md flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-sand-200">
+<span class="font-heading-md text-caption font-bold text-ink-500 tracking-wider">FILTRO SECUNDARIO / CONSULTA</span>
+<span class="material-symbols-outlined text-ink-500 text-[18px]">filter_alt_off</span>
+</div>
+<!-- Visual Empty state component representation -->
+<div class="my-6 p-6 bg-paper border border-dashed border-sand-300 rounded-lg flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-sand-200 flex items-center justify-center text-ink-500 mb-3">
+<span class="material-symbols-outlined text-[24px]">search_off</span>
+</div>
+<h4 class="font-heading-md text-body-sm font-bold text-ink-950">Sin resultados en subcriterio</h4>
+<p class="font-body-sm text-caption text-ink-500 mt-1 max-w-xs">
+                No hay datos para el período seleccionado. Probá ajustando el rango de fechas o limpiando los filtros de búsqueda.
+              </p>
+<button class="mt-4 flex items-center gap-1.5 px-3 py-1.5 bg-surface hover:bg-surface-container border border-sand-300 rounded font-body-sm text-caption font-semibold text-ink-950 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px]">restart_alt</span>
+<span>Restablecer filtros</span>
+</button>
+</div>
+</div>
+<!-- Quick Terminal Status Info -->
+<div class="pt-3 border-t border-sand-200 flex flex-col gap-1.5 font-mono-code text-[11px] text-ink-500">
+<div class="flex justify-between">
+<span>ESTADO CONEXIÓN:</span>
+<span class="font-bold text-[#16A34A]">EN LÍNEA (LATENCIA 18ms)</span>
+</div>
+<div class="flex justify-between">
+<span>CANAL DE SINCRONIZACIÓN:</span>
+<span class="text-ink-700">SOCKET://COR-HUB-01:8080</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
