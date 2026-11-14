@@ -25,7 +25,8 @@ import {
   formatWeightKg,
 } from '../lib/shipmentMeta';
 
-const MOTIVO_MIN = 3;
+// Debe coincidir con el @MinLength(5) del CreateShipmentDto/CancelShipmentDto del backend.
+const MOTIVO_MIN = 5;
 const MOTIVO_MAX = 500;
 
 type FetchStatus = 'loading' | 'error' | 'not-found' | 'success';
