@@ -22,18 +22,18 @@
 
 | Carpeta | Estado | Descripción |
 |---|---|---|
-| `design/stitch/` | Pendiente | Exportaciones de pantallas aceptadas de Stitch. |
+| `design/stitch/` | Exportado | 31 pantallas HTML/PNG generadas en Google Stitch (ver `design/stitch/README.md`). |
 | `design/design-review.md` | Pendiente | Revisión de variantes, desvíos y decisiones visuales. |
 
 ## Próximos documentos
 
 | Documento | Estado | Descripción |
 |---|---|---|
-| `architecture/overview.md` | Pendiente | Arquitectura NestJS + React + MongoDB. |
+| `architecture/overview.md` | Pendiente | Visión de arquitectura NestJS + React + MongoDB (hay parcial en `architecture/README.md`). |
 | `architecture/data-model.md` | Pendiente | Integración con el esquema del TP9 + `usuarios`. |
 | `architecture/api-contract.md` | Pendiente | Endpoints, payloads y códigos de error. |
-| `architecture/patterns.md` | Pendiente | Patrones de diseño aplicados y diagrama de clases. |
-| `architecture/adr/` | Pendiente | Architecture Decision Records. |
-| `plan/implementation-plan.md` | Pendiente | Fases, hitos y checklist de implementación. |
+| `architecture/patterns.md` | Pendiente | Patrones aplicados y diagrama de clases. |
+| `decisions/ADR-00*.md` | Hecho (ADR-001..005) | Monorepo, driver Mongo, auth JWT+RBAC, FSM, Nominatim/OSRM. |
+| `plan/implementation-plan.md` | Pendiente | Fases, hitos y checklist. |
 | `user-guide.md` | Pendiente | Guía de usuario básica. |
 | `deployment.md` | Pendiente | Despliegue y variables de entorno. |

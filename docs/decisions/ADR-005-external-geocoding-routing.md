@@ -40,7 +40,7 @@ Utilizar **OpenStreetMap (Nominatim + OSRM)** mediante un **Módulo Adaptador co
   * Retorna la distancia exacta en metros, duración estimada en segundos y los puntos geoespaciales GeoJSON para dibujar la polilínea en Leaflet / Mapbox.
 * **Estrategia de Resiliencia y Fallback:**
   1. **Caché en memoria (LRU / Map en NestJS):** Direcciones y rutas entre sucursales conocidas (ej: Córdoba ↔ Rosario, Córdoba ↔ CABA) se almacenan en caché para evitar llamadas repetidas.
-  2. **Coordenadas de Sucursales Preconfiguradas:** Las sucursales ya registradas en la base de datos (`SUC-CBA`, `SUC-ROS`, `SUC-BUE`, etc.) tienen sus coordenadas fijas guardadas en la colección `sucursales`.
+  2. **Coordenadas de Sucursales:** la colección `sucursales` del TP9 **no** tiene coordenadas (verificado contra los seeds del TP9); las IDs son `SUC-01`..`SUC-05`. El mapa público (PR #4) usa constantes aproximadas rotuladas como tales; la geocodificación real llega en PR #5.
   3. **Fallback por Haversine:** Si el servicio OSRM no responde en menos de 2.5 segundos, el servicio calcula la distancia por gran círculo (Haversine) multiplicada por un factor de corrección de ruta vial vial (factor $1.25$), asegurando que el usuario nunca quede bloqueado sin cotización.
 
 ---

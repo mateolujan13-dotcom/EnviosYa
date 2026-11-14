@@ -1,7 +1,7 @@
 # Registro de decisiones — EnvíoYa App
 
 > Documento vivo. Cada decisión relevante se registra acá con su justificación.
-> Última actualización: 2026-11-12
+> Última actualización: 2026-11-14
 
 | ID | Fecha | Decisión | Alternativas descartadas | Justificación | Estado |
 |---|---|---|---|---|---|
@@ -23,8 +23,8 @@
 
 ## Decisiones resueltas en Arquitectura
 
-* **P-001 (Acceso a datos):** Resuelta en [ADR-002](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-002-mongodb-data-access.md) optando por el driver oficial de MongoDB (`mongodb`) + patrón repositorio tipado.
-* **P-002 (Refresh token / Sesiones):** Resuelta en [ADR-003](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-003-auth-and-rbac.md) con JWT stateless de 24h almacenado en cookie `HttpOnly` y `SameSite=Lax`.
+* **P-001 (Acceso a datos):** Resuelta en [ADR-002](ADR-002-mongodb-data-access.md) optando por el driver oficial de MongoDB (`mongodb`) + patrón repositorio tipado.
+* **P-002 (Refresh token / Sesiones):** Resuelta en [ADR-003](ADR-003-auth-and-rbac.md) con JWT stateless de 24h almacenado en cookie `HttpOnly` y `SameSite=Lax`.
 
 ## Decisiones pendientes
 
