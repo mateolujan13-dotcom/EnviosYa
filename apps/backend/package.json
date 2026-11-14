@@ -17,7 +17,9 @@
     "test": "node --test tests/integration/*.test.js tests/unit/*.test.js",
     "db:verify": "node scripts/verify-db.js",
     "predb:seed": "npm run build",
-    "db:seed": "node scripts/seed-users.js"
+    "db:seed": "node scripts/seed-users.js",
+    "predb:seed:tarifa": "npm run build",
+    "db:seed:tarifa": "node scripts/seed-tarifa.js"
   },
   "dependencies": {
     "@envioya/shared": "*",
