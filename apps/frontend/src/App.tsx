@@ -16,6 +16,17 @@ const TrackingPage = lazy(() =>
   import('./pages/TrackingPage').then((module) => ({ default: module.TrackingPage })),
 );
 
+// Las páginas del portal del cliente se cargan bajo demanda (el detalle incluye qrcode).
+const WizardPage = lazy(() =>
+  import('./pages/WizardPage').then((module) => ({ default: module.WizardPage })),
+);
+const ShipmentsPage = lazy(() =>
+  import('./pages/ShipmentsPage').then((module) => ({ default: module.ShipmentsPage })),
+);
+const ShipmentDetailPage = lazy(() =>
+  import('./pages/ShipmentDetailPage').then((module) => ({ default: module.ShipmentDetailPage })),
+);
+
 function HomeRedirect() {
   const { user, loading } = useAuth();
 
@@ -66,6 +77,36 @@ export const App = () => {
         element={
           <ProtectedRoute allowedRoles={[RolUsuario.CLIENTE]}>
             <ClientDashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/app/nuevo"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.CLIENTE]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <WizardPage />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/app/envios"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.CLIENTE]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <ShipmentsPage />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/app/envios/:codigo"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.CLIENTE]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <ShipmentDetailPage />
+            </Suspense>
           </ProtectedRoute>
         }
       />
