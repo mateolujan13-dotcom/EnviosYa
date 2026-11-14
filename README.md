@@ -108,7 +108,7 @@ Notas:
 * En producción `JWT_SECRET` es **obligatorio**; sin él el backend no arranca (`auth.config.ts`).
 * En producción las sesiones usan cookie `Secure`; en desarrollo `SameSite=Lax` alcanza.
 * Si el `.env` no existe, el backend arranca igualmente: usa `DEV_JWT_SECRET` **solo fuera de producción**.
-* El `.env.example` está pendiente de crear con este mismo contenido (ver el `permission-model` de OpenCode/gentle-ai).
+* El `.env.example` existe en `apps/backend/` con este mismo contenido.
 
 ---
 
