@@ -35,6 +35,9 @@ const OpsShipmentDetailPage = lazy(() =>
     default: module.OpsShipmentDetailPage,
   })),
 );
+const OpsReportsPage = lazy(() =>
+  import('./pages/OpsReportsPage').then((module) => ({ default: module.OpsReportsPage })),
+);
 
 function HomeRedirect() {
   const { user, loading } = useAuth();
@@ -144,6 +147,16 @@ export const App = () => {
           <ProtectedRoute allowedRoles={[RolUsuario.OPERADOR, RolUsuario.ADMIN]}>
             <Suspense fallback={<FullScreenLoader />}>
               <OpsShipmentDetailPage />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ops/reportes"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.OPERADOR, RolUsuario.ADMIN]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <OpsReportsPage />
             </Suspense>
           </ProtectedRoute>
         }
