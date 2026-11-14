@@ -27,6 +27,15 @@ const ShipmentDetailPage = lazy(() =>
   import('./pages/ShipmentDetailPage').then((module) => ({ default: module.ShipmentDetailPage })),
 );
 
+const OpsShipmentsPage = lazy(() =>
+  import('./pages/OpsShipmentsPage').then((module) => ({ default: module.OpsShipmentsPage })),
+);
+const OpsShipmentDetailPage = lazy(() =>
+  import('./pages/OpsShipmentDetailPage').then((module) => ({
+    default: module.OpsShipmentDetailPage,
+  })),
+);
+
 function HomeRedirect() {
   const { user, loading } = useAuth();
 
@@ -116,6 +125,26 @@ export const App = () => {
         element={
           <ProtectedRoute allowedRoles={[RolUsuario.OPERADOR, RolUsuario.ADMIN]}>
             <OpsDashboardPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ops/envios"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.OPERADOR, RolUsuario.ADMIN]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <OpsShipmentsPage />
+            </Suspense>
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/ops/envios/:codigo"
+        element={
+          <ProtectedRoute allowedRoles={[RolUsuario.OPERADOR, RolUsuario.ADMIN]}>
+            <Suspense fallback={<FullScreenLoader />}>
+              <OpsShipmentDetailPage />
+            </Suspense>
           </ProtectedRoute>
         }
       />
