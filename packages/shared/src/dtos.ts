@@ -1,4 +1,4 @@
-import { ModalidadServicio, RolUsuario, TipoCliente } from './enums';
+import { EstadoEnvio, ModalidadServicio, RolUsuario, TipoCliente, TipoEvento } from './enums';
 import { IPaquete } from './interfaces';
 
 export interface CotizarEnvioDto {
@@ -77,4 +77,44 @@ export interface JwtPayload {
   nombre: string;
   rol: RolUsuario;
   clienteId?: string;
+}
+
+/** Ciudad de origen o destino expuesta públicamente (sin dirección ni sucursal). */
+export interface TrackingCityDto {
+  ciudad: string;
+  provincia: string;
+}
+
+/**
+ * Evento de seguimiento público. Deliberadamente sin `sucursalId`,
+ * `repartidorId` ni `_id`: el tracking público no expone datos operativos internos.
+ */
+export interface TrackingEventDto {
+  tipo: TipoEvento | string;
+  estado: EstadoEnvio | string;
+  /** ISO 8601 UTC */
+  timestamp: string;
+  descripcion?: string;
+}
+
+/**
+ * Respuesta pública de `GET /api/shipments/track/:code`.
+ * Sin PII: no incluye remitente, destinatario, clienteResumen, costo,
+ * repartidorResumen, clienteId, `_id` ni ningún campo de contacto.
+ */
+export interface PublicTrackingDto {
+  codigo: string;
+  estado: EstadoEnvio | string;
+  origen: TrackingCityDto;
+  destino: TrackingCityDto;
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  totalEventos: number;
+  /** ISO 8601 UTC */
+  fechaCreacion: string;
+  fechaDespacho: string | null;
+  fechaEntregaEstimada: string | null;
+  fechaEntrega: string | null;
+  /** Últimos 5 eventos, ordenados por timestamp ascendente. */
+  ultimosEventos: TrackingEventDto[];
 }
