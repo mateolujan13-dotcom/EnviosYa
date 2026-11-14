@@ -6,6 +6,7 @@ import { DatabaseModule } from './database/database.module';
 import { RepositoriesModule } from './repositories/repositories.module';
 import { PricingModule } from './pricing/pricing.module';
 import { ShipmentsModule } from './shipments/shipments.module';
+import { OpsModule } from './ops/ops.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ShipmentsModule } from './shipments/shipments.module';
     AuthModule,
     PricingModule,
     ShipmentsModule,
+    OpsModule,
   ],
   controllers: [AppController],
   providers: [],
