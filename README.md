@@ -68,7 +68,7 @@ npm install
 mongod --dbpath ..\.mongo-data
 
 # 3. Configurar variables de entorno del backend
-copy apps\backend\.env.example apps\backend\.env
+copy apps\backend\.env.example apps\backend\.env  # o creá el .env con el bloque "Variables de entorno del backend" más abajo
 
 # 4. Levantar backend y frontend en terminales separadas
 npm run dev:backend
@@ -86,6 +86,31 @@ npm test
 - Health: http://localhost:3000/api/health
 - Health + colecciones MongoDB: http://localhost:3000/api/health/db
 - Frontend: http://localhost:5173
+
+### Variables de entorno del backend
+
+El `.env` real no se commitea (está en `.gitignore`). Valores por defecto para desarrollo local:
+
+```bash
+MONGODB_URI=mongodb://127.0.0.1:27017
+MONGODB_DB_NAME=envioya
+PORT=3000
+FRONTEND_URL=http://localhost:5173
+NODE_ENV=development
+JWT_SECRET=change-me-with-a-long-random-value
+JWT_EXPIRES_IN=24h
+JWT_REMEMBER_EXPIRES_IN=7d
+SEED_ADMIN_PASSWORD=Admin1234!
+SEED_OPERADOR_PASSWORD=Operador1234!
+```
+
+Notas:
+* En producción `JWT_SECRET` es **obligatorio**; sin él el backend no arranca (`auth.config.ts`).
+* En producción las sesiones usan cookie `Secure`; en desarrollo `SameSite=Lax` alcanza.
+* Si el `.env` no existe, el backend arranca igualmente: usa `DEV_JWT_SECRET` **solo fuera de producción**.
+* El `.env.example` está pendiente de crear con este mismo contenido (ver el `permission-model` de OpenCode/gentle-ai).
+
+---
 
 ### Usuarios de desarrollo
 

@@ -63,11 +63,11 @@ flowchart TD
 
 | ADR | Título | Estado |
 |---|---|---|
-| [ADR-001](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-001-monorepo-structure.md) | Estructura de Monorepo con npm/pnpm Workspaces y Paquete Compartido (`@envioya/shared`) | **Aprobada** |
-| [ADR-002](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-002-mongodb-data-access.md) | Acceso a Datos con Driver Oficial de MongoDB y Patrón Repositorio Tipado | **Aprobada** |
-| [ADR-003](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-003-auth-and-rbac.md) | Autenticación Híbrida: JWT Stateless en Cookies HttpOnly con RBAC y Colección `usuarios` | **Aprobada** |
-| [ADR-004](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-004-shipment-state-machine.md) | Máquina de Estados Finita del Envío y Trazabilidad Documental Inmutable | **Aprobada** |
-| [ADR-005](file:///c:/Users/Itu/Downloads/tp9/envioya-app/docs/decisions/ADR-005-external-geocoding-routing.md) | Integración con OpenStreetMap (Nominatim + OSRM) con Resiliencia y Caché | **Aprobada** |
+| [ADR-001](../decisions/ADR-001-monorepo-structure.md) | Estructura de Monorepo con npm/pnpm Workspaces y Paquete Compartido (`@envioya/shared`) | **Aprobada** |
+| [ADR-002](../decisions/ADR-002-mongodb-data-access.md) | Acceso a Datos con Driver Oficial de MongoDB y Patrón Repositorio Tipado | **Aprobada** |
+| [ADR-003](../decisions/ADR-003-auth-and-rbac.md) | Autenticación Híbrida: JWT Stateless en Cookies HttpOnly con RBAC y Colección `usuarios` | **Aprobada** |
+| [ADR-004](../decisions/ADR-004-shipment-state-machine.md) | Máquina de Estados Finita del Envío y Trazabilidad Documental Inmutable | **Aprobada** |
+| [ADR-005](../decisions/ADR-005-external-geocoding-routing.md) | Integración con OpenStreetMap (Nominatim + OSRM) con Resiliencia y Caché | **Aprobada** |
 
 ---
 
