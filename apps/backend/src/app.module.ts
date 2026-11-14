@@ -1,6 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
+import { DatabaseModule } from './database/database.module';
+import { RepositoriesModule } from './repositories/repositories.module';
 
 @Module({
   imports: [
@@ -8,6 +10,8 @@ import { AppController } from './app.controller';
       isGlobal: true,
       envFilePath: '.env',
     }),
+    DatabaseModule,
+    RepositoriesModule,
   ],
   controllers: [AppController],
   providers: [],

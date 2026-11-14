@@ -2,9 +2,9 @@
 
 Aplicación web de logística y paquetería construida sobre el diseño de base de datos MongoDB del TP9. Incluye un portal de clientes y un back-office operativo.
 
-> **Estado:** diseño de producto (PRD, flujos, wireframes y sistema de diseño). Todavía no hay implementación.
+> **Estado:** PR #1 (monorepo + `@envioya/shared`) mergeado y PR #2 (MongoDB + repositorios + tests) completo. El frontend sigue en scaffold.
 > **Stack decidido:** NestJS + React + MongoDB.
-> **Base de datos:** `envioya` (TP9), reutilizada con el esquema existente + colección `usuarios`.
+> **Base de datos:** `envioya` (TP9), reutilizada con el esquema existente + colecciones `usuarios` y `tarifas`.
 
 ---
 
@@ -54,31 +54,57 @@ No requiere servidor ni dependencias. Es un HTML autocontenido.
 
 ---
 
-## Próximos pasos
+## Cómo ejecutar
 
-1. Revisar el PRD y los wireframes.
-2. Generar la identidad visual en Stitch y aprobar una dirección.
-3. Diseñar la arquitectura técnica y los ADRs.
-4. Escribir el plan de implementación por fases.
-5. Crear el repositorio GitHub y comenzar el desarrollo.
+Requisitos: Node.js 20+ y MongoDB 7.
+
+```bash
+# 1. Instalar dependencias
+npm install
+
+# 2. Iniciar MongoDB (ejemplo con dbpath local)
+mongod --dbpath ..\.mongo-data
+
+# 3. Configurar variables de entorno del backend
+copy apps\backend\.env.example apps\backend\.env
+
+# 4. Levantar backend y frontend en terminales separadas
+npm run dev:backend
+npm run dev:frontend
+
+# 5. Verificar la base y correr los tests de integración (con MongoDB activo)
+npm run db:verify
+npm test
+```
+
+- Backend: http://localhost:3000/api
+- Health: http://localhost:3000/api/health
+- Health + colecciones MongoDB: http://localhost:3000/api/health/db
+- Frontend: http://localhost:5173
 
 ---
 
-## Estructura del repositorio (prevista)
+## Próximos pasos
+
+1. PR #3: autenticación JWT en cookies, RBAC y pantallas de login/registro.
+2. PR #4: landing y tracking público con mapa.
+3. PR #5 y #6: cotizador y portal del cliente.
+4. PR #7 y #8: torre de control y reportes.
+
+---
+
+## Estructura del repositorio
 
 ```text
 envioya-app/
 ├── apps/
-│   ├── api/          # NestJS
-│   └── web/          # React + Vite
+│   ├── backend/      # NestJS + MongoDB driver
+│   └── frontend/     # React 19 + Vite + Tailwind
 ├── packages/
-│   └── shared/       # Tipos, schemas y contratos
+│   └── shared/       # Tipos, enums y contratos compartidos
 ├── docs/
 │   ├── product/      # PRD, diseño, flujos, wireframes, prompts
-│   ├── architecture/ # Diagramas y ADRs (próximo)
+│   ├── architecture/ # Diagramas y ADRs
 │   └── decisions/    # Decision log
-├── scripts/          # Seeds, migraciones y utilidades
 └── README.md
 ```
-
-> La estructura de código se confirmará en la etapa de arquitectura.
