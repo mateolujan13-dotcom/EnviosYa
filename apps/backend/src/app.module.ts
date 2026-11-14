@@ -4,6 +4,7 @@ import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { DatabaseModule } from './database/database.module';
 import { RepositoriesModule } from './repositories/repositories.module';
+import { PricingModule } from './pricing/pricing.module';
 import { ShipmentsModule } from './shipments/shipments.module';
 
 @Module({
@@ -15,6 +16,7 @@ import { ShipmentsModule } from './shipments/shipments.module';
     DatabaseModule,
     RepositoriesModule,
     AuthModule,
+    PricingModule,
     ShipmentsModule,
   ],
   controllers: [AppController],

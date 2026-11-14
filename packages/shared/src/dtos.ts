@@ -38,6 +38,11 @@ export interface CotizacionResultadoDto {
     total: number;
   };
   moneda: string;
+  /**
+   * true cuando la distancia no proviene de OSRM sino del fallback
+   * Haversine × 1.25 (servicio de ruteo no disponible).
+   */
+  distanciaEstimada: boolean;
 }
 
 /**
