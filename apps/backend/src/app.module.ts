@@ -7,6 +7,7 @@ import { RepositoriesModule } from './repositories/repositories.module';
 import { PricingModule } from './pricing/pricing.module';
 import { ShipmentsModule } from './shipments/shipments.module';
 import { OpsModule } from './ops/ops.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { OpsModule } from './ops/ops.module';
     PricingModule,
     ShipmentsModule,
     OpsModule,
+    ReportsModule,
   ],
   controllers: [AppController],
   providers: [],
