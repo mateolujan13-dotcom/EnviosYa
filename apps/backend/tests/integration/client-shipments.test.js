@@ -485,6 +485,32 @@ test('cancelar con repartidor asignado responde 409', async () => {
   assert.equal(response.status, 409);
 });
 
+test('crear envío SIN caracteristicas responde 201 (regresión: UB → null rechazado por validator)', async () => {
+  // Se ejecuta al final de la suite a propósito: crea un segundo envío para
+  // el cliente efímero; los tests anteriores asumen exactamente uno.
+  const bodyWithoutCaracteristicas = {
+    ...validBody,
+    paquetes: [
+      {
+        descripcion: 'Caja sin extras',
+        pesoKg: 1.5,
+        dimensiones: { altoCm: 20, anchoCm: 30, profundoCm: 20 },
+        fragil: false,
+      },
+    ],
+  };
+
+  const response = await api('/shipments', {
+    method: 'POST',
+    headers: { Cookie: sessionCookie },
+    body: bodyWithoutCaracteristicas,
+  });
+
+  assert.equal(response.status, 201);
+  assert.equal(response.body.paquetes[0].caracteristicas, undefined);
+  assert.equal(response.body.totalPaquetes, 1);
+});
+
 async function api(pathname, options = {}) {
   const headers = { ...(options.headers ?? {}) };
 

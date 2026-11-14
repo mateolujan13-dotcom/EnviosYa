@@ -90,10 +90,11 @@ export class ClientShipmentsService {
       now.getTime() + estimateDeliveryDays(quote.distanciaKm) * 86400000,
     );
 
-    const paquetes = dto.paquetes.map((paquete, index) => ({
-      ...paquete,
-      paqueteId: generatePaqueteId(now, index),
-    }));
+    const paquetes = dto.paquetes.map((paquete, index) =>
+      // toPaquete strips class-transformer own properties set to undefined
+      // (BSON maps undefined -> null, rejected by the envios $jsonSchema).
+      toPaquete({ ...paquete, paqueteId: generatePaqueteId(now, index) }),
+    );
 
     const prefix = envIdPrefix(now);
     let doc: EnvioCandidate | null = null;

@@ -168,6 +168,87 @@ export interface CancelShipmentDto {
   motivo: string;
 }
 
+/** Ítem de la bandeja operativa (Torre de Control). El operador ve el cliente. */
+export interface OpsShipmentListItemDto {
+  codigo: string;
+  estado: EstadoEnvio | string;
+  cancelado: boolean;
+  cliente: string;
+  origenCiudad: string;
+  destinoCiudad: string;
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  total: number;
+  /** ISO 8601 UTC */
+  fechaCreacion: string;
+}
+
+export interface OpsShipmentsPageDto {
+  items: OpsShipmentListItemDto[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+/** KPIs por estado (excluye cancelados). */
+export interface OpsSummaryDto {
+  pendiente: number;
+  en_transito: number;
+  en_sucursal: number;
+  en_reparto: number;
+  con_incidencia: number;
+  entregado: number;
+  devuelto: number;
+  total: number;
+}
+
+/** Detalle operativo completo de un envío para la Torre de Control. */
+export interface OpsShipmentDetailDto {
+  codigo: string;
+  estado: EstadoEnvio | string;
+  cancelado: boolean;
+  motivoCancelacion: string | null;
+  clienteResumen: { nombre: string; email?: string };
+  origen: TrackingCityDto;
+  destino: TrackingCityDto;
+  remitente: IPersona;
+  destinatario: IPersona;
+  paquetes: IPaquete[];
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  costo: ICostoEnvio;
+  fechaCreacion: string;
+  fechaDespacho: string | null;
+  fechaEntregaEstimada: string | null;
+  fechaEntrega: string | null;
+  sucursalActualId: string | null;
+  repartidor: { _id: string; nombre: string; telefono?: string } | null;
+  vehiculo: {
+    _id: string;
+    patente: string;
+    tipo: string;
+    capacidadKg: number;
+    cargaActualKg: number;
+  } | null;
+  ultimosEventos: TrackingEventDto[];
+  totalEventos: number;
+}
+
+export interface AssignResourcesDto {
+  repartidorId: string;
+  vehiculoId: string;
+}
+
+export interface IncidentDto {
+  /** Motivo obligatorio (≥5 caracteres). */
+  observacion: string;
+}
+
+export interface ResolveIncidentDto {
+  resolucion: 'en_sucursal' | 'en_reparto' | 'devuelto';
+  observacion?: string;
+}
+
 /**
  * Respuesta pública de `GET /api/shipments/track/:code`.
  * Sin PII: no incluye remitente, destinatario, clienteResumen, costo,
