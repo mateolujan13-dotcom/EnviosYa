@@ -13,6 +13,12 @@ build/
 .cache/
 *.tsbuildinfo
 
+# Artefactos TS emitidos por error dentro del código fuente
+packages/shared/src/**/*.js
+packages/shared/src/**/*.js.map
+packages/shared/src/**/*.d.ts
+packages/shared/src/**/*.d.ts.map
+
 # Variables de entorno y secretos
 .env
 .env.local
