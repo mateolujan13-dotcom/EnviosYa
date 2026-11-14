@@ -109,7 +109,7 @@ export interface IClienteDocument {
     email: string;
     telefono: string;
   };
-  direccionFacturacion: IDireccion;
+  direccionFacturacion?: IDireccion;
   modalidadFacturacion?: string;
   fechaAlta: Date | string;
   activo: boolean;

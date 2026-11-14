@@ -40,34 +40,41 @@ export interface CotizacionResultadoDto {
   moneda: string;
 }
 
+/**
+ * Registro público de clientes. Pide solo los datos mínimos del PRD:
+ * la dirección de facturación se completa después, en el perfil.
+ */
 export interface RegisterDto {
   nombre: string;
   email: string;
-  password: string;
   telefono: string;
-  tipoCliente: TipoCliente;
-  cuitCuil?: string;
-  direccion: {
-    calle: string;
-    numero: number | string;
-    ciudad: string;
-    provincia: string;
-    cp: string;
-  };
+  password: string;
+  tipoCliente?: TipoCliente;
 }
 
 export interface LoginDto {
   email: string;
   password: string;
+  recordarme?: boolean;
+}
+
+export interface AuthUserDto {
+  _id: string;
+  email: string;
+  nombre: string;
+  rol: RolUsuario;
+  clienteId?: string;
 }
 
 export interface AuthResponseDto {
-  usuario: {
-    _id: string;
-    email: string;
-    nombre: string;
-    rol: RolUsuario;
-    clienteId?: string;
-  };
+  usuario: AuthUserDto;
   mensaje: string;
+}
+
+export interface JwtPayload {
+  sub: string;
+  email: string;
+  nombre: string;
+  rol: RolUsuario;
+  clienteId?: string;
 }
