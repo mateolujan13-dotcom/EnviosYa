@@ -1,5 +1,5 @@
 import { EstadoEnvio, ModalidadServicio, RolUsuario, TipoCliente, TipoEvento } from './enums';
-import { IPaquete } from './interfaces';
+import { ICostoEnvio, IDireccion, IPaquete, IPersona } from './interfaces';
 
 export interface CotizarEnvioDto {
   origen: {
@@ -100,6 +100,72 @@ export interface TrackingEventDto {
   /** ISO 8601 UTC */
   timestamp: string;
   descripcion?: string;
+}
+
+/**
+ * Ítem de la lista "Mis envíos" del cliente. Sin PII ajena ni interna.
+ * `cancelado` es un flag plano: el validator TP9 no admite estado 'cancelado'.
+ */
+export interface ShipmentListItemDto {
+  codigo: string;
+  estado: EstadoEnvio | string;
+  cancelado: boolean;
+  destinoCiudad: string;
+  /** ISO 8601 UTC */
+  fechaCreacion: string;
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  total: number;
+}
+
+export interface ShipmentsPageDto {
+  items: ShipmentListItemDto[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
+export interface ShipmentsSummaryDto {
+  activos: number;
+  entregadosEsteMes: number;
+  gastoDelMes: number;
+  totalEnvios: number;
+}
+
+/**
+ * Detalle de un envío propio (portal del cliente). Remite/destinatario
+ * son datos del propio cliente; seguro mostrarlos.
+ */
+export interface ShipmentDetailDto {
+  codigo: string;
+  estado: EstadoEnvio | string;
+  cancelado: boolean;
+  motivoCancelacion: string | null;
+  remitente: IPersona;
+  destinatario: IPersona;
+  paquetes: IPaquete[];
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  costo: ICostoEnvio;
+  fechaCreacion: string;
+  fechaDespacho: string | null;
+  fechaEntregaEstimada: string | null;
+  fechaEntrega: string | null;
+  ultimosEventos: TrackingEventDto[];
+  totalEventos: number;
+}
+
+/** Entrada pública (compartido) del flujo "crear envío"; el backend revalida todo. */
+export interface CreateShipmentInput {
+  origen: IDireccion;
+  destino: IDireccion;
+  destinatario: { nombre: string; telefono: string };
+  paquetes: IPaquete[];
+  modalidad?: ModalidadServicio;
+}
+
+export interface CancelShipmentDto {
+  motivo: string;
 }
 
 /**

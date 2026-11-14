@@ -14,3 +14,24 @@ body {
   outline: 2px solid #1D4ED8;
   outline-offset: 2px;
 }
+
+/* Print: only the remito panel is visible on paper. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  [data-print-remito],
+  [data-print-remito] * {
+    visibility: visible;
+  }
+
+  [data-print-remito] {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    border: none;
+    background: #ffffff;
+    padding: 0;
+  }
+}

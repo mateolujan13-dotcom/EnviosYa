@@ -82,4 +82,159 @@ export class ShipmentsRepository {
     );
     return result.modifiedCount > 0;
   }
+
+  /**
+   * Devuelve el `_id` máximo que empieza con `prefix` (p. ej. `ENV-2026-`),
+   * o `null` si no existe ninguno. Solo el sufijo numérico importa: el
+   * criterio de orden es lexicográfico de `_id`.
+   */
+  async findMaxIdByPrefix(prefix: string): Promise<string | null> {
+    const doc = await this.col.findOne(
+      { _id: { $regex: `^${escapeRegex(prefix)}` } } as Filter<IEnvioDocument>,
+      { sort: { _id: -1 }, projection: { _id: 1 } },
+    );
+    return doc?._id ?? null;
+  }
+
+  async existsByCodigo(codigo: string): Promise<boolean> {
+    const doc = await this.col.findOne(
+      { codigo } as Filter<IEnvioDocument>,
+      { projection: { _id: 1 } },
+    );
+    return doc !== null;
+  }
+
+  /**
+   * Lista paginada de envíos propios con filtros opcionales por estado
+   * (enum) y por flag plano `cancelado`. Sin filtro `cancelado` lista todos
+   * los propios; `fechaCreacion desc`.
+   */
+  async findOwnPaged(
+    clienteId: string,
+    page: number,
+    limit: number,
+    estado?: string,
+    cancelado?: boolean,
+  ): Promise<{ items: IEnvioDocument[]; total: number }> {
+    const filter: Record<string, unknown> = { clienteId };
+    if (estado) filter['estado'] = estado;
+    if (typeof cancelado === 'boolean') filter['cancelado'] = cancelado;
+
+    const mongoFilter = filter as Filter<IEnvioDocument>;
+    const [items, total] = await Promise.all([
+      this.col
+        .find(mongoFilter)
+        .sort({ fechaCreacion: -1 })
+        .skip((page - 1) * limit)
+        .limit(limit)
+        .toArray(),
+      this.col.countDocuments(mongoFilter),
+    ]);
+
+    return { items, total };
+  }
+
+  /**
+   * Resumen del portal del cliente. `activos` excluye cancelados y estados
+   * fuera de la ventana operativa; `entregadosEsteMes` cuenta por
+   * `fechaEntrega` en el mes UTC corriente; `gastoDelMes` suma `costo.total`
+   * por `fechaCreacion` en el mes (sin cancelados); `totalEnvios` es el
+   * total de propios.
+   */
+  async summaryForCliente(
+    clienteId: string,
+    startOfMonthUtc: Date,
+  ): Promise<{
+    activos: number;
+    entregadosEsteMes: number;
+    gastoDelMes: number;
+    totalEnvios: number;
+  }> {
+    const noCancelado = { cancelado: { $ne: true } } as Record<string, unknown>;
+
+    const [activos, entregadosEsteMes, totalEnvios, gasto] =
+      await Promise.all([
+        this.col.countDocuments({
+          clienteId,
+          ...noCancelado,
+          estado: {
+            $in: [
+              'pendiente',
+              'en_transito',
+              'en_sucursal',
+              'en_reparto',
+              'con_incidencia',
+            ],
+          },
+        } as Filter<IEnvioDocument>),
+        this.col.countDocuments({
+          clienteId,
+          ...noCancelado,
+          estado: 'entregado',
+          fechaEntrega: { $gte: startOfMonthUtc },
+        } as Filter<IEnvioDocument>),
+        this.col.countDocuments({ clienteId } as Filter<IEnvioDocument>),
+        this.col
+          .aggregate<{ total: number }>([
+            {
+              $match: {
+                clienteId,
+                cancelado: { $ne: true },
+                fechaCreacion: { $gte: startOfMonthUtc },
+              },
+            },
+            { $group: { _id: null, total: { $sum: '$costo.total' } } },
+          ])
+          .toArray(),
+      ]);
+
+    return {
+      activos,
+      entregadosEsteMes,
+      gastoDelMes: gasto[0]?.total ?? 0,
+      totalEnvios,
+    };
+  }
+
+  /**
+   * Cancelación atómica del portal del cliente: solo si el envío sigue
+   * pendiente, sin repartidor asignado y no cancelado. Escribe flag plano
+   * `cancelado: true` + `motivoCancelacion`, agrega el evento a
+   * `ultimosEventos` recortado a 5 (`$slice: -5`) e incrementa
+   * `totalEventos`. Devuelve el documento actualizado o `null` si perdió la
+   * carrera (el caller responde 409).
+   */
+  async applyCancellation(
+    id: string,
+    motivo: string,
+    event: {
+      tipo: string;
+      estado: string;
+      timestamp: Date;
+      sucursalId: string | null;
+      repartidorId: string | null;
+      descripcion: string;
+    },
+  ): Promise<(IEnvioDocument & { cancelado?: boolean }) | null> {
+    const updated = await this.col.findOneAndUpdate(
+      {
+        _id: id,
+        estado: 'pendiente',
+        repartidorId: null,
+        cancelado: { $ne: true },
+      } as unknown as Filter<IEnvioDocument>,
+      {
+        $set: { cancelado: true, motivoCancelacion: motivo },
+        $push: { ultimosEventos: { $each: [event], $slice: -5 } },
+        $inc: { totalEventos: 1 },
+      } as unknown as UpdateFilter<IEnvioDocument>,
+      { returnDocument: 'after' },
+    );
+
+    return (updated as (IEnvioDocument & { cancelado?: boolean }) | null) ?? null;
+  }
+}
+
+function escapeRegex(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
