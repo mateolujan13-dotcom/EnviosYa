@@ -249,6 +249,58 @@ export interface ResolveIncidentDto {
   observacion?: string;
 }
 
+/** KPI ejecutivo de reportes. */
+export interface ReportsSummaryDto {
+  totalEnvios: number;
+  entregados: number;
+  enTransito: number;
+  enReparto: number;
+  enSucursal: number;
+  conIncidencia: number;
+  devueltos: number;
+  cancelados: number;
+  /** entregados / totalEnvios × 100; 0 si totalEnvios = 0. */
+  tasaEntrega: number;
+  /** Suma de costo.total excluyendo cancelados. */
+  gastoTotal: number;
+  /** gastoTotal / envíos no cancelados; 0 si todos cancelados. */
+  ticketPromedio: number;
+}
+
+export interface ReporteSucursalDto {
+  sucursalId: string;
+  nombre: string;
+  cantidad: number;
+  entregados: number;
+  totalARS: number;
+}
+
+export interface TiemposPromedioSucursalDto {
+  sucursalId: string;
+  nombre: string;
+  promedioHoras: number;
+  entregados: number;
+}
+
+export interface TiemposPromedioDto {
+  promedioHoras: number;
+  porSucursal: TiemposPromedioSucursalDto[];
+}
+
+export interface TopRepartidorDto {
+  repartidorId: string;
+  nombre: string;
+  entregas: number;
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  totalARS: number;
+}
+
+export interface ReporteEstadoDto {
+  estado: EstadoEnvio | string;
+  cantidad: number;
+}
+
 /**
  * Respuesta pública de `GET /api/shipments/track/:code`.
  * Sin PII: no incluye remitente, destinatario, clienteResumen, costo,
