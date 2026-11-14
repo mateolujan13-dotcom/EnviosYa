@@ -90,6 +90,13 @@ export class ClientsRepository {
     );
     return result.modifiedCount > 0;
   }
+
+  async deleteById(id: string): Promise<boolean> {
+    const result = await this.col.deleteOne({
+      _id: id,
+    } as Filter<IClienteDocument>);
+    return result.deletedCount > 0;
+  }
 }
 
 function escapeRegExp(value: string): string {

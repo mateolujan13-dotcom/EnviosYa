@@ -2,7 +2,7 @@
 
 Aplicación web de logística y paquetería construida sobre el diseño de base de datos MongoDB del TP9. Incluye un portal de clientes y un back-office operativo.
 
-> **Estado:** PR #1 (monorepo + `@envioya/shared`) mergeado y PR #2 (MongoDB + repositorios + tests) completo. El frontend sigue en scaffold.
+> **Estado:** PR #1 (monorepo + `@envioya/shared`), PR #2 (MongoDB + repositorios) y PR #3 (auth JWT + RBAC + login/registro) completos. El resto de las pantallas sigue en scaffold.
 > **Stack decidido:** NestJS + React + MongoDB.
 > **Base de datos:** `envioya` (TP9), reutilizada con el esquema existente + colecciones `usuarios` y `tarifas`.
 
@@ -47,9 +47,11 @@ No requiere servidor ni dependencias. Es un HTML autocontenido.
 ## Decisiones clave
 
 - El proyecto **no modifica** los entregables del TP9; vive en `envioya-app/`.
-- Se reutiliza el esquema del TP9 (`clientes`, `envios`, `eventos_seguimiento`, etc.) y se agrega `usuarios`.
+- Se reutiliza el esquema del TP9 (`clientes`, `envios`, `eventos_seguimiento`, etc.) y se agregan `usuarios` y `tarifas`.
 - Los envíos usan IDs string (`ENV-YYYY-####`) y códigos `EY-XXXXXX`.
 - La baja de un envío es **lógica** (`cancelado`), nunca física.
+- La sesión viaja en una cookie JWT `envioya_session` con `httpOnly`, `SameSite=Lax` y `secure` en producción (ADR-003).
+- El registro público solo crea clientes. Operadores y administradores se cargan con el seed.
 - La identidad visual se explora con Google Stitch a partir del PRD y `DESIGN.md`.
 
 ---
@@ -72,7 +74,10 @@ copy apps\backend\.env.example apps\backend\.env
 npm run dev:backend
 npm run dev:frontend
 
-# 5. Verificar la base y correr los tests de integración (con MongoDB activo)
+# 5. Cargar operadores y administradores de desarrollo
+npm run db:seed
+
+# 6. Verificar la base y correr los tests (con MongoDB activo)
 npm run db:verify
 npm test
 ```
@@ -82,14 +87,45 @@ npm test
 - Health + colecciones MongoDB: http://localhost:3000/api/health/db
 - Frontend: http://localhost:5173
 
+### Usuarios de desarrollo
+
+El seed es idempotente y usa bcrypt con 12 rounds. Las contraseñas se pueden
+cambiar con `SEED_ADMIN_PASSWORD` y `SEED_OPERADOR_PASSWORD` antes de ejecutarlo.
+
+| Rol | Email | Contraseña por defecto | Redirección |
+|---|---|---|---|
+| `operador` | `operador@envioya.com` | `Operador1234!` | `/ops` |
+| `admin` | `admin@envioya.com` | `Admin1234!` | `/ops` |
+
+> Credenciales solo para desarrollo local. En producción, definí un
+> `JWT_SECRET` propio y cambiá las contraseñas del seed.
+
+---
+
+## Autenticación y RBAC
+
+| Método | Endpoint | Acceso | Descripción |
+|---|---|---|---|
+| `POST` | `/api/auth/register` | Público | Crea cliente + usuario, inicia sesión y setea la cookie. |
+| `POST` | `/api/auth/login` | Público | Valida credenciales y setea la cookie (`recordarme` = 7 días). |
+| `POST` | `/api/auth/logout` | Público | Limpia la cookie de sesión. |
+| `GET` | `/api/auth/me` | Autenticado | Devuelve el usuario de la sesión actual. |
+
+- Contraseñas con **bcrypt 12 rounds** y mensajes de login genéricos.
+- Registro mínimo: nombre, email, teléfono y contraseña. La dirección se completa en el perfil.
+- Guards `JwtAuthGuard` + `RolesGuard` con decorador `@Roles('cliente' | 'operador' | 'admin')`.
+- Frontend: `AuthContext`, rutas protegidas y redirección por rol (`cliente` → `/app`, `operador`/`admin` → `/ops`).
+- Si falla la creación del usuario, el registro compensa borrando el cliente creado.
+
+**Tests:** 20 en total (8 de repositorios, 8 de auth y 4 unitarios de `RolesGuard`).
+
 ---
 
 ## Próximos pasos
 
-1. PR #3: autenticación JWT en cookies, RBAC y pantallas de login/registro.
-2. PR #4: landing y tracking público con mapa.
-3. PR #5 y #6: cotizador y portal del cliente.
-4. PR #7 y #8: torre de control y reportes.
+1. PR #4: landing y tracking público con mapa.
+2. PR #5 y #6: cotizador y portal del cliente.
+3. PR #7 y #8: torre de control y reportes.
 
 ---
 

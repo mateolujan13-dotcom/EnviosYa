@@ -15,6 +15,7 @@
     "dev:backend": "npm run start:dev --workspace=@envioya/backend",
     "dev:frontend": "npm run dev --workspace=@envioya/frontend",
     "db:verify": "npm run db:verify --workspace=@envioya/backend",
+    "db:seed": "npm run db:seed --workspace=@envioya/backend",
     "lint": "npm run lint --workspaces --if-present",
     "test": "npm run test --workspaces --if-present"
   },
