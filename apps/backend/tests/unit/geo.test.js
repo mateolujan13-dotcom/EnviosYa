@@ -7,6 +7,9 @@ const {
   HAVERSINE_ROUTE_FACTOR,
   ASSUMED_SPEED_KMH,
 } = require(path.join(__dirname, '..', '..', 'dist', 'geo', 'geo.service'));
+// Factor acordado en ADR-005: Haversine x 1.25. Se hardcodea para que el
+// test muerda: un cambio en el factor del servicio rompe este assert.
+const ADR_005_ROUTE_FACTOR = 1.25;
 const {
   haversineKm,
 } = require(path.join(__dirname, '..', '..', 'dist', 'geo', 'haversine'));
@@ -56,7 +59,8 @@ test('getDrivingRoute: OSRM caído degrada a Haversine x 1.25 con flag estimada'
 
   const route = await service.getDrivingRoute(CABA, CORDOBA);
 
-  const expected = haversineKm(CABA, CORDOBA) * HAVERSINE_ROUTE_FACTOR;
+  assert.equal(HAVERSINE_ROUTE_FACTOR, ADR_005_ROUTE_FACTOR);
+  const expected = haversineKm(CABA, CORDOBA) * ADR_005_ROUTE_FACTOR;
   assert.equal(route.distanciaEstimada, true);
   assert.ok(Math.abs(route.distanciaKm - expected) < 1e-9);
   assert.ok(Math.abs(route.duracionEstimadaHoras - expected / ASSUMED_SPEED_KMH) < 1e-9);
