@@ -2,7 +2,6 @@ import {
   EstadoEnvio,
   EstadoRepartidor,
   EstadoVehiculo,
-  ModalidadServicio,
   RolUsuario,
   TipoCliente,
   TipoEvento,
@@ -28,60 +27,150 @@ export interface IPersona {
   email?: string;
 }
 
-export interface IPaquete {
-  alto: number; // cm
-  ancho: number; // cm
-  largo: number; // cm
-  peso: number; // kg
-  fragil: boolean;
-  descripcion?: string;
-  valorDeclarado?: number;
+export interface IPaqueteDimensiones {
+  altoCm: number;
+  anchoCm: number;
+  profundoCm: number;
 }
 
-export interface IEventoEnvio {
-  tipo: TipoEvento;
-  estado: EstadoEnvio;
+export interface IPaqueteCaracteristica {
+  k: string;
+  v: string | number | boolean;
+}
+
+export interface IPaquete {
+  paqueteId?: string;
+  descripcion: string;
+  pesoKg: number;
+  dimensiones: IPaqueteDimensiones;
+  fragil: boolean;
+  caracteristicas?: IPaqueteCaracteristica[];
+}
+
+export interface IEventoSeguimiento {
+  tipo: TipoEvento | string;
+  estado: EstadoEnvio | string;
   timestamp: Date | string;
   sucursalId?: string | null;
   repartidorId?: string | null;
-  observaciones?: string;
+  descripcion?: string;
 }
 
-export interface IEnvio {
+export interface ICostoEnvio {
+  flete: number;
+  recargos: number;
+  seguro: number;
+  total: number;
+}
+
+export interface IEnvioDocument {
   _id: string; // Ej: "ENV-2026-0001"
-  codigoSeguimiento: string; // Ej: "EY-4F8A1C"
+  codigo: string; // Ej: "EY-4F8A1C"
+  clienteId: string;
+  clienteResumen?: {
+    nombre: string;
+    email?: string;
+  };
   remitente: IPersona;
   destinatario: IPersona;
-  clienteId: string;
-  origen: IDireccion;
-  destino: IDireccion;
-  sucursalOrigenId?: string;
-  sucursalDestinoId?: string;
-  distanciaKm: number;
-  modalidad: ModalidadServicio;
   paquetes: IPaquete[];
-  estado: EstadoEnvio;
-  historialEventos: IEventoEnvio[];
+  totalPaquetes: number;
+  pesoTotalKg: number;
+  estado: EstadoEnvio | string;
+  sucursalOrigenId: string;
+  sucursalDestinoId: string;
+  sucursalActualId?: string | null;
   repartidorId?: string | null;
-  vehiculoId?: string | null;
-  cotizacion: {
-    precioBase: number;
-    adicionalDistancia: number;
-    adicionalPeso: number;
-    adicionalFragil: number;
-    seguro: number;
-    iva: number;
-    total: number;
-    moneda: string; // 'ARS'
+  repartidorResumen?: {
+    nombre: string;
+    telefono?: string;
   };
-  motivoCancelacion?: string;
+  vehiculoId?: string | null;
   fechaCreacion: Date | string;
-  fechaEstimadaEntrega?: Date | string;
-  fechaEntregaEfectiva?: Date | string;
+  fechaDespacho?: Date | string | null;
+  fechaEntregaEstimada?: Date | string | null;
+  fechaEntrega?: Date | string | null;
+  costo: ICostoEnvio;
+  facturaId?: string | null;
+  ultimosEventos?: IEventoSeguimiento[];
+  totalEventos?: number;
+  motivoCancelacion?: string | null;
+  schemaVersion?: number;
 }
 
-export interface IUsuario {
-  _id: string;
+export interface IClienteDocument {
+  _id: string; // Ej: "CLI-0001"
+  tipo: TipoCliente | 'corporativo' | 'particular';
+  razonSocial: string;
+  cuit?: string;
+  dni?: string;
+  contacto: {
+    nombre: string;
+    email: string;
+    telefono: string;
+  };
+  direccionFacturacion: IDireccion;
+  modalidadFacturacion?: string;
+  fechaAlta: Date | string;
+  activo: boolean;
+  enviosPorMes?: number;
+  esAtipico?: boolean;
+  ultimosEnvios?: Array<{
+    envioId: string;
+    codigo: string;
+    estado: string;
+    fechaCreacion: Date | string;
+    destino: string;
+    total: number;
+  }>;
+  schemaVersion?: number;
+}
+
+export interface ISucursalDocument {
+  _id: string; // Ej: "SUC-01"
+  nombre: string;
+  direccion: IDireccion;
+  telefono: string;
+  horario: string;
+  activa: boolean;
+  responsable?: string;
+}
+
+export interface IRepartidorDocument {
+  _id: string; // Ej: "REP-01"
+  nombre: string;
+  documento: string;
+  telefono: string;
+  email: string;
+  licencia?: {
+    numero: string;
+    categoria: string;
+    vencimiento: Date | string;
+  };
+  sucursalBaseId: string;
+  vehiculoAsignadoId?: string | null;
+  rutasIds?: string[];
+  estado: EstadoRepartidor | 'disponible' | 'en_reparto' | 'en_ruta' | 'inactivo';
+  fechaIngreso: Date | string;
+}
+
+export interface IVehiculoDocument {
+  _id: string; // Ej: "VEH-01"
+  patente: string;
+  tipo: TipoVehiculo | string;
+  marca: string;
+  modelo: string;
+  anio: number;
+  capacidadKg: number;
+  capacidadM3: number;
+  sucursalId: string;
+  estado: EstadoVehiculo | 'operativo' | 'en_reparto' | 'mantenimiento';
+  ultimoMantenimiento?: Date | string;
+  cargaActualKg?: number;
+}
+
+export interface IUsuarioDocument {
+  _id: string; // Ej: "USR-0001"
   email: string;
   passwordHash: string;
   nombre: string;
@@ -92,55 +181,8 @@ export interface IUsuario {
   updatedAt: Date | string;
 }
 
-export interface ICliente {
-  _id: string; // Ej: "CLI-001"
-  nombre: string;
-  tipo: TipoCliente;
-  cuitCuil?: string;
-  email: string;
-  telefono: string;
-  direccion: IDireccion;
-  saldoCuentaCorriente?: number;
-  activo: boolean;
-}
-
-export interface ISucursal {
-  _id: string; // Ej: "SUC-CBA"
-  nombre: string;
-  codigo: string;
-  direccion: IDireccion;
-  telefono: string;
-  horarioAtencion: string;
-  capacidadAlmacenamientoM3: number;
-  activo: boolean;
-}
-
-export interface IRepartidor {
-  _id: string; // Ej: "REP-001"
-  nombre: string;
-  dni: string;
-  telefono: string;
-  sucursalId: string;
-  estado: EstadoRepartidor;
-  calificacionPromedio: number;
-  totalEntregas: number;
-}
-
-export interface IVehiculo {
-  _id: string; // Ej: "VEH-001"
-  patente: string;
-  modelo: string;
-  marca: string;
-  tipo: TipoVehiculo;
-  capacidadCargaKg: number;
-  capacidadVolumenM3: number;
-  estado: EstadoVehiculo;
-  sucursalId: string;
-  cargaActualKg?: number;
-}
-
-export interface ITarifa {
-  _id: string;
+export interface ITarifaDocument {
+  _id: string; // Ej: "TAR-ESTANDAR"
   nombre: string;
   precioBase: number;
   precioKm: number;
@@ -148,5 +190,8 @@ export interface ITarifa {
   recargoFragilPorcentaje: number;
   tasaSeguroPorcentaje: number;
   alicuotaIva: number;
+  moneda: string;
+  vigenteDesde: Date | string;
   activa: boolean;
+  schemaVersion?: number;
 }
