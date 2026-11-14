@@ -8,5 +8,6 @@ import { PricingService } from './pricing.service';
   imports: [GeoModule, RepositoriesModule],
   controllers: [PricingController],
   providers: [PricingService],
+  exports: [PricingService],
 })
 export class PricingModule {}
