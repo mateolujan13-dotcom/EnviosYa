@@ -14,8 +14,10 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main.js",
     "pretest": "npm run build",
-    "test": "node --test tests/integration/repositories.test.js",
-    "db:verify": "node scripts/verify-db.js"
+    "test": "node --test tests/integration/*.test.js tests/unit/*.test.js",
+    "db:verify": "node scripts/verify-db.js",
+    "predb:seed": "npm run build",
+    "db:seed": "node scripts/seed-users.js"
   },
   "dependencies": {
     "@envioya/shared": "*",
